@@ -24,6 +24,9 @@ public class DisplaySlot {
 	private int idBlock;
 	private String label;
 	private int idValue;
+	private float valueLabelWidth;
+	private float margin;
+	private float value;
 
 	public DisplaySlot(int idBlock, int idValue, PApplet processing, float x, float y, float width, float height, int background, int colorIndex, String label) {
 		this.idBlock = idBlock;
@@ -44,8 +47,9 @@ public class DisplaySlot {
 		this.icon = processing.loadImage(blockNameById + ".png");
 		this.icon.resize(0, (int)(height));
 		//this.grapher = new Grapher(processing, x+width/3, y, 2*width/3, height, background, utils.pickAColor(colorIndex));
-		float margin = 10;
-		this.grapher = new Grapher(processing, x+this.icon.width+margin, y, this.width-this.icon.width-margin, height, background, utils.pickAColor(colorIndex));
+		this.margin = 10;
+		this.valueLabelWidth = 100;
+		this.grapher = new Grapher(processing, x+this.icon.width+margin, y, this.width-this.icon.width-margin-margin-valueLabelWidth, height, background, utils.pickAColor(colorIndex));
 	}
 
 	public int getIdBlock() {
@@ -62,13 +66,20 @@ public class DisplaySlot {
 
 	public void updateDisplay(){
 		processing.image(this.icon, this.x, this.y);
-		this.grapher.updateDisplay();
+		grapher.updateDisplay();
+		processing.fill(255);
+		processing.noStroke();
+		float valueLabelX = grapher.getRight()+this.margin;
+		processing.rect(valueLabelX, this.y, this.valueLabelWidth, this.height);
+		processing.fill(0);
+		processing.text(this.value, valueLabelX + 5, this.y + this.height/2.0f);
 		processing.fill(0);
 		processing.text(this.label, this.grapher.getLeft() + 5, this.grapher.getBottom() - 5);
 	}
 
 	public void updateValue(int value){
 		this.grapher.updateValue(value);
+		this.value = value;
 		//		float imgX = this.width/6 - this.icon.width/2;
 		//		processing.image(this.icon, imgX, 0);
 		//System.out.println(value);
