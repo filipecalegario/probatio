@@ -2,8 +2,7 @@ package main;
 import java.util.Vector;
 
 import display.DisplayManager_v0_0_3;
-import kinematic.Kinematic;
-import mapper.MapperDelegate;
+import kinematic.KinematicCrank;
 import mapper.MapperManager;
 import model.Block;
 import model.BlockFactory;
@@ -26,9 +25,11 @@ public class Serial_Processing_libMapper_v0_0_8 extends PApplet {
 	MapperManager mapperManager;
 	Vector<Block> blocks;
 	DisplayManager_v0_0_3 display;
-	Kinematic kinematic;
+	KinematicCrank kinematic;
 
 	boolean serialIsReady;
+	
+	int debug = BlockType.CRANK;
 
 	public void settings() {  
 		size(800, 600);
@@ -42,7 +43,7 @@ public class Serial_Processing_libMapper_v0_0_8 extends PApplet {
 		mapperManager = new MapperManager("probatio");
 		blocks = new Vector<Block>();
 		display = new DisplayManager_v0_0_3(this,6);
-		kinematic = new Kinematic(0, millis());
+		kinematic = new KinematicCrank();
 		mapperManager.printDeviceInitialization();
 
 		//println(Serial.list());
@@ -124,10 +125,10 @@ public class Serial_Processing_libMapper_v0_0_8 extends PApplet {
 			for (int i = 0; i < block.getValues().length; i++) {
 				display.addDisplaySlot(block.getId(), i, block.getValuesLabels()[i]);
 				//TODO Exploring! Remove after!
-				if(block.getId() == BlockType.BELLOWS){
+				if(block.getId() == debug){
 					display.addDisplaySlot(BlockType.NONE, 0, "Speed");
 					display.addDisplaySlot(BlockType.NONE, 1, "Acceleration");
-					kinematic.updateValue(0, millis());
+					kinematic.updateValue(0);
 				}
 			} 
 		}
@@ -140,9 +141,9 @@ public class Serial_Processing_libMapper_v0_0_8 extends PApplet {
 			mapperManager.updateSignal(block);
 			for (int i = 0; i < block.getValues().length; i++) {
 				display.updateValueDisplaySlot(block.getId(), i, values[i]);
-				if(block.getId() == BlockType.BELLOWS){
-					kinematic.updateValue(values[i], millis());
-					display.updateValueDisplaySlot(BlockType.NONE, 0, Math.round(kinematic.getCurrentSpeed()));
+				if(block.getId() == debug){
+					kinematic.updateValue(values[i]);
+					display.updateValueDisplaySlot(BlockType.NONE, 0, Math.round(kinematic.getAverageSpeed()));
 					display.updateValueDisplaySlot(BlockType.NONE, 1, Math.round(kinematic.getAcceleration()));					
 				}
 			} 
@@ -154,7 +155,7 @@ public class Serial_Processing_libMapper_v0_0_8 extends PApplet {
 		mapperManager.removeSignal(block);
 		for (int i = 0; i < block.getValues().length; i++) {
 			display.removeDisplaySlot(block.getId(), i);
-			if(block.getId() == BlockType.BELLOWS){
+			if(block.getId() == debug){
 				display.removeDisplaySlot(BlockType.NONE, 0);
 				display.removeDisplaySlot(BlockType.NONE, 1);				
 			}
