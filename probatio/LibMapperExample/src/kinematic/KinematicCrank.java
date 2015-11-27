@@ -36,10 +36,10 @@ public class KinematicCrank extends Kinematic{
 
 	public void updateValue(int value) {
 		this.lastPosition = this.currentPosition;
+		this.lastAverageSpeed = this.currentAverageSpeed;
 		this.currentPosition = value;
 		float deltaP = this.currentPosition - this.lastPosition;
 		
-		this.lastAverageSpeed = this.currentAverageSpeed;
 		if(deltaP != 0){
 			this.lastTime = this.currentTime;
 			this.currentTime = (long) System.nanoTime();
@@ -47,9 +47,17 @@ public class KinematicCrank extends Kinematic{
 			this.averageDeltaT[index] = deltaT;
 			//System.out.println(1.0f/getAverageDeltaT()*1e4);
 			this.currentAverageSpeed = 1.0f/getAverageDeltaT()*1e4f;
+			float deltaSpeed = this.currentAverageSpeed - this.lastAverageSpeed;
+			this.acceleration = deltaSpeed/deltaT;
 			index = (index + 1)%this.averageDeltaT.length;
 			stuckCounter = 0;
 		}
+		
+		
+		
+		
+		
+		
 		if(this.lastAverageSpeed == this.currentAverageSpeed){
 			//System.out.println(stuckCounter++);
 			stuckCounter++;

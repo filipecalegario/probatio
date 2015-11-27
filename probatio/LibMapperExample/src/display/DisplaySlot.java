@@ -77,7 +77,8 @@ public class DisplaySlot {
 		processing.text(this.label, this.grapher.getLeft() + 5, this.grapher.getBottom() - 5);
 	}
 
-	public void updateValue(int value){
+	public void updateValue(int value, int counterXPos){
+		this.grapher.updateXPos(counterXPos);
 		this.grapher.updateValue(value);
 		this.value = value;
 		//		float imgX = this.width/6 - this.icon.width/2;

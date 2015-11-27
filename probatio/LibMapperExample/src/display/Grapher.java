@@ -95,10 +95,21 @@ public class Grapher {
 			processing.stroke(0);
 			processing.strokeWeight(1);
 			processing.rect(x, y, width, height);
-			updateXPos();
+			//updateXPos();
 		}
 	}
 
+	public void updateXPos(int counter){
+		float mapped = PApplet.map(counter, 0, 9999, left, right);
+		xPos = PApplet.constrain(mapped, left, right);
+//		if (xPos >= right) {
+//			xPos = left;
+//			clearBackground();
+//		} else {
+//			xPos = xPos + pointerSpeed;
+//		}
+	}
+	
 	private void updateXPos(){
 		if (xPos >= right) {
 			xPos = left;

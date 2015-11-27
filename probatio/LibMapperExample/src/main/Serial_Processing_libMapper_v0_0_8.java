@@ -8,7 +8,11 @@ import model.Block;
 import model.BlockFactory;
 import model.BlockType;
 import processing.core.PApplet;
-import processing.serial.Serial; 
+import processing.serial.Serial;
+
+// Compatible with XS_Hub_v0_0_12
+// Compatible with MockupSerial_v0.0.2
+// Parsing individual lines per sensor read
 
 public class Serial_Processing_libMapper_v0_0_8 extends PApplet {
 
@@ -98,7 +102,8 @@ public class Serial_Processing_libMapper_v0_0_8 extends PApplet {
 	private void parseAndAddOrUpdate(String inString) {
 		String subString = "";
 		if(inString != null && inString.length() > 0){
-			subString = inString.substring(inString.indexOf('#')+1, inString.indexOf('\n')-1);
+			subString = inString.substring(0, inString.indexOf('\n')-1);
+			System.out.println(subString);
 			String[] pieces = split(subString, ';');
 			//System.out.println(Arrays.toString(pieces));
 			int id = Integer.parseInt(pieces[0]);

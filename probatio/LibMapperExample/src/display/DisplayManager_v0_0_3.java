@@ -13,6 +13,7 @@ public class DisplayManager_v0_0_3 {
 	private DisplaySlot[] slots;
 	private PApplet processing;
 	private int numberOfSlots;
+	private int counterXPos;
 
 	public DisplayManager_v0_0_3(PApplet processing, int numberOfSlots) {
 		this.processing = processing;
@@ -36,8 +37,12 @@ public class DisplayManager_v0_0_3 {
 		if(contains(idBlock, idValue)){
 			DisplaySlot slot = getSlot(idBlock, idValue);
 			if(slot != null){
-				slot.updateValue(value);
+				slot.updateValue(value, counterXPos);
 			}
+		}
+		counterXPos = (counterXPos + 1)%10000;
+		if(counterXPos == 9999){
+			processing.background(255);
 		}
 	}
 	
@@ -110,6 +115,10 @@ public class DisplayManager_v0_0_3 {
 			result = slots[index];
 		}
 		return result;
+	}
+
+	public void cleanScreen() {
+		processing.background(255);
 	}
 
 }
