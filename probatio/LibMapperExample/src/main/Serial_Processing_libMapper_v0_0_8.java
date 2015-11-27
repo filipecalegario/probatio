@@ -51,10 +51,11 @@ public class Serial_Processing_libMapper_v0_0_8 extends PApplet {
 		mapperManager.printDeviceInitialization();
 
 		//println(Serial.list());
+		println("Initializing serial port...");
+		
 		myPort = new Serial(this, Serial.list()[5], 115200);
 		myPort.bufferUntil('\n');
 		myPort.clear();
-		println("Initializing serial port...");
 		while (millis() - startTime < 500) {
 			if (myPort.available() > 0) {
 				myPort.readStringUntil('\n');

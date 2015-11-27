@@ -64,7 +64,8 @@ public class DisplaySlot {
 		return this.label;
 	}
 
-	public void updateDisplay(){
+	public void updateDisplay(int counterXPos){
+		this.grapher.updateXPos(counterXPos);
 		processing.image(this.icon, this.x, this.y);
 		grapher.updateDisplay();
 		processing.fill(255);
@@ -77,8 +78,7 @@ public class DisplaySlot {
 		processing.text(this.label, this.grapher.getLeft() + 5, this.grapher.getBottom() - 5);
 	}
 
-	public void updateValue(int value, int counterXPos){
-		this.grapher.updateXPos(counterXPos);
+	public void updateValue(int value){
 		this.grapher.updateValue(value);
 		this.value = value;
 		//		float imgX = this.width/6 - this.icon.width/2;

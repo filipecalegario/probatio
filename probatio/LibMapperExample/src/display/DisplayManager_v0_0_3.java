@@ -37,21 +37,25 @@ public class DisplayManager_v0_0_3 {
 		if(contains(idBlock, idValue)){
 			DisplaySlot slot = getSlot(idBlock, idValue);
 			if(slot != null){
-				slot.updateValue(value, counterXPos);
+				slot.updateValue(value);
 			}
-		}
-		counterXPos = (counterXPos + 1)%10000;
-		if(counterXPos == 9999){
-			processing.background(255);
 		}
 	}
 	
 	public void updateDrawDisplaySlot(){
+		counterXPos = (counterXPos + 1)%processing.width;
+		if(counterXPos == (processing.width-1)){
+			processing.background(255);
+		}
 		for (int i = 0; i < slots.length; i++) {
 			if(slots[i] != null){
-				slots[i].updateDisplay();
+				slots[i].updateDisplay(counterXPos);
 			}
 		}
+	}
+	
+	public void resetCounter(){
+		this.counterXPos = 0;
 	}
 
 	public void removeDisplaySlot(int idBlock, int idValue){

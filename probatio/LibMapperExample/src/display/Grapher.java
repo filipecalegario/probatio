@@ -100,7 +100,7 @@ public class Grapher {
 	}
 
 	public void updateXPos(int counter){
-		float mapped = PApplet.map(counter, 0, 9999, left, right);
+		float mapped = PApplet.map(counter, 0, processing.width-1, left, right);
 		xPos = PApplet.constrain(mapped, left, right);
 //		if (xPos >= right) {
 //			xPos = left;

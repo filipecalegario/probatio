@@ -73,6 +73,7 @@ public class Serial_Processing_libMapper_v0_0_9 extends PApplet {
 		display.updateDrawDisplaySlot();
 		if(blocks.isEmpty()){
 			display.cleanScreen();
+			display.resetCounter();
 		}
 //		try {
 //			for (int i = 0; i < blocks.size(); i++) {
