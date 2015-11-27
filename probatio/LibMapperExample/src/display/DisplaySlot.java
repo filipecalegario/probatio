@@ -1,6 +1,7 @@
 package display;
 
-import model.Block;
+import kinematic.KinematicFactory;
+import kinematic.Kinematics;
 import model.BlockType;
 import processing.core.PApplet;
 import processing.core.PImage;
@@ -27,8 +28,19 @@ public class DisplaySlot {
 	private float valueLabelWidth;
 	private float margin;
 	private float value;
+	private Kinematics kinematic;
+	private int idSlot;
 
 	public DisplaySlot(int idBlock, int idValue, PApplet processing, float x, float y, float width, float height, int background, int colorIndex, String label) {
+		initialize(idBlock, idValue, processing, x, y, width, height, background, colorIndex, label);
+	}
+	
+	public DisplaySlot(int idBlock, int idValue, int idSlot, PApplet processing, float x, float y, float width, float height, int background, int colorIndex, String label) {
+		initialize(idBlock, idValue, processing, x, y, width, height, background, colorIndex, label);
+		this.idSlot = idSlot;
+	}
+
+	private void initialize(int idBlock, int idValue, PApplet processing, float x, float y, float width, float height, int background, int colorIndex, String label) {
 		this.idBlock = idBlock;
 		this.idValue = idValue;
 		this.processing = processing;
@@ -50,6 +62,17 @@ public class DisplaySlot {
 		this.margin = 10;
 		this.valueLabelWidth = 100;
 		this.grapher = new Grapher(processing, x+this.icon.width+margin, y, this.width-this.icon.width-margin-margin-valueLabelWidth, height, background, utils.pickAColor(colorIndex));
+		this.kinematic = KinematicFactory.createKinematic(idBlock);
+	}
+
+	public void updateValue(float value) {
+		this.value = value;
+		kinematic.updateValue(value);
+		grapher.updateValue(value);
+	}
+
+	public float getSpeed() {
+		return kinematic.getSpeed();
 	}
 
 	public int getIdBlock() {
@@ -78,14 +101,6 @@ public class DisplaySlot {
 		processing.text(this.label, this.grapher.getLeft() + 5, this.grapher.getBottom() - 5);
 	}
 
-	public void updateValue(int value){
-		this.grapher.updateValue(value);
-		this.value = value;
-		//		float imgX = this.width/6 - this.icon.width/2;
-		//		processing.image(this.icon, imgX, 0);
-		//System.out.println(value);
-	}
-
 	public void clearRect(){
 		processing.fill(this.background);
 		processing.noStroke();
@@ -95,6 +110,10 @@ public class DisplaySlot {
 	public void prepareToBeRemoved(){
 		this.grapher.clearBackground();
 		this.clearRect();
+	}
+
+	public int getIdSlot() {
+		return this.idSlot;
 	}
 
 }

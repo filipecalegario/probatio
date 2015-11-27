@@ -1,6 +1,8 @@
 package kinematic;
 
-public class Kinematic {
+import processing.core.PApplet;
+
+public class KinematicGeneralBlocks implements Kinematics{
 	
 	private long lastTime;
 	private long currentTime;
@@ -16,7 +18,7 @@ public class Kinematic {
 	private float[] averageSpeedWindow;
 	private int index;
 	
-	public Kinematic() {
+	public KinematicGeneralBlocks() {
 		this.lastTime = 0;
 		this.currentTime = System.nanoTime();
 		this.lastPosition = 0;
@@ -44,14 +46,14 @@ public class Kinematic {
 		this.averageSpeedWindow[index] = Math.abs(currentSpeed);
 		index = (index + 1)%100;
 		//System.out.println("Dt = " + deltaT + " | speed = ");
-		System.out.printf("Speed = [%f , %f] | Acc = [%f, %f] | AverageSpeed = %f%n", Math.abs(minSpeed), Math.abs(maxSpeed), Math.abs(minAcceleration), Math.abs(maxAcceleration),this.getAverageSpeed());
+		//System.out.printf("Speed = [%f , %f] | Acc = [%f, %f] | AverageSpeed = %f%n", Math.abs(minSpeed), Math.abs(maxSpeed), Math.abs(minAcceleration), Math.abs(maxAcceleration),this.getAverageSpeed());
 	}
 
-	public float getCurrentSpeed() {
+	private float getCurrentSpeed() {
 		return (float) (Math.abs(currentSpeed*1e6));
 	}
 	
-	public float getAverageSpeed(){
+	private float getAverageSpeed(){
 		float result = 0;
 		float sum = 0;
 		for (int i = 0; i < averageSpeedWindow.length; i++) {
@@ -63,6 +65,15 @@ public class Kinematic {
 
 	public float getAcceleration() {
 		return acceleration;
+	}
+
+	@Override
+	public float getSpeed() {
+		float f = this.getAverageSpeed()*1000;
+		f = PApplet.map(f, 0.0f, 4.3f, 0, 255);
+		f = PApplet.constrain(f, 0, 255);
+		System.out.println(f);
+		return f;
 	}
 
 }

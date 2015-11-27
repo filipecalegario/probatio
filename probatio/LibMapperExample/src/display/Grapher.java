@@ -18,7 +18,7 @@ public class Grapher {
 	private int background;
 	private float pointerSpeed;
 	private boolean isFirstRun;
-	private float lastValue;
+	private float currentValue;
 
 	public Grapher(PApplet processing, float x, float y, float width, float height, int background, int foreground) {
 		this.processing = processing;
@@ -72,7 +72,7 @@ public class Grapher {
 	}
 	
 	public void updateValue(float value){
-		this.lastValue = value;
+		this.currentValue = value;
 	}
 
 	public void updateDisplay(){
@@ -85,7 +85,7 @@ public class Grapher {
 			//processing.rect(x-5, y-5, width+10, height+10);
 			isFirstRun = false;
 		} else {
-			float valueForScreen = PApplet.map(this.lastValue, 0, 255, bottom, top);
+			float valueForScreen = PApplet.map(this.currentValue, 0, 255, bottom, top);
 			//valueForScreen = PApplet.constrain(valueForScreen, bottom, top);
 			processing.noFill();
 			processing.stroke(this.foreground);

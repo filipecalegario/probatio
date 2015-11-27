@@ -31,7 +31,7 @@ public class Serial_Processing_libMapper_v0_0_9 extends PApplet {
 	MapperManager mapperManager;
 	Vector<Block> blocks;
 	DisplayManager_v0_0_3 display;
-	KinematicCrank kinematic;
+	//KinematicCrank kinematic;
 
 	boolean serialIsReady;
 	
@@ -48,8 +48,9 @@ public class Serial_Processing_libMapper_v0_0_9 extends PApplet {
 		serialIsReady = false;
 		mapperManager = new MapperManager("probatio");
 		blocks = new Vector<Block>();
-		display = new DisplayManager_v0_0_3(this,6);
-		kinematic = new KinematicCrank();
+		int numberOfSlots = 12;
+		display = new DisplayManager_v0_0_3(this,numberOfSlots);
+		//kinematic = new KinematicCrank();
 		mapperManager.printDeviceInitialization();
 
 		//println(Serial.list());
@@ -111,23 +112,6 @@ public class Serial_Processing_libMapper_v0_0_9 extends PApplet {
 		if(inString != null && inString.length() > 0){
 			subString = inString.substring(0, inString.indexOf('\n')-1);
 			String[] pieces = split(subString, ';');
-			//System.out.println(Arrays.toString(pieces));
-//			for (int i = 0; i < pieces.length; i++) {
-//				if(pieces[i].equals("#")){
-//					int id = Integer.parseInt(pieces[i+1]);
-//					int quantity = Integer.parseInt(pieces[i+2]);
-//					int[] values = new int[quantity];
-//					for (int j = 0; j < values.length; j++) {
-//						values[j] = Integer.parseInt(pieces[i+3+j]);
-//					}
-//					if(values[0] == -1){
-//						removeBlockEvent(id);
-//					} else {
-//						
-//					}
-//					
-//				}
-//			}
 			 
 			Iterable<String> piecesIterable = Arrays.asList(pieces);
 			Iterator<String> iterator = piecesIterable.iterator();
@@ -151,12 +135,9 @@ public class Serial_Processing_libMapper_v0_0_9 extends PApplet {
 						}						
 					}
 				}
-			}
-			
+			}		
 		}
 	}
-	
-	
 
 	private void addBlockEvent(Block block) {
 		if (block != null) {
@@ -167,11 +148,10 @@ public class Serial_Processing_libMapper_v0_0_9 extends PApplet {
 				for (int i = 0; i < block.getValues().length; i++) {
 					display.addDisplaySlot(block.getId(), i, block.getValuesLabels()[i]);
 					//TODO Exploring! Remove after!
-					if(block.getId() == debug){
-						display.addDisplaySlot(BlockType.NONE, 0, "Speed");
-						display.addDisplaySlot(BlockType.NONE, 1, "Acceleration");
-						kinematic.updateValue(0);
-					}
+//					if(block.getId() == debug){
+//						display.addDisplaySlot(BlockType.NONE, 0, "Speed");
+//						kinematic.updateValue(0);
+//					}
 				}
 			}
 		}
@@ -184,11 +164,10 @@ public class Serial_Processing_libMapper_v0_0_9 extends PApplet {
 			mapperManager.updateSignal(block);
 			for (int i = 0; i < block.getValues().length; i++) {
 				display.updateValueDisplaySlot(block.getId(), i, values[i]);
-				if(block.getId() == debug){
-					kinematic.updateValue(values[i]);
-					display.updateValueDisplaySlot(BlockType.NONE, 0, Math.round(kinematic.getAverageSpeed()));
-					display.updateValueDisplaySlot(BlockType.NONE, 1, Math.round(kinematic.getAcceleration()));					
-				}
+//				if(block.getId() == debug){
+//					kinematic.updateValue(values[i]);
+//					display.updateValueDisplaySlot(BlockType.NONE, 0, Math.round(kinematic.getSpeed()));					
+//				}
 			} 
 		}
 	}
@@ -205,10 +184,9 @@ public class Serial_Processing_libMapper_v0_0_9 extends PApplet {
 		mapperManager.removeSignal(block);
 		for (int i = 0; i < block.getValues().length; i++) {
 			display.removeDisplaySlot(block.getId(), i);
-			if(block.getId() == debug){
-				display.removeDisplaySlot(BlockType.NONE, 0);
-				display.removeDisplaySlot(BlockType.NONE, 1);				
-			}
+//			if(block.getId() == debug){
+//				display.removeDisplaySlot(BlockType.NONE, 0);			
+//			}
 		}
 		blocks.removeElement(block);
 		System.out.println(name + " removed");

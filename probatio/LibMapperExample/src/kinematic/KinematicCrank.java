@@ -2,7 +2,7 @@ package kinematic;
 
 import processing.core.PApplet;
 
-public class KinematicCrank extends Kinematic{
+public class KinematicCrank implements Kinematics{
 
 	private long lastTime;
 	private long currentTime;
@@ -34,7 +34,7 @@ public class KinematicCrank extends Kinematic{
 		this.averageDeltaT = new float[100];
 	}
 
-	public void updateValue(int value) {
+	public void updateValue(float value) {
 		this.lastPosition = this.currentPosition;
 		this.lastAverageSpeed = this.currentAverageSpeed;
 		this.currentPosition = value;
@@ -48,7 +48,7 @@ public class KinematicCrank extends Kinematic{
 			//System.out.println(1.0f/getAverageDeltaT()*1e4);
 			this.currentAverageSpeed = 1.0f/getAverageDeltaT()*1e4f;
 			float deltaSpeed = this.currentAverageSpeed - this.lastAverageSpeed;
-			this.acceleration = deltaSpeed/deltaT;
+			this.acceleration = Math.abs(deltaSpeed/getAverageDeltaT()*1e8f);
 			index = (index + 1)%this.averageDeltaT.length;
 			stuckCounter = 0;
 		}
@@ -80,15 +80,21 @@ public class KinematicCrank extends Kinematic{
 		return result;
 	}
 
-	public float getAverageSpeed() {
-		float mappedValue = PApplet.map(this.currentAverageSpeed, 0.0f, 5.0f, 0, 255);
+	private float getAverageSpeed() {
+		float mappedValue = PApplet.map(this.currentAverageSpeed, 0.0f, 1.7f, 0, 255);
 		mappedValue = PApplet.constrain(mappedValue, 0, 255);
 		//System.out.println(this.averageSpeed + " => " + mappedValue);
 		return mappedValue;
 	}
 
-	public float getAcceleration() {
-		return super.getAcceleration();
+	private float getAcceleration() {
+		System.out.println(this.acceleration);
+		return this.acceleration;
+	}
+
+	@Override
+	public float getSpeed() {
+		return getAverageSpeed();
 	}
 
 }

@@ -15,7 +15,7 @@ import processing.serial.Serial;
 // Parsing individual lines per sensor read
 
 public class Serial_Processing_libMapper_v0_0_8 extends PApplet {
-
+	/*
 	//private Signal out1;
 
 	Serial myPort;        // The serial port
@@ -207,5 +207,6 @@ public class Serial_Processing_libMapper_v0_0_8 extends PApplet {
 			PApplet.main(appletArgs);
 		}
 	}
+	*/
 
 }
