@@ -29,8 +29,9 @@ public class BlockFactory {
 			result[0] = "Push";
 			break;
 		case BlockType.TURNTABLE:	
-			result = new String[1];
+			result = new String[2];
 			result[0] = "Turning";
+			result[1] = "Pressing button";
 			break;
 		default:
 			break;
