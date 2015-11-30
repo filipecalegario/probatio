@@ -1,7 +1,9 @@
 package display;
 
+import Mapper.Device.Signal;
 import kinematic.KinematicFactory;
 import kinematic.Kinematics;
+import mapper.MapperManager;
 import model.BlockType;
 import processing.core.PApplet;
 import processing.core.PImage;
@@ -30,6 +32,7 @@ public class DisplaySlot {
 	private float value;
 	private Kinematics kinematic;
 	private int idSlot;
+	private Signal signal;
 
 	public DisplaySlot(int idBlock, int idValue, PApplet processing, float x, float y, float width, float height, int background, int colorIndex, String label) {
 		initialize(idBlock, idValue, processing, x, y, width, height, background, colorIndex, label);
@@ -63,12 +66,24 @@ public class DisplaySlot {
 		this.valueLabelWidth = 100;
 		this.grapher = new Grapher(processing, x+this.icon.width+margin, y, this.width-this.icon.width-margin-margin-valueLabelWidth, height, background, utils.pickAColor(colorIndex));
 		this.kinematic = KinematicFactory.createKinematic(idBlock);
+		try {
+			this.signal = MapperManager.addOutput(BlockType.getBlockNameById(idBlock) + "-" + label, 1, 'i', "unit", 0.0, 255.0);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	public void updateValue(float value) {
 		this.value = value;
 		kinematic.updateValue(value);
 		grapher.updateValue(value);
+		if(this.signal != null){			
+			try {
+				this.signal.update((int)value);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 	}
 
 	public float getSpeed() {
@@ -110,6 +125,13 @@ public class DisplaySlot {
 	public void prepareToBeRemoved(){
 		this.grapher.clearBackground();
 		this.clearRect();
+		if (this.signal != null) {
+			try {
+				MapperManager.removeOutput(this.signal);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 	}
 
 	public int getIdSlot() {

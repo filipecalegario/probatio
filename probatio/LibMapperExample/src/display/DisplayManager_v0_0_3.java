@@ -1,10 +1,7 @@
 package display;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map.Entry;
-
-import model.Block;
+import Mapper.Device.Signal;
+import mapper.MapperManager;
 import processing.core.PApplet;
 
 public class DisplayManager_v0_0_3 {
@@ -23,7 +20,8 @@ public class DisplayManager_v0_0_3 {
 	public void addDisplaySlot(int idBlock, int idValue, String label){
 		if (!contains(idBlock, idValue,0) && !isFull()) {
 			addSimpleDisplaySlot(idBlock, idValue, 0, label);
-			addSimpleDisplaySlot(idBlock, idValue, 1, label + " - Speed");			
+			String label2 = label + " - Speed";
+			addSimpleDisplaySlot(idBlock, idValue, 1, label2);
 		}
 	}
 
@@ -87,6 +85,10 @@ public class DisplayManager_v0_0_3 {
 		float heightSection = processing.height/((float)slots.length*1.0f);
 		float posY = nextSlotAvailable*heightSection;
 		DisplaySlot displaySlot = new DisplaySlot(idBlock, idValue, idSlot, processing, 0.0f, posY, processing.width, heightSection, processing.color(255), colorIndex++,label);
+//		Signal sig1 = MapperManager.addOutput(label, 1, 'i', "unit", 0.0d, 255.0d);
+//		if(sig1 != null){
+//			displaySlot.setSignal(sig1);			
+//		}
 		slots[nextSlotAvailable] = displaySlot;
 	}
 

@@ -17,7 +17,7 @@ public class BlockFactory {
 			break;
 		case BlockType.CRANK:	
 			result = new String[1];
-			result[0] = "Turning";
+			result[0] = "Spinning";
 			break;
 		case BlockType.RESTOUCH:	
 			result = new String[2];

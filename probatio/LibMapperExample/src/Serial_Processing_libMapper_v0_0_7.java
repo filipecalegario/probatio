@@ -9,7 +9,7 @@ import processing.core.PApplet;
 import processing.serial.Serial; 
 
 public class Serial_Processing_libMapper_v0_0_7 extends PApplet {
-
+ /*
 	//private Signal out1;
 
 	Serial myPort;        // The serial port
@@ -115,7 +115,7 @@ public class Serial_Processing_libMapper_v0_0_7 extends PApplet {
 		if (block != null) {
 			System.out.println(block.getName() + " added");
 			blocks.addElement(block);
-			mapperManager.addSignal(block);
+			mapperManager.addSignalFromBlock(block);
 			for (int i = 0; i < block.getValues().length; i++) {
 				display.addDisplaySlot(block.getId(), i, block.getValuesLabels()[i]);
 			} 
@@ -126,7 +126,7 @@ public class Serial_Processing_libMapper_v0_0_7 extends PApplet {
 		Block block = getBlockById(idBlock);
 		if (block != null) {
 			block.updateValues(values, millis());
-			mapperManager.updateSignal(block);
+			mapperManager.updateSignalFromBlock(block);
 			for (int i = 0; i < block.getValues().length; i++) {
 				display.updateValueDisplaySlot(block.getId(), i, values[i]);
 			} 
@@ -135,7 +135,7 @@ public class Serial_Processing_libMapper_v0_0_7 extends PApplet {
 
 	private void removeBlockEvent(Block block) {
 		String name = block.getName();
-		mapperManager.removeSignal(block);
+		mapperManager.removeSignalFromBlock(block);
 		for (int i = 0; i < block.getValues().length; i++) {
 			display.removeDisplaySlot(block.getId(), i);
 		}
@@ -180,5 +180,5 @@ public class Serial_Processing_libMapper_v0_0_7 extends PApplet {
 			PApplet.main(appletArgs);
 		}
 	}
-
+*/
 }
