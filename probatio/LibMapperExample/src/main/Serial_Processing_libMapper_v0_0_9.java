@@ -30,6 +30,7 @@ public class Serial_Processing_libMapper_v0_0_9 extends PApplet {
 
 	MapperManager mapperManager;
 	Vector<Block> blocks;
+	Vector<Integer> registeredRemovals;
 	DisplayManager_v0_0_3 display;
 	//KinematicCrank kinematic;
 
@@ -48,6 +49,7 @@ public class Serial_Processing_libMapper_v0_0_9 extends PApplet {
 		serialIsReady = false;
 		mapperManager = new MapperManager("probatio");
 		blocks = new Vector<Block>();
+		registeredRemovals = new Vector<Integer>();
 		int numberOfSlots = 12;
 		display = new DisplayManager_v0_0_3(this,numberOfSlots);
 		//kinematic = new KinematicCrank();
@@ -86,8 +88,14 @@ public class Serial_Processing_libMapper_v0_0_9 extends PApplet {
 //		} catch (Exception e) {
 //			e.printStackTrace();
 //		}
+		for (int i = 0; i < registeredRemovals.size(); i++) {
+			int idBlockToRemove = registeredRemovals.get(i);
+			removeBlockEvent(idBlockToRemove);			
+		}
+		registeredRemovals.removeAllElements();
 
 	}
+
 
 	public void stop(){
 		mapperManager.freeDevice();
@@ -124,7 +132,8 @@ public class Serial_Processing_libMapper_v0_0_9 extends PApplet {
 						values[j] = Integer.parseInt(iterator.next());
 					}
 					if(values[0] == -1){
-						removeBlockEvent(id);
+						registeredRemovals.add(id);
+						//removeBlockEvent(id);
 					} else {
 						if(repositoryContainsBlock(id)){
 							updateBlockEvent(id, values);

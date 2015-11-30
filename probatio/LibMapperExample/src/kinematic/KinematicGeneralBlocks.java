@@ -72,7 +72,7 @@ public class KinematicGeneralBlocks implements Kinematics{
 		float f = this.getAverageSpeed()*1000;
 		f = PApplet.map(f, 0.0f, 4.3f, 0, 255);
 		f = PApplet.constrain(f, 0, 255);
-		System.out.println(f);
+		//System.out.println(f);
 		return f;
 	}
 
