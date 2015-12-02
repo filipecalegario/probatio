@@ -33,6 +33,11 @@ public class BlockFactory {
 			result[0] = "Turning";
 			result[1] = "Pressing button";
 			break;
+		case BlockType.DEBUG:	
+			result = new String[2];
+			result[0] = "Debug1";
+			result[1] = "Debug2";
+			break;
 		default:
 			break;
 		}

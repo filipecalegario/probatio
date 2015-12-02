@@ -35,6 +35,7 @@ public class Serial_Processing_libMapper_v0_0_10 extends PApplet {
 	}
 
 	public void setup () {
+		frameRate(120);
 		long startTime = millis();
 		serialIsReady = false;
 		blocks = new Vector<Block>();
@@ -44,8 +45,9 @@ public class Serial_Processing_libMapper_v0_0_10 extends PApplet {
 		MapperManager.freeOnShutdown();
 		MapperManager.printDeviceInitialization();
 
-		//println(Serial.list());
-		myPort = new Serial(this, Serial.list()[5], 115200);
+		println(Serial.list());
+		//myPort = new Serial(this, Serial.list()[5], 115200);
+		myPort = new Serial(this, "/dev/cu.usbmodem14111", 115200);
 		myPort.bufferUntil('\n');
 		myPort.clear();
 		println("Initializing serial port...");
@@ -67,16 +69,16 @@ public class Serial_Processing_libMapper_v0_0_10 extends PApplet {
 			display.cleanScreen();
 			display.resetCounter();
 		}
-		//		try {
-		//			for (int i = 0; i < blocks.size(); i++) {
-		//				Block currentBlock = blocks.elementAt(i);
-		//				if(millis() - currentBlock.getLastTimeUpdated() > 100){
-		//					removeBlockEvent(currentBlock);
-		//				}
-		//			}
-		//		} catch (Exception e) {
-		//			e.printStackTrace();
-		//		}
+				try {
+					for (int i = 0; i < blocks.size(); i++) {
+						Block currentBlock = blocks.elementAt(i);
+						if(millis() - currentBlock.getLastTimeUpdated() > 1000){
+							registeredRemovals.addElement(currentBlock.getId());
+						}
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 		for (int i = 0; i < registeredRemovals.size(); i++) {
 			int idBlockToRemove = registeredRemovals.get(i);
 			removeBlockEvent(idBlockToRemove);			
@@ -121,7 +123,7 @@ public class Serial_Processing_libMapper_v0_0_10 extends PApplet {
 						values[j] = Integer.parseInt(iterator.next());
 					}
 					if(values[0] == -1){
-						registeredRemovals.add(id);
+						//registeredRemovals.add(id);
 					} else {
 						if(repositoryContainsBlock(id)){
 							updateBlockEvent(id, values);
@@ -202,7 +204,7 @@ public class Serial_Processing_libMapper_v0_0_10 extends PApplet {
 	}
 
 	public void keyPressed() {
-		MapperManager.freeDevice();
+		//MapperManager.freeDevice();
 		exit();
 	}
 

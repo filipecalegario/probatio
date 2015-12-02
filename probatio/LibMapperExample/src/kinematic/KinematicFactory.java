@@ -23,6 +23,7 @@ public class KinematicFactory {
 			result = (Kinematics) new KinematicCrank();
 			break;
 		default:
+			result = (Kinematics) new KinematicGeneralBlocks();
 			break;
 		}
 		return result;

@@ -66,6 +66,7 @@ public class DisplaySlot {
 		this.valueLabelWidth = 100;
 		this.grapher = new Grapher(processing, x+this.icon.width+margin, y, this.width-this.icon.width-margin-margin-valueLabelWidth, height, background, utils.pickAColor(colorIndex));
 		this.kinematic = KinematicFactory.createKinematic(idBlock);
+		//processing.image(this.icon, this.x, this.y);
 		try {
 			this.signal = MapperManager.addOutput(BlockType.getBlockNameById(idBlock) + "-" + label, 1, 'i', "unit", 0.0, 255.0);
 		} catch (Exception e) {
@@ -104,6 +105,7 @@ public class DisplaySlot {
 
 	public void updateDisplay(int counterXPos){
 		this.grapher.updateXPos(counterXPos);
+		//TODO This is eating a lot of the CPU
 		processing.image(this.icon, this.x, this.y);
 		grapher.updateDisplay();
 		processing.fill(255);

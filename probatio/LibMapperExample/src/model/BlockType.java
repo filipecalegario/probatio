@@ -8,6 +8,8 @@ public class BlockType {
 	public static final int BUTTON = 24;
 	public static final int NONE = 0;
 	public static final int TURNTABLE = 46;
+	public static final int DEBUG = 99;
+	
 
 	public static String getBlockNameById(int id){
 		String result = "NONE";
@@ -26,6 +28,9 @@ public class BlockType {
 			break;
 		case TURNTABLE:	
 			result = "TURNTABLE";
+			break;
+		case DEBUG:	
+			result = "DEBUG";
 			break;
 		default:
 			result = "NONE";
