@@ -38,5 +38,33 @@ public class BlockType {
 		}
 		return result;
 	}
+	
+	public static String getBlockStringCodeById(int id){
+		String result = "    ";
+		switch (id) {
+		case BELLOWS:	
+			result = "BLWS";
+			break;
+		case CRANK:	
+			result = "CRNK";
+			break;
+		case RESTOUCH:	
+			result = "RSTC";
+			break;
+		case BUTTON:	
+			result = "BUTT";
+			break;
+		case TURNTABLE:	
+			result = "TRNT";
+			break;
+		case DEBUG:	
+			result = "DBUG";
+			break;
+		default:
+			result = "    ";
+			break;
+		}
+		return result;
+	}
 
 }
