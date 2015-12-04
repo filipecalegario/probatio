@@ -16,8 +16,9 @@ public class BlockFactory {
 			result[0] = "Pushing";
 			break;
 		case BlockType.CRANK:	
-			result = new String[1];
-			result[0] = "Spinning";
+			result = new String[2];
+			result[0] = "Turning";
+			result[1] = "Pressing Button";
 			break;
 		case BlockType.RESTOUCH:	
 			result = new String[2];
@@ -26,7 +27,7 @@ public class BlockFactory {
 			break;
 		case BlockType.BUTTON:	
 			result = new String[1];
-			result[0] = "Push";
+			result[0] = "Pressing Button";
 			break;
 		case BlockType.TURNTABLE:	
 			result = new String[2];

@@ -61,15 +61,18 @@ public class DisplayManager_v0_0_3 {
 	}
 
 	public void updateDrawDisplaySlot(){
-		counterXPos = (counterXPos + 1)%processing.width;
-		if(counterXPos == (processing.width-1)){
-			processing.background(255);
-		}
-		for (int i = 0; i < slots.length; i++) {
-			if(slots[i] != null){
-				slots[i].updateDisplay(counterXPos);
+		//TODO CHECAR!!
+		//if (getNextAvailableSlot() < 0) {
+			counterXPos = (counterXPos + 1) % processing.width;
+			if (counterXPos == (processing.width - 1)) {
+				processing.background(255);
 			}
-		}
+			for (int i = 0; i < slots.length; i++) {
+				if (slots[i] != null) {
+					slots[i].updateDisplay(counterXPos);
+				}
+			} 
+		//}
 	}
 	
 	public void resetCounter(){

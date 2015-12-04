@@ -10,6 +10,8 @@ public class MapperManager {
 
 	//private Vector<SignalSlot> signalSlots;
 	public final static Device dev = new Device("probatio", 9000);
+	
+	boolean DEBUG_enableLibmapper = false;
 
 //	public MapperManager() {
 //		this.signalSlots = new Vector<SignalSlot>();
