@@ -54,6 +54,7 @@ public class Serial_Processing_libMapper_v0_0_11 extends PApplet {
 		println(Serial.list());
 		myPort = new Serial(this, Serial.list()[5], 115200);
 		//myPort = new Serial(this, "/dev/cu.usbmodem14111", 115200);
+
 		myPort.bufferUntil('\n');
 		myPort.clear();
 		println("Initializing serial port...");
@@ -116,20 +117,7 @@ public class Serial_Processing_libMapper_v0_0_11 extends PApplet {
 			float minAverageSerialTime = min(averageSerialTime);
 			float meio = (maxAverageSerialTime+minAverageSerialTime)/2.0f;
 			float aux = maxAverageSerialTime;
-//			if(abs(lastMaxAverageSerialTime-maxAverageSerialTime) < 0.1){
-//				aux = lastMaxAverageSerialTime;
-//			} else {
-//			this.lastMaxAverageSerialTime = maxAverageSerialTime;
-//			}
-//			System.out.println("Serial Event Average Time: ==================> " + serialEventAverageTime + 
-//					"\tMAX = " + maxAverageSerialTime + 
-//					"\tMIN = " + minAverageSerialTime +
-//					"\tMEIO = " + meio);
-//			System.out.println("Serial Event Average Time: ==================> " + serialEventAverageTime + 
-////					"\tATTENUATED = " + aux + 
-//					"\tMAX = " + maxAverageSerialTime + 
-//					"\tMIN = " + minAverageSerialTime +
-//					"\tMEIO = " + meio);
+
 			this.lastSerialEventTime = currentSerialEventTime;
 			try {
 				//String inString = myPort.readStringUntil('\n');
@@ -183,7 +171,6 @@ public class Serial_Processing_libMapper_v0_0_11 extends PApplet {
 	private void parseBlock(int blockId, int[] values){
 		if (blockId != 0) {
 			if (repositoryContainsBlock(blockId)) {
-				//System.out.println("UPDATED Block " + BlockType.getBlockNameById(blockId));
 				updateBlockEvent(blockId, values);
 			} else {
 				Block newBlock = BlockFactory.createBlock(blockId, values, millis());

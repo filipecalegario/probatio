@@ -4,7 +4,6 @@ import java.io.PrintWriter;
 import java.sql.Timestamp;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
-import java.util.Arrays;
 import java.util.Date;
 
 import model.BlockType;
@@ -45,6 +44,7 @@ public class SerialTest_v_0_0_1 extends PApplet{
 		myPort.bufferUntil('\n');
 		myPort.clear();
 		println("Initializing serial port: " + portName);
+
 		while (millis() - startTime < 500) {
 			if (myPort.available() > 0) {
 				myPort.readStringUntil('\n');
@@ -120,7 +120,6 @@ public class SerialTest_v_0_0_1 extends PApplet{
 				for (int i = 0; i < meusBytes.length; i++) {
 					meusInts[i] = meusBytes[i] & 0xFF;
 				}
-				//System.out.println(Arrays.toString(meusInts));
 
 				int[] blockIds = new int[5];
 				if(meusInts.length == 14){
