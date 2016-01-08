@@ -81,7 +81,8 @@ public class KinematicCrank implements Kinematics{
 	}
 
 	private float getAverageSpeed() {
-		float mappedValue = PApplet.map(this.currentAverageSpeed, 0.0f, 1.7f, 0, 255);
+		//float mappedValue = PApplet.map(this.currentAverageSpeed, 0.0f, 1.7f, 0, 255);
+		float mappedValue = PApplet.map(this.currentAverageSpeed, 0.0f, 2.0f, 0, 255);
 		mappedValue = PApplet.constrain(mappedValue, 0, 255);
 		//System.out.println(this.averageSpeed + " => " + mappedValue);
 		return mappedValue;

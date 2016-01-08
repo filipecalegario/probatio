@@ -6,11 +6,11 @@ public class BlockType {
 	public static final int CRANK = 45;
 	public static final int RESTOUCH = 49;
 	public static final int BUTTON = 24;
+	public static final int FOURBUTTONS = 25;
 	public static final int NONE = 0;
 	public static final int TURNTABLE = 46;
 	public static final int DEBUG = 99;
 	
-
 	public static String getBlockNameById(int id){
 		String result = "NONE";
 		switch (id) {
@@ -28,6 +28,9 @@ public class BlockType {
 			break;
 		case TURNTABLE:	
 			result = "TURNTABLE";
+			break;
+		case FOURBUTTONS:	
+			result = "FOURBUTTONS";
 			break;
 		case DEBUG:	
 			result = "DEBUG";

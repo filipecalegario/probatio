@@ -29,6 +29,13 @@ public class BlockFactory {
 			result = new String[1];
 			result[0] = "Pressing Button";
 			break;
+		case BlockType.FOURBUTTONS:	
+			result = new String[4];
+			result[0] = "Pressing Button 1";
+			result[1] = "Pressing Button 2";
+			result[2] = "Pressing Button 3";
+			result[3] = "Pressing Button 4";
+			break;
 		case BlockType.TURNTABLE:	
 			result = new String[2];
 			result[0] = "Turning";
