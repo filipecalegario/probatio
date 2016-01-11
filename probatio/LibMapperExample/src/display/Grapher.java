@@ -36,32 +36,22 @@ public class Grapher {
 		this.pointerSpeed = 1;
 		this.isFirstRun = true;
 	}
-	
-	
 
 	public float getBottom() {
 		return bottom;
 	}
 
-
-
 	public float getTop() {
 		return top;
 	}
-
-
 
 	public float getLeft() {
 		return left;
 	}
 
-
-
 	public float getRight() {
 		return right;
 	}
-
-
 
 	public float getPointerSpeed() {
 		return pointerSpeed;
