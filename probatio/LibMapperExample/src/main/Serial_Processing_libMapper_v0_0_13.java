@@ -5,11 +5,13 @@ import java.util.Vector;
 
 import display.DisplayManager_v0_0_3;
 import kinematic.KinematicCrank;
+//TODO Mapper related
 import mapper.MapperManager;
 import model.Block;
 import model.BlockFactory;
 import model.BlockType;
 import processing.core.PApplet;
+import processing.event.KeyEvent;
 import processing.serial.Serial; 
 
 //Compatible with XS_Hub_v0_0_15_EXPERIMENTANDO_WRITE_ARRAY_REDUCED_PROTOCOL_WITH and
@@ -21,7 +23,6 @@ public class Serial_Processing_libMapper_v0_0_13 extends PApplet {
 
 	Serial myPort;        
 
-	//MapperManager mapperManager;
 	Vector<Block> blocks;
 	Vector<Integer> registeredRemovals;
 	DisplayManager_v0_0_3 display;
@@ -48,6 +49,7 @@ public class Serial_Processing_libMapper_v0_0_13 extends PApplet {
 		registeredRemovals = new Vector<Integer>();
 		int numberOfSlots = 20;
 		display = new DisplayManager_v0_0_3(this,numberOfSlots);
+		//TODO Mapper related
 		MapperManager.freeOnShutdown();
 		MapperManager.printDeviceInitialization();
 
@@ -73,6 +75,8 @@ public class Serial_Processing_libMapper_v0_0_13 extends PApplet {
 	}
 
 	public void draw () {
+		//background(255);
+		//TODO Mapper related
 		MapperManager.pollDevice();
 		display.updateDrawDisplaySlot();
 		if(blocks.isEmpty()){
@@ -99,51 +103,30 @@ public class Serial_Processing_libMapper_v0_0_13 extends PApplet {
 
 	public void serialEvent (Serial myPort) {
 		if(serialIsReady){
-			long currentSerialEventTime = System.currentTimeMillis();
-			long deltaSerialEventTime = currentSerialEventTime - lastSerialEventTime;
-			deltaSerialEventTimeArray[indexSerialEventTime] = deltaSerialEventTime;
-			indexSerialEventTime = (indexSerialEventTime + 1)%deltaSerialEventTimeArray.length;
-			long serialEventTimeSum = 0;
-			long maxTime = 0;
-			long minTime = Long.MAX_VALUE;
-			for (int i = 0; i < deltaSerialEventTimeArray.length; i++) {
-				serialEventTimeSum = serialEventTimeSum + deltaSerialEventTimeArray[i];
-			}
-			float serialEventAverageTime = (serialEventTimeSum * 1.0f)/(deltaSerialEventTimeArray.length*1.0f);
-			averageSerialTime[indexAverageSerialTime] = serialEventAverageTime;
-			indexAverageSerialTime = (indexAverageSerialTime+1)%averageSerialTime.length;
-			float maxAverageSerialTime = max(averageSerialTime);
-			float minAverageSerialTime = min(averageSerialTime);
-			float meio = (maxAverageSerialTime+minAverageSerialTime)/2.0f;
-			float aux = maxAverageSerialTime;
-//			if(abs(lastMaxAverageSerialTime-maxAverageSerialTime) < 0.1){
-//				aux = lastMaxAverageSerialTime;
-//			} else {
-//			this.lastMaxAverageSerialTime = maxAverageSerialTime;
+//			long currentSerialEventTime = System.currentTimeMillis();
+//			long deltaSerialEventTime = currentSerialEventTime - lastSerialEventTime;
+//			deltaSerialEventTimeArray[indexSerialEventTime] = deltaSerialEventTime;
+//			indexSerialEventTime = (indexSerialEventTime + 1)%deltaSerialEventTimeArray.length;
+//			long serialEventTimeSum = 0;
+//			long maxTime = 0;
+//			long minTime = Long.MAX_VALUE;
+//			for (int i = 0; i < deltaSerialEventTimeArray.length; i++) {
+//				serialEventTimeSum = serialEventTimeSum + deltaSerialEventTimeArray[i];
 //			}
-//			System.out.println("Serial Event Average Time: ==================> " + serialEventAverageTime + 
-//					"\tMAX = " + maxAverageSerialTime + 
-//					"\tMIN = " + minAverageSerialTime +
-//					"\tMEIO = " + meio);
-//			System.out.println("Serial Event Average Time: ==================> " + serialEventAverageTime + 
-////					"\tATTENUATED = " + aux + 
-//					"\tMAX = " + maxAverageSerialTime + 
-//					"\tMIN = " + minAverageSerialTime +
-//					"\tMEIO = " + meio);
-			this.lastSerialEventTime = currentSerialEventTime;
+//			float serialEventAverageTime = (serialEventTimeSum * 1.0f)/(deltaSerialEventTimeArray.length*1.0f);
+//			averageSerialTime[indexAverageSerialTime] = serialEventAverageTime;
+//			indexAverageSerialTime = (indexAverageSerialTime+1)%averageSerialTime.length;
+//			float maxAverageSerialTime = max(averageSerialTime);
+//			float minAverageSerialTime = min(averageSerialTime);
+//			float meio = (maxAverageSerialTime+minAverageSerialTime)/2.0f;
+//			float aux = maxAverageSerialTime;
+//			this.lastSerialEventTime = currentSerialEventTime;
 			try {
-				//String inString = myPort.readStringUntil('\n');
-				//System.out.print(inString);
-				//String out = inString.substring(0, inString.indexOf("\n")-1);
 				byte[] meusBytes = myPort.readBytes();
 				int[] meusInts = new int[meusBytes.length];
 				for (int i = 0; i < meusBytes.length; i++) {
 					meusInts[i] = meusBytes[i] & 0xFF;
 				}
-				//System.out.println(meusBytes.length);
-				//System.out.println(Arrays.toString(meusInts));
-				
-				
 				parseAndAddOrUpdate(meusInts);
 				
 			} catch (Exception e) {
@@ -210,7 +193,6 @@ public class Serial_Processing_libMapper_v0_0_13 extends PApplet {
 			if(!repositoryContainsBlock(block.getId())){
 				blocks.addElement(block);
 				System.out.println(block.getName() + " added");
-				//mapperManager.addSignalFromBlock(block);
 				for (int i = 0; i < block.getValues().length; i++) {
 					display.addDisplaySlot(block.getId(), i, block.getValuesLabels()[i]);
 				}
@@ -223,7 +205,6 @@ public class Serial_Processing_libMapper_v0_0_13 extends PApplet {
 		if (block != null) {
 			block.updateValues(values, millis());
 			try {
-				//mapperManager.updateSignalFromBlock(block);
 			} catch (Exception e) {
 				//TODO Be careful!
 				//e.printStackTrace();
@@ -238,7 +219,6 @@ public class Serial_Processing_libMapper_v0_0_13 extends PApplet {
 		Block block = getBlockById(idBlock);
 		if (block != null) {
 			String name = block.getName();
-			//mapperManager.removeSignalFromBlock(block);
 			for (int i = 0; i < block.getValues().length; i++) {
 				display.removeDisplaySlot(block.getId(), i);
 			}
@@ -270,10 +250,13 @@ public class Serial_Processing_libMapper_v0_0_13 extends PApplet {
 		}
 		return result;
 	}
-
-	public void keyPressed() {
-		//MapperManager.freeDevice();
-		exit();
+	
+	@Override
+	public void keyPressed(KeyEvent event) {
+		if(event.getKey() == 'q' || event.getKey() == 'Q'){
+			MapperManager.freeDevice();
+			exit();
+		}
 	}
 
 	static public void main(String[] passedArgs) {

@@ -1,7 +1,7 @@
 package display;
 
-import Mapper.Device.Signal;
-import mapper.MapperManager;
+//import Mapper.Device.Signal;
+//import mapper.MapperManager;
 import processing.core.PApplet;
 
 public class DisplayManager_v0_0_3 {

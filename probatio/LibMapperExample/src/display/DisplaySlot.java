@@ -1,8 +1,10 @@
 package display;
 
+//TODO Mapper related
 import Mapper.Device.Signal;
 import kinematic.KinematicFactory;
 import kinematic.Kinematics;
+//TODO Mapper related
 import mapper.MapperManager;
 import model.BlockType;
 import processing.core.PApplet;
@@ -32,6 +34,7 @@ public class DisplaySlot {
 	private float value;
 	private Kinematics kinematic;
 	private int idSlot;
+	//TODO Mapper related
 	private Signal signal;
 
 	public DisplaySlot(int idBlock, int idValue, PApplet processing, float x, float y, float width, float height, int background, int colorIndex, String label) {
@@ -59,12 +62,13 @@ public class DisplaySlot {
 		this.label = label;
 		this.utils = new Utils(processing);
 		String blockNameById = BlockType.getBlockNameById(idBlock);
-		this.icon = processing.loadImage(blockNameById + ".png");
-		this.icon.resize(0, (int)(height));
+		//this.icon = processing.loadImage(blockNameById + ".png");
+		//this.icon.resize(0, (int)(height));
 		//this.grapher = new Grapher(processing, x+width/3, y, 2*width/3, height, background, utils.pickAColor(colorIndex));
 		this.margin = 10;
 		this.valueLabelWidth = 100;
-		this.grapher = new Grapher(processing, x+this.icon.width+margin, y, this.width-this.icon.width-margin-margin-valueLabelWidth, height, background, utils.pickAColor(colorIndex));
+//		this.grapher = new Grapher(processing, x+this.icon.width+margin, y, this.width-this.icon.width-margin-margin-valueLabelWidth, height, background, utils.pickAColor(colorIndex));
+		this.grapher = new Grapher(processing, x+margin, y, this.width-margin-margin-valueLabelWidth, height, background, utils.pickAColor(colorIndex));
 		this.kinematic = KinematicFactory.createKinematic(idBlock);
 		//processing.image(this.icon, this.x, this.y);
 		try {
@@ -78,6 +82,7 @@ public class DisplaySlot {
 		this.value = value;
 		kinematic.updateValue(value);
 		grapher.updateValue(value);
+		//TODO Mapper related
 		if(this.signal != null){			
 			try {
 				this.signal.update((int)value);
@@ -106,7 +111,7 @@ public class DisplaySlot {
 	public void updateDisplay(int counterXPos){
 		this.grapher.updateXPos(counterXPos);
 		//TODO This is eating a lot of the CPU
-		processing.image(this.icon, this.x, this.y);
+		//processing.image(this.icon, this.x, this.y);
 		grapher.updateDisplay();
 		processing.fill(255);
 		processing.noStroke();
@@ -127,6 +132,7 @@ public class DisplaySlot {
 	public void prepareToBeRemoved(){
 		this.grapher.clearBackground();
 		this.clearRect();
+		//TODO Mapper related
 		if (this.signal != null) {
 			try {
 				MapperManager.removeOutput(this.signal);

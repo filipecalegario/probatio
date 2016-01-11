@@ -3,7 +3,7 @@ import java.util.Vector;
 
 import display.DisplayManager_v0_0_3;
 import kinematic.KinematicCrank;
-import mapper.MapperManager;
+//import mapper.MapperManager;
 import model.Block;
 import model.BlockFactory;
 import model.BlockType;

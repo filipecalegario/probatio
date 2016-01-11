@@ -18,40 +18,6 @@ public class MapperManager {
 //		freeOnShutdown();
 //	}
 
-	/*
-	public void addSignalFromBlock(Block block){
-		if (block != null) {
-			for (int i = 0; i < block.getValues().length; i++) {
-				Signal signal = dev.add_output(block.getName() + "-" + block.getValuesLabels()[i], 1, 'i', "unit", 0.0, 255.0);
-				SignalSlot signalSlot = new SignalSlot(block.getId(), i, signal);
-				this.signalSlots.addElement(signalSlot);
-			} 
-		}
-	}
-
-	public void updateSignalFromBlock(Block block){
-		if (block != null) {
-			for (int i = 0; i < block.getValues().length; i++) {
-				SignalSlot signalSlot = getSignalSlot(block.getId(), i);
-				if (signalSlot != null) {
-					signalSlot.getSignal().update(block.getValues()[i]);
-				}
-			} 
-		}
-	}
-
-	public void removeSignalFromBlock(Block block){
-		if (block != null) {
-			for (int i = 0; i < block.getValues().length; i++) {
-				SignalSlot signalSlot = getSignalSlot(block.getId(), i);
-				if (signalSlot != null) {
-					Signal signal = signalSlot.getSignal();
-					dev.remove_output(signal);
-					signalSlots.remove(signalSlot);
-				}
-			} 
-		}
-	}*/
 	
 	public static Signal addOutput(String name, int quantity, char type, String unit, Double minLimit, Double maxLimit) {
 		return dev.add_output(name, quantity, type, unit, minLimit, maxLimit);
