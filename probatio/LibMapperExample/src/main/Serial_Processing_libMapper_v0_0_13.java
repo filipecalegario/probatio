@@ -12,6 +12,8 @@ import model.BlockType;
 import processing.core.PApplet;
 import processing.serial.Serial; 
 
+
+//TESTE É AQUI
 //Compatible with XS_Hub_v0_0_15_EXPERIMENTANDO_WRITE_ARRAY_REDUCED_PROTOCOL_WITH and
 // XS_Hub_v0_0_16.ino
 //Compatible with MockupSerial_v0.0.3
