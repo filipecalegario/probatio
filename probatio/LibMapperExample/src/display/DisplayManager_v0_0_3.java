@@ -108,9 +108,6 @@ public class DisplayManager_v0_0_3 {
 	}
 
 	private void removeSlot(int idBlock, int idValue, int idSlot){
-		for (int i = 0; i < 2; i++) {
-
-		}
 		int index = getSlotIndex(idBlock, idValue, idSlot);
 		if(index != -1){
 			slots[index].prepareToBeRemoved();
