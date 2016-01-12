@@ -1,15 +1,12 @@
 package main;
-import java.util.Arrays;
-import java.util.Iterator;
 import java.util.Vector;
 
 import display.DisplayManager_v0_0_3;
-import kinematic.KinematicCrank;
 import mapper.MapperManager;
 import model.Block;
 import model.BlockFactory;
-import model.BlockType;
 import processing.core.PApplet;
+import processing.event.KeyEvent;
 import processing.serial.Serial; 
 
 
@@ -273,9 +270,12 @@ public class Serial_Processing_libMapper_v0_0_13 extends PApplet {
 		return result;
 	}
 
-	public void keyPressed() {
-		//MapperManager.freeDevice();
-		exit();
+	@Override
+	public void keyPressed(KeyEvent event) {
+		if(event.getKey() == 'q' || event.getKey() == 'Q'){
+			MapperManager.freeDevice();
+			exit();
+		}
 	}
 
 	static public void main(String[] passedArgs) {
