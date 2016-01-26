@@ -100,12 +100,17 @@ public class Serial_Processing_libMapper_v0_0_13 extends PApplet {
 		if(serialIsReady){
 			try {
 				byte[] meusBytes = myPort.readBytes();
-				int[] meusInts = new int[meusBytes.length];
-				for (int i = 0; i < meusBytes.length; i++) {
-					meusInts[i] = meusBytes[i] & 0xFF;
+				boolean isGoodFormat = (meusBytes.length == 21) && 
+						(meusBytes[0] == 2) && 
+						(meusBytes[meusBytes.length-1] == 10);
+				if(isGoodFormat){
+					int[] meusInts = new int[meusBytes.length];
+					for (int i = 0; i < meusBytes.length; i++) {
+						meusInts[i] = meusBytes[i] & 0xFF;
+					}
+					parseAndAddOrUpdate(meusInts);
+					delay(1);
 				}
-				parseAndAddOrUpdate(meusInts);
-				delay(1);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -114,8 +119,8 @@ public class Serial_Processing_libMapper_v0_0_13 extends PApplet {
 
 	private void parseAndAddOrUpdate(int[] ints) {
 		boolean isGoodFormat = (ints.length == 21) && 
-	               (ints[0] == 2) && 
-	               (ints[ints.length-1] == 10);
+				(ints[0] == 2) && 
+				(ints[ints.length-1] == 10);
 		if (isGoodFormat) {
 			//[2, BLOCK_RESTOUCH, 0, 25, BLOCK_CRANK, 22, 22, BLOCK_BELLOWS, 0, BLOCK_TURNTABLE, 155,  0, BLOCK_DEBUG, 156, 99, BLOCK_FOURBUTTONS, 255, 255, 255, 255, 10]
 			//[0,              1, 2,  3,           4,  5,  6,             7, 8,               9,  10, 11,          12,  13, 14,                15,  16,  17,  18,  19, 20]
@@ -211,8 +216,10 @@ public class Serial_Processing_libMapper_v0_0_13 extends PApplet {
 	private boolean repositoryContainsBlock(int id) {
 		boolean result = false;
 		for (Block block : blocks) {
-			if(block.getId() == id){
-				result = true;
+			if(block != null){
+				if(block.getId() == id){
+					result = true;
+				}
 			}
 		}
 		return result;
