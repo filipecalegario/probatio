@@ -130,25 +130,32 @@ public class ProbatioGrapherLibmapper extends PApplet {
 			int[] blockTurntableValue = new int[2];
 			int[] blockDebugValue = new int[2];
 			int[] blockFourButtonsValue = new int[4];
+			
 			int blockRestouchId = ints[1];
 			blockRestouchValue[0] = ints[2];
 			blockRestouchValue[1] = ints[3];
+			
 			int blockCrankId = ints[4];
 			blockCrankValue[0] = ints[5];
 			blockCrankValue[1] = ints[6];
+			
 			int blockBellowsId = ints[7];
 			blockBellowsValue[0] = ints[8];
+			
 			int blockTurntableId = ints[9];
 			blockTurntableValue[0] = ints[10];
 			blockTurntableValue[1] = ints[11];
+			
 			int blockDebugId = ints[12];
 			blockDebugValue[0] = ints[13];
 			blockDebugValue[1] = ints[14];
+			
 			int blockFounButtonsId = ints[15];
 			blockFourButtonsValue[0] = ints[16];
 			blockFourButtonsValue[1] = ints[17];
 			blockFourButtonsValue[2] = ints[18];
 			blockFourButtonsValue[3] = ints[19];
+			
 			parseBlock(blockRestouchId, blockRestouchValue);
 			parseBlock(blockCrankId, blockCrankValue);
 			parseBlock(blockBellowsId, blockBellowsValue);
