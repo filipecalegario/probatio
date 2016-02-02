@@ -1,11 +1,13 @@
-package mapper;
+package old;
+
+import java.util.Vector;
 
 import Mapper.Device;
 import Mapper.Device.Signal;
-import Mapper.PropertyValue;
+import model.Block;
 
 public class MapperManager {
-
+/*
 	//private Vector<SignalSlot> signalSlots;
 	public final static Device dev = new Device("probatio", 9000);
 	
@@ -16,48 +18,46 @@ public class MapperManager {
 //		freeOnShutdown();
 //	}
 
-	/*
-	public void addSignalFromBlock(Block block){
-		if (block != null) {
-			for (int i = 0; i < block.getValues().length; i++) {
-				Signal signal = dev.add_output(block.getName() + "-" + block.getValuesLabels()[i], 1, 'i', "unit", 0.0, 255.0);
-				SignalSlot signalSlot = new SignalSlot(block.getId(), i, signal);
-				this.signalSlots.addElement(signalSlot);
-			} 
-		}
-	}
+//	public void addSignalFromBlock(Block block){
+//		if (block != null) {
+//			for (int i = 0; i < block.getValues().length; i++) {
+//				Signal signal = dev.add_output(block.getName() + "-" + block.getValuesLabels()[i], 1, 'i', "unit", 0.0, 255.0);
+//				SignalSlot signalSlot = new SignalSlot(block.getId(), i, signal);
+//				this.signalSlots.addElement(signalSlot);
+//			} 
+//		}
+//	}
+//
+//	public void updateSignalFromBlock(Block block){
+//		if (block != null) {
+//			for (int i = 0; i < block.getValues().length; i++) {
+//				SignalSlot signalSlot = getSignalSlot(block.getId(), i);
+//				if (signalSlot != null) {
+//					signalSlot.getSignal().update(block.getValues()[i]);
+//				}
+//			} 
+//		}
+//	}
 
-	public void updateSignalFromBlock(Block block){
-		if (block != null) {
-			for (int i = 0; i < block.getValues().length; i++) {
-				SignalSlot signalSlot = getSignalSlot(block.getId(), i);
-				if (signalSlot != null) {
-					signalSlot.getSignal().update(block.getValues()[i]);
-				}
-			} 
-		}
-	}
-
-	public void removeSignalFromBlock(Block block){
-		if (block != null) {
-			for (int i = 0; i < block.getValues().length; i++) {
-				SignalSlot signalSlot = getSignalSlot(block.getId(), i);
-				if (signalSlot != null) {
-					Signal signal = signalSlot.getSignal();
-					dev.remove_output(signal);
-					signalSlots.remove(signalSlot);
-				}
-			} 
-		}
-	}*/
+//	public void removeSignalFromBlock(Block block){
+//		if (block != null) {
+//			for (int i = 0; i < block.getValues().length; i++) {
+//				SignalSlot signalSlot = getSignalSlot(block.getId(), i);
+//				if (signalSlot != null) {
+//					Signal signal = signalSlot.getSignal();
+//					dev.remove_output(signal);
+//					signalSlots.remove(signalSlot);
+//				}
+//			} 
+//		}
+//	}
 	
-	public static Signal addOutput(String name, int quantity, char type, String unit, double minLimit, double maxLimit) {
-//		return dev.add_output(name, quantity, type, unit, minLimit, maxLimit);
-		return dev.addOutput(name, quantity, type, unit, new PropertyValue(minLimit), new PropertyValue(maxLimit));
+	public static Signal addOutput(String name, int quantity, char type, String unit, Double minLimit, Double maxLimit) {
+		return dev.add_output(name, quantity, type, unit, minLimit, maxLimit);
 	}
 
 	public static void removeOutput(Signal arg0) {
-		dev.removeOutput(arg0);
+		dev.remove_output(arg0);
 	}
 
 	public static void freeDevice(){
@@ -103,5 +103,5 @@ public class MapperManager {
 			}
 		});
 	}
-
+*/
 }
