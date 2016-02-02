@@ -1,8 +1,9 @@
 package main;
+import java.lang.reflect.Field;
 import java.util.Vector;
 
 import display.DisplayManager_v0_0_3;
-import mapper.MapperManager;
+import mapper.MapperManager2;
 import model.Block;
 import model.BlockFactory;
 import processing.core.PApplet;
@@ -20,7 +21,6 @@ public class Serial_Processing_libMapper_v0_0_13 extends PApplet {
 
 	Serial myPort;        
 
-	//MapperManager mapperManager;
 	Vector<Block> blocks;
 	Vector<Integer> registeredRemovals;
 	DisplayManager_v0_0_3 display;
@@ -47,8 +47,8 @@ public class Serial_Processing_libMapper_v0_0_13 extends PApplet {
 		registeredRemovals = new Vector<Integer>();
 		int numberOfSlots = 20;
 		display = new DisplayManager_v0_0_3(this,numberOfSlots);
-		MapperManager.freeOnShutdown();
-		MapperManager.printDeviceInitialization();
+		MapperManager2.freeOnShutdown();
+		MapperManager2.printDeviceInitialization();
 
 		println(Serial.list());
 		myPort = new Serial(this, Serial.list()[5], 115200);
@@ -72,7 +72,7 @@ public class Serial_Processing_libMapper_v0_0_13 extends PApplet {
 	}
 
 	public void draw () {
-		MapperManager.pollDevice();
+		MapperManager2.pollDevice();
 		display.updateDrawDisplaySlot();
 		if(blocks.isEmpty()){
 			display.cleanScreen();
@@ -241,12 +241,33 @@ public class Serial_Processing_libMapper_v0_0_13 extends PApplet {
 	@Override
 	public void keyPressed(KeyEvent event) {
 		if(event.getKey() == 'q' || event.getKey() == 'Q'){
-			MapperManager.freeDevice();
+			MapperManager2.freeDevice();
 			exit();
 		}
 	}
 
 	static public void main(String[] passedArgs) {
+		System.setProperty( "java.library.path", "/usr/local/lib" );
+		 
+		Field fieldSysPath;
+		try {
+			fieldSysPath = ClassLoader.class.getDeclaredField( "sys_paths" );
+			fieldSysPath.setAccessible( true );
+			fieldSysPath.set( null, null );
+		} catch (NoSuchFieldException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SecurityException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalArgumentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		String[] appletArgs = new String[] {"main.Serial_Processing_libMapper_v0_0_13"};
 		if (passedArgs != null) {
 			PApplet.main(concat(appletArgs, passedArgs));

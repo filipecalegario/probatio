@@ -1,4 +1,4 @@
-package serialTest;
+package serialPerformanceTest;
 
 import java.sql.Timestamp;
 import java.text.DecimalFormat;

@@ -1,4 +1,4 @@
-package serialTest;
+package serialPerformanceTest;
 
 import java.io.PrintWriter;
 import java.sql.Timestamp;
@@ -11,7 +11,7 @@ import processing.core.PApplet;
 import processing.event.KeyEvent;
 import processing.serial.Serial;
 
-public class SerialTest_v_0_0_2 extends PApplet{
+public class SerialTest_v_0_0_1 extends PApplet{
 
 	private long lastSerialEventTime;
 	private boolean serialIsReady;
@@ -122,15 +122,12 @@ public class SerialTest_v_0_0_2 extends PApplet{
 				}
 
 				int[] blockIds = new int[5];
-				boolean isGoodFormat = (meusInts.length == 16) && 
-			               (meusInts[0] == 2) && 
-			               (meusInts[meusInts.length-1] == 10);
-				if(isGoodFormat){
-					blockIds[0] = meusInts[1];
-					blockIds[1] = meusInts[4];
-					blockIds[2] = meusInts[7];
-					blockIds[3] = meusInts[9];
-					blockIds[4] = meusInts[12];
+				if(meusInts.length == 14){
+					blockIds[0] = meusInts[0];
+					blockIds[1] = meusInts[3];
+					blockIds[2] = meusInts[5];
+					blockIds[3] = meusInts[7];
+					blockIds[4] = meusInts[10];
 
 					String blocks = "";
 					String blocksForOutputFile = "";
@@ -213,7 +210,7 @@ public class SerialTest_v_0_0_2 extends PApplet{
 	}
 
 	static public void main(String[] passedArgs) {
-		String[] appletArgs = new String[] {SerialTest_v_0_0_2.class.getName()};
+		String[] appletArgs = new String[] {SerialTest_v_0_0_1.class.getName()};
 		if (passedArgs != null) {
 			PApplet.main(concat(appletArgs, passedArgs));
 		} else {

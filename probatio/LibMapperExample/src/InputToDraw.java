@@ -1,7 +1,11 @@
 
-import processing.core.*;
+import java.util.Arrays;
 
-import Mapper.*;
+import Mapper.Device;
+import Mapper.InputListener;
+import Mapper.PropertyValue;
+import Mapper.TimeTag;
+import processing.core.PApplet;
 
 public class InputToDraw extends PApplet {
 
@@ -18,19 +22,19 @@ public class InputToDraw extends PApplet {
 	public void setup(){
 		freeOnShutdown();
 
-		Mapper.Device.Signal inp1 = dev.add_input("insig1", 1, 'f', "Hz", 0.0, 20.0, new InputListener() {
+		Mapper.Device.Signal inp1 = dev.addInput("insig1", 1, 'f', "Hz", new PropertyValue(0.0), new PropertyValue(20.0), new InputListener() {
 			public void onInput(Mapper.Device.Signal sig,
 					Mapper.Db.Signal props,
 					int instance_id,
 					float[] v,
 					TimeTag tt) {
-				//System.out.println("in onInput() for " +props.name()+": " +Arrays.toString(v));
+				System.out.println("in onInput() for " +props.name()+": " +Arrays.toString(v));
 				inputValue = v[0];
 			}});
 
-		dev.set_property("width", new PropertyValue(256));
-		dev.set_property("height", new PropertyValue(12.5));
-		dev.set_property("depth", new PropertyValue("67"));
+		dev.setProperty("width", new PropertyValue(256));
+		dev.setProperty("height", new PropertyValue(12.5));
+		dev.setProperty("depth", new PropertyValue("67"));
 
 		System.out.println("Waiting for ready...");
 		while (!dev.ready()) {
@@ -47,7 +51,7 @@ public class InputToDraw extends PApplet {
 
 	public void draw(){
 		dev.poll(0);
-		println(inputValue);
+		//println(inputValue);
 		float screenValue = map(inputValue, 0, 255, 0, height);
 
 		stroke(255,0,0,60);
