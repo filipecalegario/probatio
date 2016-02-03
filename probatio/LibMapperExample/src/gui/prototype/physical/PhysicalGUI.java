@@ -79,6 +79,9 @@ public class PhysicalGUI extends PApplet{
 		mbs[6].setPosition(251.175f, 377.79f);
 		mbs[7].setPosition(364.575f, 377.79f);
 		mbs[8].setPosition(477.975f, 377.79f);
+		OutputObject oo = new OutputObject(runControlP5, "output", "");
+		oo.setSize(71,71);
+		oo.setPosition(30,30);
 	}
 
 	private void addBlockControlP5Setup() {
@@ -110,6 +113,10 @@ public class PhysicalGUI extends PApplet{
 			displayConnections();
 		} else if(state == State.ADDBLOCK){
 			addBlockControlP5.draw();
+		}
+		if(isAboutToMakeAConnection){
+			stroke(255, 0, 0);
+			line(origin.getMiddlePoint().x, origin.getMiddlePoint().y, mouseX, mouseY);
 		}
 		//		switch (state) {
 		//		case RUN:
@@ -160,7 +167,7 @@ public class PhysicalGUI extends PApplet{
 			changeState(State.RUN);
 		}
 	}
-	
+
 	public void changeState(State newState){
 		state = newState;
 		if(btn != null){
@@ -232,8 +239,8 @@ public class PhysicalGUI extends PApplet{
 		public void onEnter() {
 			cursor(HAND);
 			//isAboutToMakeAConnection = false;
-			destination = this;
 			if(isAboutToMakeAConnection){
+				destination = this;
 				makeAConnection(origin, destination);
 			}
 			println("enter: " + getName());
@@ -262,10 +269,8 @@ public class PhysicalGUI extends PApplet{
 
 		public void onDrag() {
 			//current = 0xff0000ff;
-			Pointer p1 = getPointer();
-			float dif = dist(p1.px(),p1.py(),p1.x(),p1.y());
-			stroke(255, 0, 0);
-			line(getMiddlePoint().x, getMiddlePoint().y, mouseX, mouseY);
+			//			stroke(255, 0, 0);
+			//			line(getMiddlePoint().x, getMiddlePoint().y, mouseX, mouseY);
 			isAboutToMakeAConnection = true;
 			origin = this;
 			//setPosition(mouseX, mouseY);
@@ -274,7 +279,13 @@ public class PhysicalGUI extends PApplet{
 		}
 
 		public void onReleaseOutside() {
+			//			if(isAboutToMakeAConnection && destination == null){
+			//				connections.remove(origin);
+			//				origin = null;
+			//				isAboutToMakeAConnection = false;
+			//			}
 			//println("release outside: " + getName());
+			//isAboutToMakeAConnection = false;
 		}
 
 		public void onLeave() {
@@ -293,6 +304,48 @@ public class PhysicalGUI extends PApplet{
 			//println("start drag");
 		}
 
+	}
+
+	class OutputObject extends Controller{
+		PImage icon;
+		@SuppressWarnings({ "unchecked", "rawtypes" })
+		OutputObject(ControlP5 cp5, String theName, String iconName) {
+			super(cp5, theName);
+			if(!iconName.equals("")){
+				this.icon = loadImage("gui/"+iconName+".png");
+			}
+
+			// replace the default view with a custom view.
+			setView(new ControllerView() {
+				public void display(PGraphics p, Object b) {
+					p.fill(0,0,255,50);
+					p.rect(0, 0, getWidth(), getHeight());
+					ellipseMode(CENTER);
+					p.imageMode(CENTER);
+					if(icon != null){
+						p.image(icon,getAbsoluteMiddlePoint().x, getAbsoluteMiddlePoint().y);
+					}
+					p.ellipse(getAbsoluteMiddlePoint().x, getAbsoluteMiddlePoint().y, 10, 10);
+				}
+			}
+					);
+		}
+		public PVector getAbsoluteMiddlePoint(){
+			PVector middlePoint = new PVector();
+			middlePoint.set(getAbsolutePosition()[0]+this.getWidth()/2.0f, getAbsolutePosition()[1]+this.getHeight()/2.0f);
+			return middlePoint;
+		}
+
+		public PVector getMiddlePoint(){
+			PVector middlePoint = new PVector();
+			middlePoint.set(getPosition()[0]+this.getWidth()/2.0f, getPosition()[1]+this.getHeight()/2.0f);
+			return middlePoint;
+		}
+		
+		@Override
+		protected void onEnter() {
+			System.out.println("Output Block enter");
+		}
 	}
 
 	class ButtonToAddBlock extends Controller {
@@ -341,7 +394,7 @@ public class PhysicalGUI extends PApplet{
 		}
 
 		public void onPress() {
-			//println("press");
+			System.out.println("pressed on: " + getName());
 		}
 
 		public void onClick() {
@@ -352,32 +405,10 @@ public class PhysicalGUI extends PApplet{
 			changeState(State.RUN);
 		}
 
-		public void onMove() {
-			//println("moving "+this+" "+_myControlWindow.getMouseOverList());
-		}
-
-		public void onDrag() {
-
-		}
-
-		public void onReleaseOutside() {
-			//println("release outside: " + getName());
-		}
-
 		public void onLeave() {
 			//println("leave");
 			cursor(ARROW);
 			//a = 128;
-		}
-
-		@Override
-		protected void onEndDrag() {
-			//println("end drag");
-		}
-
-		@Override
-		protected void onStartDrag() {
-			//println("start drag");
 		}
 
 	}
