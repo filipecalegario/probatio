@@ -3,13 +3,12 @@ package gui.prototype.physical;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Vector;
 
 import controlP5.Button;
 import controlP5.ControlP5;
 import controlP5.Controller;
 import controlP5.ControllerView;
-import controlP5.Group;
-import controlP5.Pointer;
 import processing.core.PApplet;
 import processing.core.PGraphics;
 import processing.core.PImage;
@@ -21,12 +20,15 @@ public class PhysicalGUI extends PApplet{
 	private ControlP5 runControlP5;
 	private ControlP5 addBlockControlP5;
 	private ControlP5 mainControlP5;
-	private Map<BlockIconButton, BlockIconButton> connections;
+	private Map<BlockPlacedIcon, OutputObject> connections;
+	private PVector[] positions;
+	private BlockNotPlaced selected;
+	private Vector<BlockNotPlaced> notPlaced;
 
 	private PImage bg;
 
-	private BlockIconButton origin;
-	private BlockIconButton destination;
+	private BlockPlacedIcon origin;
+	private OutputObject destination;
 
 	private Button btn;
 
@@ -40,9 +42,21 @@ public class PhysicalGUI extends PApplet{
 
 	public void setup() {
 		//bg = loadImage("gui/Base3x3-1600x1200.png");
+		notPlaced = new Vector<BlockNotPlaced>();
 		changeState(State.RUN);
-		connections = new HashMap<PhysicalGUI.BlockIconButton, PhysicalGUI.BlockIconButton>();
+		connections = new HashMap<PhysicalGUI.BlockPlacedIcon, PhysicalGUI.OutputObject>();
 		bg = loadImage("gui/Base3x3-800x600.png");
+		
+		positions = new PVector[9];
+		positions[0] = new PVector(251.175f, 150.99f);
+		positions[1] = new PVector(364.575f, 150.99f);
+		positions[2] = new PVector(477.975f, 150.99f);
+		positions[3] = new PVector(251.175f, 264.39f);
+		positions[4] = new PVector(364.575f, 264.39f);
+		positions[5] = new PVector(477.975f, 264.39f);
+		positions[6] = new PVector(251.175f, 377.79f);
+		positions[7] = new PVector(364.575f, 377.79f);
+		positions[8] = new PVector(477.975f, 377.79f);
 
 		mainControlP5Setup();
 		runControlP5Setup();
@@ -57,31 +71,30 @@ public class PhysicalGUI extends PApplet{
 				.setPosition(0,0)
 				.setSize(200,19)
 				.setLabel("Current State: " + state);
+		mainControlP5.addButton("addNewBlock")
+		.setValue(0)
+		.setPosition(200,0)
+		.setSize(200,19)
+		.setLabel("Add block ");
 	}
 
 	private void runControlP5Setup() {
 		runControlP5 = new ControlP5(this);
 		runControlP5.setAutoDraw(false);
 		runControlP5.enableShortcuts();
-		Group g3x3 = runControlP5.addGroup("g3x3");
-		BlockIconButton[] mbs = new BlockIconButton[9];
+		runControlP5.addGroup("g3x3");
+		BlockPlacedIcon[] mbs = new BlockPlacedIcon[9];
 		for (int i = 0; i < mbs.length; i++) {
-			mbs[i] = new BlockIconButton(runControlP5, "b"+i, "bellows");
-			mbs[i].setSize(71,71);
-			mbs[i].setGroup(g3x3);
+//			mbs[i] = new BlockIconButton(runControlP5, "b"+i, "bellows");
+//			mbs[i].setSize(71,71);
+//			mbs[i].setGroup("g3x3");
+//			mbs[i].setPosition(positions[i].x,positions[i].y);
 		}
-		mbs[0].setPosition(251.175f, 150.99f);
-		mbs[1].setPosition(364.575f, 150.99f);
-		mbs[2].setPosition(477.975f, 150.99f);
-		mbs[3].setPosition(251.175f, 264.39f);
-		mbs[4].setPosition(364.575f, 264.39f);
-		mbs[5].setPosition(477.975f, 264.39f);
-		mbs[6].setPosition(251.175f, 377.79f);
-		mbs[7].setPosition(364.575f, 377.79f);
-		mbs[8].setPosition(477.975f, 377.79f);
+		
 		OutputObject oo = new OutputObject(runControlP5, "output", "");
 		oo.setSize(71,71);
 		oo.setPosition(30,30);
+		oo.setLabel("OUTPUT1");
 	}
 
 	private void addBlockControlP5Setup() {
@@ -89,18 +102,14 @@ public class PhysicalGUI extends PApplet{
 		addBlockControlP5.setAutoDraw(false);
 		ButtonToAddBlock[] array = new ButtonToAddBlock[9];
 		for (int i = 0; i < array.length; i++) {
-			array[i] = new ButtonToAddBlock(addBlockControlP5, "add"+i, "");
+			array[i] = new ButtonToAddBlock(addBlockControlP5, "add"+i, "", i);
 			array[i].setSize(71,71);
+			array[i].setPosition(positions[i].x,positions[i].y);
 		}
-		array[0].setPosition(251.175f, 150.99f);
-		array[1].setPosition(364.575f, 150.99f);
-		array[2].setPosition(477.975f, 150.99f);
-		array[3].setPosition(251.175f, 264.39f);
-		array[4].setPosition(364.575f, 264.39f);
-		array[5].setPosition(477.975f, 264.39f);
-		array[6].setPosition(251.175f, 377.79f);
-		array[7].setPosition(364.575f, 377.79f);
-		array[8].setPosition(477.975f, 377.79f);
+		BlockNotPlaced bnp = new BlockNotPlaced(addBlockControlP5, "ouo", "bellows");
+		bnp.setSize(71,71);
+		bnp.setPosition(30,80);
+		notPlaced.addElement(bnp);
 	}
 
 	public void draw() {
@@ -111,32 +120,30 @@ public class PhysicalGUI extends PApplet{
 		if(state == State.RUN){
 			runControlP5.draw();
 			displayConnections();
+			selected = null;
+			if(!notPlaced.isEmpty()){
+				changeState(State.ADDBLOCK);
+			}
 		} else if(state == State.ADDBLOCK){
 			addBlockControlP5.draw();
+			if(notPlaced.isEmpty()){
+				changeState(State.RUN);
+			}
 		}
 		if(isAboutToMakeAConnection){
 			stroke(255, 0, 0);
+			strokeWeight(5);
 			line(origin.getMiddlePoint().x, origin.getMiddlePoint().y, mouseX, mouseY);
 		}
-		//		switch (state) {
-		//		case RUN:
-		//			runControlP5.setVisible(true);
-		//			runControlP5.draw();
-		//			displayConnections();
-		//			break;
-		//		case ADDBLOCK:
-		//			//runControlP5.setVisible(false);
-		//			//runControlP5.setUpdate(false);
-		//			runControlP5.getGroup("g3x3").hide();
-		//			addBlockControlP5.draw();
-		//			break;
-		//		default:
-		//			break;
-		//		}
-
+		if(selected != null){
+			stroke(255,0,0);
+			strokeWeight(3);
+			noFill();
+			rect(selected.getPosition()[0], selected.getPosition()[1], selected.getWidth(), selected.getHeight());
+		}
 	}
 
-	public void makeAConnection(BlockIconButton origin, BlockIconButton destination){
+	public void makeAConnection(BlockPlacedIcon origin, OutputObject destination){
 		if(origin != null && destination != null){
 			connections.put(origin, destination);
 			System.out.println("connection made: " + origin + " -> " + destination);
@@ -145,11 +152,11 @@ public class PhysicalGUI extends PApplet{
 	}
 
 	public void displayConnections(){
-		for (Entry<BlockIconButton, BlockIconButton> entry : connections.entrySet()) {
+		for (Entry<BlockPlacedIcon, OutputObject> entry : connections.entrySet()) {
 			stroke(255,0,0);
 			strokeWeight(5);
-			BlockIconButton _origin = entry.getKey();
-			BlockIconButton _dest = entry.getValue();
+			BlockPlacedIcon _origin = entry.getKey();
+			OutputObject _dest = entry.getValue();
 			PVector destinationPoint = _dest.getMiddlePoint();
 			PVector originPoint = _origin.getMiddlePoint();
 			line(originPoint.x,originPoint.y, destinationPoint.x, destinationPoint.y);
@@ -166,6 +173,13 @@ public class PhysicalGUI extends PApplet{
 		} else if(state == State.ADDBLOCK){
 			changeState(State.RUN);
 		}
+	}
+	
+	public void addNewBlock(int theValue) {
+		BlockNotPlaced bnp = new BlockNotPlaced(addBlockControlP5, "ouo"+Math.random(), "turntable");
+		bnp.setSize(71,71);
+		bnp.setPosition(30,80);
+		notPlaced.addElement(bnp);
 	}
 
 	public void changeState(State newState){
@@ -188,7 +202,7 @@ public class PhysicalGUI extends PApplet{
 	}
 
 
-	class BlockIconButton extends Controller {
+	class BlockPlacedIcon extends Controller {
 
 		int current = 0xffff0000;
 		PImage icon;
@@ -200,7 +214,7 @@ public class PhysicalGUI extends PApplet{
 		int y;
 
 		@SuppressWarnings({ "rawtypes", "unchecked" })
-		BlockIconButton(ControlP5 cp5, String theName, String iconName) {
+		BlockPlacedIcon(ControlP5 cp5, String theName, String iconName) {
 			super(cp5, theName);
 			if(!iconName.equals("")){
 				this.icon = loadImage("gui/"+iconName+".png");
@@ -239,10 +253,7 @@ public class PhysicalGUI extends PApplet{
 		public void onEnter() {
 			cursor(HAND);
 			//isAboutToMakeAConnection = false;
-			if(isAboutToMakeAConnection){
-				destination = this;
-				makeAConnection(origin, destination);
-			}
+			
 			println("enter: " + getName());
 		}
 
@@ -257,6 +268,12 @@ public class PhysicalGUI extends PApplet{
 		public void onClick() {
 			//		    Pointer p1 = getPointer();
 			//		    println("clicked at "+p1.x()+", "+p1.y());
+			if(connections.containsKey(this)){
+				connections.remove(this);
+			}
+			if(isAboutToMakeAConnection){
+				isAboutToMakeAConnection = false;
+			}
 		}
 
 		public void onRelease() {
@@ -276,6 +293,14 @@ public class PhysicalGUI extends PApplet{
 			//setPosition(mouseX, mouseY);
 			//setPosition(mouseX-getWidth()/2.0f, mouseY-getHeight()/2.0f);
 			//println("dragging at "+p1.x()+", "+p1.y()+" "+dif);
+		}
+
+		@Override
+		protected void onDoublePress() {
+			if(connections.containsKey(this)){
+				connections.remove(this);
+			}
+			runControlP5.remove(getName());
 		}
 
 		public void onReleaseOutside() {
@@ -344,6 +369,10 @@ public class PhysicalGUI extends PApplet{
 		
 		@Override
 		protected void onEnter() {
+			if(isAboutToMakeAConnection){
+				destination = this;
+				makeAConnection(origin, destination);
+			}
 			System.out.println("Output Block enter");
 		}
 	}
@@ -353,8 +382,9 @@ public class PhysicalGUI extends PApplet{
 		PImage icon;
 
 		@SuppressWarnings({ "rawtypes", "unchecked" })
-		ButtonToAddBlock(ControlP5 cp5, String theName, String iconName) {
+		ButtonToAddBlock(ControlP5 cp5, String theName, String iconName, int value) {
 			super(cp5, theName);
+			this.setValue(value);
 			if(!iconName.equals("")){
 				this.icon = loadImage("gui/"+iconName+".png");
 			}
@@ -398,11 +428,93 @@ public class PhysicalGUI extends PApplet{
 		}
 
 		public void onClick() {
-			System.out.println("clicked on: " + getName());
+			int clickedPosition = (int)getValue();
+			System.out.println("clicked on: " + getName() + " " + clickedPosition);
+			if(selected != null){
+				BlockPlacedIcon bib = new BlockPlacedIcon(runControlP5, "b"+clickedPosition, selected.getIcon());
+				bib.setSize(71,71);
+				bib.setGroup("g3x3");
+				bib.setPosition(positions[clickedPosition].x,positions[clickedPosition].y);
+				notPlaced.remove(selected);
+				addBlockControlP5.remove(selected.getName());
+			}
+			
 		}
 
 		public void onRelease() {
-			changeState(State.RUN);
+			//changeState(State.RUN);
+		}
+
+		public void onLeave() {
+			//println("leave");
+			cursor(ARROW);
+			//a = 128;
+		}
+
+	}
+	
+	class BlockNotPlaced extends Controller {
+
+		PImage icon;
+		String myIconName;
+
+		@SuppressWarnings({ "rawtypes", "unchecked" })
+		BlockNotPlaced(ControlP5 cp5, String theName, String iconName) {
+			super(cp5, theName);
+			myIconName = iconName;
+			if(!iconName.equals("")){
+				this.icon = loadImage("gui/"+iconName+".png");
+			}
+
+			// replace the default view with a custom view.
+			setView(new ControllerView() {
+				public void display(PGraphics p, Object b) {
+					p.fill(255,0,0,50);
+					p.rect(0, 0, getWidth(), getHeight());
+					ellipseMode(CENTER);
+					p.imageMode(CENTER);
+					if(icon != null){
+						p.image(icon,getAbsoluteMiddlePoint().x, getAbsoluteMiddlePoint().y);
+					}
+					p.ellipse(getAbsoluteMiddlePoint().x, getAbsoluteMiddlePoint().y, 10, 10);
+				}
+			}
+					);
+		}
+
+		public String getIcon() {
+			// TODO Auto-generated method stub
+			return myIconName;
+		}
+
+		public PVector getAbsoluteMiddlePoint(){
+			PVector middlePoint = new PVector();
+			middlePoint.set(getAbsolutePosition()[0]+this.getWidth()/2.0f, getAbsolutePosition()[1]+this.getHeight()/2.0f);
+			return middlePoint;
+		}
+
+		public PVector getMiddlePoint(){
+			PVector middlePoint = new PVector();
+			middlePoint.set(getPosition()[0]+this.getWidth()/2.0f, getPosition()[1]+this.getHeight()/2.0f);
+			return middlePoint;
+		}
+
+		// override various input methods for mouse input control
+		public void onEnter() {
+			cursor(HAND);
+			//isAboutToMakeAConnection = false;
+		}
+
+		public void onPress() {
+			//System.out.println("pressed on: " + getName());
+		}
+
+		public void onClick() {
+			selected = this;
+		}
+
+		public void onRelease() {
+			//changeState(State.RUN);
 		}
 
 		public void onLeave() {
