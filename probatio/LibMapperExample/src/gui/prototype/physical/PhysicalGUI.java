@@ -9,12 +9,20 @@ import controlP5.Button;
 import controlP5.ControlP5;
 import controlP5.Controller;
 import controlP5.ControllerView;
+import model.Block;
+import model.BlockFactory;
 import processing.core.PApplet;
 import processing.core.PGraphics;
 import processing.core.PImage;
 import processing.core.PVector;
+import processing.serial.Serial;
 
 public class PhysicalGUI extends PApplet{
+
+	Serial myPort; 
+	Vector<Block> blocks;
+
+	boolean serialIsReady;
 
 	private State state;
 	private ControlP5 runControlP5;
@@ -41,12 +49,33 @@ public class PhysicalGUI extends PApplet{
 	}
 
 	public void setup() {
+		//====== merged ======
+		serialIsReady = false;
+		blocks = new Vector<Block>();
+
+		long startTime = millis();
+
+		println(Serial.list());
+		myPort = new Serial(this, Serial.list()[5], 115200);
+		//myPort = new Serial(this, "/dev/cu.usbmodem1421", 115200);
+		myPort.bufferUntil('\n');
+		myPort.clear();
+		println("Initializing serial port...");
+		while (millis() - startTime < 500) {
+			if (myPort.available() > 0) {
+				myPort.readStringUntil('\n');
+			}
+		}
+		println("Serial port ready!");
+		serialIsReady = true;
+		//====== merged ======
+
 		//bg = loadImage("gui/Base3x3-1600x1200.png");
 		notPlaced = new Vector<BlockNotPlaced>();
 		changeState(State.RUN);
 		connections = new HashMap<PhysicalGUI.BlockPlacedIcon, PhysicalGUI.OutputObject>();
 		bg = loadImage("gui/Base3x3-800x600.png");
-		
+
 		positions = new PVector[9];
 		positions[0] = new PVector(251.175f, 150.99f);
 		positions[1] = new PVector(364.575f, 150.99f);
@@ -85,12 +114,12 @@ public class PhysicalGUI extends PApplet{
 		runControlP5.addGroup("g3x3");
 		BlockPlacedIcon[] mbs = new BlockPlacedIcon[9];
 		for (int i = 0; i < mbs.length; i++) {
-//			mbs[i] = new BlockIconButton(runControlP5, "b"+i, "bellows");
-//			mbs[i].setSize(71,71);
-//			mbs[i].setGroup("g3x3");
-//			mbs[i].setPosition(positions[i].x,positions[i].y);
+			//			mbs[i] = new BlockIconButton(runControlP5, "b"+i, "bellows");
+			//			mbs[i].setSize(71,71);
+			//			mbs[i].setGroup("g3x3");
+			//			mbs[i].setPosition(positions[i].x,positions[i].y);
 		}
-		
+
 		OutputObject oo = new OutputObject(runControlP5, "output", "");
 		oo.setSize(71,71);
 		oo.setPosition(30,30);
@@ -106,10 +135,10 @@ public class PhysicalGUI extends PApplet{
 			array[i].setSize(71,71);
 			array[i].setPosition(positions[i].x,positions[i].y);
 		}
-		BlockNotPlaced bnp = new BlockNotPlaced(addBlockControlP5, "ouo", "bellows");
-		bnp.setSize(71,71);
-		bnp.setPosition(30,80);
-		notPlaced.addElement(bnp);
+		//		BlockNotPlaced bnp = new BlockNotPlaced(addBlockControlP5, "ouo", "bellows");
+		//		bnp.setSize(71,71);
+		//		bnp.setPosition(30,80);
+		//		notPlaced.addElement(bnp);
 	}
 
 	public void draw() {
@@ -141,6 +170,7 @@ public class PhysicalGUI extends PApplet{
 			noFill();
 			rect(selected.getPosition()[0], selected.getPosition()[1], selected.getWidth(), selected.getHeight());
 		}
+		removeBlockDetector();
 	}
 
 	public void makeAConnection(BlockPlacedIcon origin, OutputObject destination){
@@ -174,7 +204,7 @@ public class PhysicalGUI extends PApplet{
 			changeState(State.RUN);
 		}
 	}
-	
+
 	public void addNewBlock(int theValue) {
 		BlockNotPlaced bnp = new BlockNotPlaced(addBlockControlP5, "ouo"+Math.random(), "turntable");
 		bnp.setSize(71,71);
@@ -196,6 +226,187 @@ public class PhysicalGUI extends PApplet{
 	//			System.out.println(theEvent.getController().getName());
 	//		}
 	//	}
+
+	// ===== merged =====
+
+	public void serialEvent (Serial myPort) {
+		if(serialIsReady){
+			try {
+				byte[] meusBytes = myPort.readBytes();
+				boolean isGoodFormat = (meusBytes.length == 21) && 
+						(meusBytes[0] == 2) && 
+						(meusBytes[meusBytes.length-1] == 10);
+				if(isGoodFormat){
+					int[] meusInts = new int[meusBytes.length];
+					for (int i = 0; i < meusBytes.length; i++) {
+						meusInts[i] = meusBytes[i] & 0xFF;
+					}
+					parseAndAddOrUpdate(meusInts);
+					delay(1);
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
+	private void parseAndAddOrUpdate(int[] ints) {
+		boolean isGoodFormat = (ints.length == 21) && 
+				(ints[0] == 2) && 
+				(ints[ints.length-1] == 10);
+		if (isGoodFormat) {
+			//[2, BLOCK_RESTOUCH, 0, 25, BLOCK_CRANK, 22, 22, BLOCK_BELLOWS, 0, BLOCK_TURNTABLE, 155,  0, BLOCK_DEBUG, 156, 99, BLOCK_FOURBUTTONS, 255, 255, 255, 255, 10]
+			//[0,              1, 2,  3,           4,  5,  6,             7, 8,               9,  10, 11,          12,  13, 14,                15,  16,  17,  18,  19, 20]
+			int[] blockRestouchValue = new int[2];
+			int[] blockCrankValue = new int[2];
+			int[] blockBellowsValue = new int[1];
+			int[] blockTurntableValue = new int[2];
+			int[] blockDebugValue = new int[2];
+			int[] blockFourButtonsValue = new int[4];
+
+			int blockRestouchId = ints[1];
+			blockRestouchValue[0] = ints[2];
+			blockRestouchValue[1] = ints[3];
+
+			int blockCrankId = ints[4];
+			blockCrankValue[0] = ints[5];
+			blockCrankValue[1] = ints[6];
+
+			int blockBellowsId = ints[7];
+			blockBellowsValue[0] = ints[8];
+
+			int blockTurntableId = ints[9];
+			blockTurntableValue[0] = ints[10];
+			blockTurntableValue[1] = ints[11];
+
+			int blockDebugId = ints[12];
+			blockDebugValue[0] = ints[13];
+			blockDebugValue[1] = ints[14];
+
+			int blockFounButtonsId = ints[15];
+			blockFourButtonsValue[0] = ints[16];
+			blockFourButtonsValue[1] = ints[17];
+			blockFourButtonsValue[2] = ints[18];
+			blockFourButtonsValue[3] = ints[19];
+
+			parseBlock(blockRestouchId, blockRestouchValue);
+			parseBlock(blockCrankId, blockCrankValue);
+			parseBlock(blockBellowsId, blockBellowsValue);
+			parseBlock(blockTurntableId, blockTurntableValue);
+			parseBlock(blockDebugId, blockDebugValue);
+			parseBlock(blockFounButtonsId, blockFourButtonsValue);
+		}
+	}
+
+	private void parseBlock(int blockId, int[] values){
+		if (blockId != 0) {
+			if (repositoryContainsBlock(blockId)) {
+				//System.out.println("UPDATED Block " + BlockType.getBlockNameById(blockId));
+				updateBlockEvent(blockId, values);
+			} else {
+				Block newBlock = BlockFactory.createBlock(blockId, values, millis());
+				addBlockEvent(newBlock);
+			} 
+		}						
+	}
+
+	private void removeBlockDetector(){
+		try {
+			for (int i = 0; i < blocks.size(); i++) {
+				Block currentBlock = blocks.elementAt(i);
+				if(millis() - currentBlock.getLastTimeUpdated() > 1000){
+					//registeredRemovals.addElement(currentBlock.getId());
+					removeBlockEvent(currentBlock.getId());
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	private void addBlockEvent(Block block) {
+		if (block != null) {
+			if(!repositoryContainsBlock(block.getId())){
+				blocks.addElement(block);
+				System.out.println(block.getName() + " added");
+				BlockNotPlaced bnp = new BlockNotPlaced(addBlockControlP5, block.getName(), block.getName().toLowerCase());
+				System.out.println("bnpName: " + bnp.getName());
+				bnp.setSize(71,71);
+				bnp.setPosition(30,80);
+				notPlaced.addElement(bnp);
+				//mapperManager.addSignalFromBlock(block);
+				for (int i = 0; i < block.getValues().length; i++) {
+					//display.addDisplaySlot(block.getId(), i, block.getValuesLabels()[i]);
+				}
+			}
+		}
+	}
+
+	private void updateBlockEvent(int idBlock, int[] values) {
+		Block block = getBlockById(idBlock);
+		if (block != null) {
+			block.updateValues(values, millis());
+			try {
+				//mapperManager.updateSignalFromBlock(block);
+			} catch (Exception e) {
+				//TODO Be careful!
+				//e.printStackTrace();
+			}
+			for (int i = 0; i < block.getValues().length; i++) {
+				//display.updateValueDisplaySlot(block.getId(), i, values[i]);
+			} 
+		}
+	}
+
+	private void removeBlockEvent(int idBlock) {
+		Block block = getBlockById(idBlock);
+		if (block != null) {
+			String name = block.getName();
+			//mapperManager.removeSignalFromBlock(block);
+			for (int i = 0; i < block.getValues().length; i++) {
+				//display.removeDisplaySlot(block.getId(), i);
+			}
+			BlockPlacedIcon bpi = (BlockPlacedIcon)runControlP5.getController(name);
+			if(bpi != null){
+				System.out.println(bpi);
+				if(connections.containsKey(bpi)){
+					connections.remove(bpi);
+				}
+				runControlP5.remove(bpi.getName());
+			}
+			blocks.removeElement(block);
+			System.out.println(name + " removed");
+		}
+	}
+
+	//TODO This is not cool!
+	private boolean repositoryContainsBlock(int id) {
+		boolean result = false;
+		for (Block block : blocks) {
+			if(block != null){
+				if(block.getId() == id){
+					result = true;
+				}
+			}
+		}
+		return result;
+	}
+
+	//TODO Two walks in the array: This is not cool!
+	private Block getBlockById(int id) {
+		Block result = null;
+		if(repositoryContainsBlock(id)){
+			for (Block block : blocks) {
+				if(block.getId() == id){
+					result = block;
+				}
+			}
+		}
+		return result;
+	}
+
+	// ===== merged =====
+
 
 	public static void main(String[] args) {
 		PApplet.main(PhysicalGUI.class.getName());
@@ -253,7 +464,7 @@ public class PhysicalGUI extends PApplet{
 		public void onEnter() {
 			cursor(HAND);
 			//isAboutToMakeAConnection = false;
-			
+
 			println("enter: " + getName());
 		}
 
@@ -367,7 +578,7 @@ public class PhysicalGUI extends PApplet{
 			middlePoint.set(getPosition()[0]+this.getWidth()/2.0f, getPosition()[1]+this.getHeight()/2.0f);
 			return middlePoint;
 		}
-		
+
 		@Override
 		protected void onEnter() {
 			if(isAboutToMakeAConnection){
@@ -432,14 +643,14 @@ public class PhysicalGUI extends PApplet{
 			int clickedPosition = (int)getValue();
 			System.out.println("clicked on: " + getName() + " " + clickedPosition);
 			if(selected != null){
-				BlockPlacedIcon bib = new BlockPlacedIcon(runControlP5, "b"+clickedPosition, selected.getIcon());
+				BlockPlacedIcon bib = new BlockPlacedIcon(runControlP5, selected.getName(), selected.getIcon());
 				bib.setSize(71,71);
 				bib.setGroup("g3x3");
 				bib.setPosition(positions[clickedPosition].x,positions[clickedPosition].y);
 				notPlaced.remove(selected);
 				addBlockControlP5.remove(selected.getName());
 			}
-			
+
 		}
 
 		public void onRelease() {
@@ -453,7 +664,7 @@ public class PhysicalGUI extends PApplet{
 		}
 
 	}
-	
+
 	class BlockNotPlaced extends Controller {
 
 		PImage icon;

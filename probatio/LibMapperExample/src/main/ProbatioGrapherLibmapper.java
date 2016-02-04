@@ -20,16 +20,8 @@ import processing.serial.Serial;
 public class ProbatioGrapherLibmapper extends PApplet {
 
 	Serial myPort;        
-
 	Vector<Block> blocks;
-	Vector<Integer> registeredRemovals;
 	DisplayManager display;
-	long lastSerialEventTime;
-	long[] deltaSerialEventTimeArray;
-	float[] averageSerialTime;
-	int indexSerialEventTime;
-	int indexAverageSerialTime;
-	float lastMaxAverageSerialTime;
 
 	boolean serialIsReady;
 
@@ -44,7 +36,6 @@ public class ProbatioGrapherLibmapper extends PApplet {
 		long startTime = millis();
 		serialIsReady = false;
 		blocks = new Vector<Block>();
-		registeredRemovals = new Vector<Integer>();
 		int numberOfSlots = 20;
 		display = new DisplayManager(this,numberOfSlots);
 		MapperManager.freeOnShutdown();
@@ -65,10 +56,6 @@ public class ProbatioGrapherLibmapper extends PApplet {
 		serialIsReady = true;
 		background(255);
 		//TODO remover SerialEventTime
-		deltaSerialEventTimeArray = new long[1000];
-		averageSerialTime = new float[1000];
-		indexSerialEventTime = 0;
-		indexAverageSerialTime = 0;
 	}
 
 	public void draw () {
