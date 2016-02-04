@@ -351,6 +351,7 @@ public class PhysicalGUI extends PApplet{
 						p.image(icon,getAbsoluteMiddlePoint().x, getAbsoluteMiddlePoint().y);
 					}
 					p.ellipse(getAbsoluteMiddlePoint().x, getAbsoluteMiddlePoint().y, 10, 10);
+					p.text(getLabel(), getAbsoluteMiddlePoint().x-15, getAbsoluteMiddlePoint().y+30);
 				}
 			}
 					);
