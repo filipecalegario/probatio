@@ -58,6 +58,7 @@
 			<fileset dir="${dir-probatio}" includes="META-INF/**"/>
 		</jar>
 		<copy file="${dir-probatio}/probatio.jar" todir="${probatio-dest}"/>
+		<copy file="${dir-probatio}/info.txt" todir="${probatio-dest}"/>
 	</target>
 		
 </project>
