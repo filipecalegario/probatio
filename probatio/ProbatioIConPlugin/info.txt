@@ -1,0 +1,7 @@
+name: probatio
+version: 0.1
+dependencies: libmapper-0.1
+author: Stuf & Filipe
+url: http://insitu.lri.fr
+summary: Probatio configuration UI.
+description: coming soon...

@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<!-- This file is meant to be processed by Ant (download from ant.apache.org) -->
+<project name="InputConfigurator" default="usage" basedir=".">
+
+	<property name="debug" value="on"/>
+	<property name="optimize" value="on"/>
+	<property name="compatibility" value="1.7"/>
+
+	<property name="ICon" value="../../../InputConfigurator"/>	
+	<property name="ICon-libs" value="${ICon}/lib"/>	
+	<property name="ICon-plugins" value="${ICon}/plugins"/>		
+	<property name="ICon-jars" value="${ICon-libs}/icon.jar;${ICon-libs}/utils-0.0.1.jar;${ICon-libs}/ext/swingstates-1.0.0.jar;${ICon-libs}/javagraphics.jar"/>
+<!-- <property name="local-jars" value="libs/jtracker-0.0.1.jar;libs/WILDTools-0.0.1.jar;libs/xml-text-editor-0.0.3.jar"/>	-->	
+<!-- <property name="jars" value="${ICon-jars};${local-jars}"/>	-->	
+	<property name="jars" value="${ICon-jars}"/>
+	
+	<property name="dir-libmapper" value="${ICon-plugins}/libraries/libmapper"/>
+	
+	<property name="dir-probatio" value="."/>
+	<property name="src-probatio" value="${dir-probatio}/src"/>
+	<property name="classes-probatio" value="${dir-probatio}/bin"/>
+	<property name="probatio-jars" value="${dir-libmapper}/libmapper-0.jar"/>	
+	<property name="probatio-dest" value="${ICon-plugins}/probatio"/>	
+	
+	 <target name="usage">
+	  <echo message=""/>
+	  <echo message=""/>
+	  <echo message="ICon Plugins Build file"/>
+	  <echo message="-------------------------------------------------------------"/>
+	  <echo message=""/>
+	  <echo message=" available targets are:"/>
+	  <echo message=""/>
+	  <echo message="   probatio                ==> builds the probatio plugin"/>
+	  <echo message="   usage                   ==> (default) displays build menu"/>
+	  <echo message=""/>
+	  <echo message=" See the comments inside the build.xml file for more details."/>
+	  <echo message="-------------------------------------------------------------"/>
+	  <echo message=""/>
+	  <echo message=""/>
+	 </target>
+	
+	<target name="cleanprobatio" description="Cleans the probatio plugin binary files" >
+		<delete dir="${classes-probatio}" includeEmptyDirs="true" failonerror="false"/>
+	</target>		
+	
+	<target name="compileprobatio" description="Compiles probatio plugin" depends="cleanprobatio">
+		<mkdir dir="${classes-probatio}"/>
+<!--		<copy todir="${classes-probatio}/resources">
+			<fileset dir="${src-probatio}/resources"/>
+		</copy>-->
+		<javac source="${compatibility}" target="${compatibility}" srcdir="${src-probatio}" classpath="${jars};${probatio-jars}" destdir="${classes-probatio}" debug="${debug}" optimize="${optimize}" encoding="UTF-8"/>
+	</target>	
+	
+	<target name="probatio" description="Generates probatio .jar file" depends="compileprobatio">
+		<delete file="${dir-probatio}/probatio.jar" failonerror="false"/>
+		<jar destfile="${dir-probatio}/probatio.jar">
+			<fileset dir="${classes-probatio}"/>
+			<fileset dir="${dir-probatio}" includes="META-INF/**"/>
+		</jar>
+		<copy file="${dir-probatio}/probatio.jar" todir="${probatio-dest}"/>
+		<copy file="${dir-probatio}/info.txt" todir="${probatio-dest}"/>
+	</target>
+		
+</project>
