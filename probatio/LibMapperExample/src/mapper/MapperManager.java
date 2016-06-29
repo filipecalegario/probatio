@@ -51,9 +51,12 @@ public class MapperManager {
 		}
 	}*/
 	
-	public static Signal addOutput(String name, int quantity, char type, String unit, double minLimit, double maxLimit) {
+	public static Signal addOutput(String name, int quantity, char type, String unit, int minLimit, int maxLimit) {
 //		return dev.add_output(name, quantity, type, unit, minLimit, maxLimit);
-		return dev.addOutput(name, quantity, type, unit, new PropertyValue(minLimit), new PropertyValue(maxLimit));
+		Signal outSignal = dev.addOutput(name, quantity, type, unit, new PropertyValue('i', minLimit), new PropertyValue('i', maxLimit));
+		outSignal.setMaximum(new PropertyValue(255));
+		outSignal.setMinimum(new PropertyValue(0));
+		return outSignal;
 	}
 
 	public static void removeOutput(Signal arg0) {

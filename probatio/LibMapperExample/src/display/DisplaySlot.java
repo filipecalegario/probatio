@@ -68,7 +68,7 @@ public class DisplaySlot {
 		this.kinematic = KinematicFactory.createKinematic(idBlock);
 		//processing.image(this.icon, this.x, this.y);
 		try {
-			this.signal = MapperManager.addOutput(BlockType.getBlockNameById(idBlock) + "-" + label, 1, 'i', "unit", 0.0, 255.0);
+			this.signal = MapperManager.addOutput(BlockType.getBlockNameById(idBlock) + "-" + label, 1, 'i', "unit", 0, 255);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

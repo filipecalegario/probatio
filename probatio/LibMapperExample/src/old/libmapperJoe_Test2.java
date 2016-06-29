@@ -1,5 +1,3 @@
-package old;
-
 import Mapper.*;
 import Mapper.Device.*;
 import java.util.Arrays;
