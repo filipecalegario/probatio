@@ -4,8 +4,8 @@ import java.util.Vector;
 
 import display.DisplayManager;
 import mapper.MapperManager;
-import model.Block;
-import model.BlockFactory;
+import mvc.model.Block;
+import mvc.model.BlockFactory;
 import processing.core.PApplet;
 import processing.event.KeyEvent;
 import processing.serial.Serial; 
@@ -51,8 +51,8 @@ public class ProbatioGrapherLibmapper extends PApplet {
 		MapperManager.printDeviceInitialization();
 
 		println(Serial.list());
-		myPort = new Serial(this, Serial.list()[5], 115200);
-		//myPort = new Serial(this, "/dev/cu.usbmodem1421", 115200);
+		//myPort = new Serial(this, Serial.list()[5], 115200);
+		myPort = new Serial(this, "/dev/cu.usbmodem29", 115200);
 		myPort.bufferUntil('\n');
 		myPort.clear();
 		println("Initializing serial port...");
@@ -60,7 +60,9 @@ public class ProbatioGrapherLibmapper extends PApplet {
 			if (myPort.available() > 0) {
 				myPort.readStringUntil('\n');
 			}
+			
 		}
+	
 		println("Serial port ready!");
 		serialIsReady = true;
 		background(255);

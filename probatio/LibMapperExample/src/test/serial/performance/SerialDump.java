@@ -6,7 +6,7 @@ import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
 
-import model.BlockType;
+import mvc.model.BlockType;
 import processing.core.PApplet;
 import processing.event.KeyEvent;
 import processing.serial.Serial;
@@ -27,8 +27,8 @@ public class SerialDump extends PApplet{
 		long startTime = millis();
 		serialIsReady = false;
 		println(Serial.list());
-		myPort = new Serial(this, Serial.list()[5], 115200);
-		//myPort = new Serial(this, "/dev/tty.usbmodem782301", 115200);
+		//myPort = new Serial(this, Serial.list()[5], 115200);
+		myPort = new Serial(this, "/dev/cu.usbmodem30", 115200);
 		//myPort = new Serial(this, "/dev/cu.usbmodem14111", 115200);
 		myPort.bufferUntil('\n');
 		myPort.clear();
@@ -59,9 +59,9 @@ public class SerialDump extends PApplet{
 				}
 				message = message.trim();
 				message = message + "]";
-				System.out.print(message + "\t");
-				//System.out.print(Arrays.toString(meusInts)+ "\t");
-				System.out.println(parse(meusInts) );
+				System.out.println(message + "\t");
+				//System.out.println(Arrays.toString(meusInts)+ "\t");
+				//System.out.println(parse(meusInts) );
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

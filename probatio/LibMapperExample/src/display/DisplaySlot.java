@@ -4,7 +4,7 @@ import Mapper.Device.Signal;
 import cooked.KinematicFactory;
 import cooked.Kinematics;
 import mapper.MapperManager;
-import model.BlockType;
+import mvc.model.BlockType;
 import processing.core.PApplet;
 import processing.core.PImage;
 import utils.Utils;

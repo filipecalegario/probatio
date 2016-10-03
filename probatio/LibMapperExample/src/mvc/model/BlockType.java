@@ -1,4 +1,4 @@
-package model;
+package mvc.model;
 
 public class BlockType {
 
@@ -10,6 +10,8 @@ public class BlockType {
 	public static final int NONE = 0;
 	public static final int TURNTABLE = 46;
 	public static final int DEBUG = 99;
+	public static final int BREATH = 51;
+	
 	
 	public static String getBlockNameById(int id){
 		String result = "NONE";
@@ -34,6 +36,9 @@ public class BlockType {
 			break;
 		case DEBUG:	
 			result = "DEBUG";
+			break;
+		case BREATH:	
+			result = "BREATH";
 			break;
 		default:
 			result = "NONE";

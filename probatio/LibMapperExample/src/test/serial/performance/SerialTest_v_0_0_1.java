@@ -6,7 +6,7 @@ import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import model.BlockType;
+import mvc.model.BlockType;
 import processing.core.PApplet;
 import processing.event.KeyEvent;
 import processing.serial.Serial;

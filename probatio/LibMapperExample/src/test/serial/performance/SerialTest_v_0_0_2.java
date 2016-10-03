@@ -6,7 +6,7 @@ import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import model.BlockType;
+import mvc.model.BlockType;
 import processing.core.PApplet;
 import processing.event.KeyEvent;
 import processing.serial.Serial;
@@ -36,8 +36,8 @@ public class SerialTest_v_0_0_2 extends PApplet{
 		long startTime = millis();
 		serialIsReady = false;
 		println(Serial.list());
-		String portName = Serial.list()[5];
-		//String portName = "/dev/cu.usbmodem14121";
+		//String portName = Serial.list()[5];
+		String portName = "/dev/tty.usbmodem29";
 		//myPort = new Serial(this, portName, 115200);
 		//myPort = new Serial(this, "/dev/tty.usbmodem782301", 115200);
 		myPort = new Serial(this, portName, 115200);

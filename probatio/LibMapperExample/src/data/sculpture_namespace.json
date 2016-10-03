@@ -1,0 +1,4001 @@
+{
+    "device": {
+        "fileversion": "dot-1",
+        "name": "/sculpture",
+        "numInputs": 475,
+        "numOutputs": 0,
+        "inputs": [
+            {
+                "name": "/1_channel/control/14/global/bender_range",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 37,
+                "units": "na"
+            },
+            {
+                "name": "/1_channel/control/15/global/volume",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 84,
+                "units": "na"
+            },
+            {
+                "name": "/1_channel/control/16/global/limiter_mode",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 3,
+                "units": "na"
+            },
+            {
+                "name": "/1_channel/control/17/global/transpose",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 4,
+                "units": "na"
+            },
+            {
+                "name": "/1_channel/control/18/GM/effects",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 127,
+                "units": "na"
+            },
+            {
+                "name": "/1_channel/control/19/GM/effects",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 127,
+                "units": "na"
+            },
+            {
+                "name": "/1_channel/control/20/controller_assignment/set_vibrato",
+                "type": "i",
+                "minimum": 1,
+                "maximum": 77,
+                "units": "na"
+            },
+            {
+                "name": "/1_channel/control/21/controller_assignment/set_CtrlA",
+                "type": "i",
+                "minimum": 1,
+                "maximum": 77,
+                "units": "na"
+            },
+            {
+                "name": "/1_channel/control/22/controller_assignment/set_CtrlB",
+                "type": "i",
+                "minimum": 1,
+                "maximum": 77,
+                "units": "na"
+            },
+            {
+                "name": "/1_channel/control/23/controller_assignment/set_CtrlEnv1",
+                "type": "i",
+                "minimum": 1,
+                "maximum": 77,
+                "units": "na"
+            },
+            {
+                "name": "/1_channel/control/24/controller_assignment/set_CtrlEnv2",
+                "type": "i",
+                "minimum": 1,
+                "maximum": 77,
+                "units": "na"
+            },
+            {
+                "name": "/1_channel/control/25/controller_assignment/set_MorphX",
+                "type": "i",
+                "minimum": 1,
+                "maximum": 77,
+                "units": "na"
+            },
+            {
+                "name": "/1_channel/control/26/controller_assignment/set_MorphY",
+                "type": "i",
+                "minimum": 1,
+                "maximum": 77,
+                "units": "na"
+            },
+            {
+                "name": "/1_channel/control/27/vibrato/waveform",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 9,
+                "units": "na"
+            },
+            {
+                "name": "/1_channel/control/28/vibrato/frequency",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 102,
+                "units": "na"
+            },
+            {
+                "name": "/1_channel/control/29/vibrato/max_depth",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/1_channel/control/30/vibrato/min_depth",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/1_channel/control/31/vibrato/random_depth",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/1_channel/control/32/vibrato/synch_rate",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 1,
+                "units": "na"
+            },
+            {
+                "name": "/1_channel/control/33/vibrato/curviness",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 126,
+                "units": "na"
+            },
+            {
+                "name": "/1_channel/control/34/body/on_off",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 1,
+                "units": "na"
+            },
+            {
+                "name": "/1_channel/control/35/body/model",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 20,
+                "units": "na"
+            },
+            {
+                "name": "/1_channel/control/36/body/intensity",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 126,
+                "units": "na"
+            },
+            {
+                "name": "/1_channel/control/37/body/shift",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 126,
+                "units": "na"
+            },
+            {
+                "name": "/1_channel/control/38/body/stretch",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 126,
+                "units": "na"
+            },
+            {
+                "name": "/1_channel/control/39/body/structure",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/1_channel/control/40/string_parameters/resolution",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/1_channel/control/41/string_parameters/tension",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/1_channel/control/42/string_parameters/stiffness",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/1_channel/control/43/string_parameters/inner_loss",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/1_channel/control/44/string_parameters/media_loss",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/1_channel/control/45/string_parameters/inner_loss_on_release",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/1_channel/control/46/string_parameters/media_loss_on_release",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/1_channel/control/47/string_parameters/resolution_low",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/1_channel/control/48/string_parameters/resolution_high",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/1_channel/control/49/string_parameters/tension_low",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/1_channel/control/50/string_parameters/tension_high",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/1_channel/control/51/string_parameters/stiffness_low",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/1_channel/control/52/string_parameters/stiffness_high",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/1_channel/control/53/string_parameters/inner_loss_low",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/1_channel/control/54/string_parameters/inner_loss_high",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/1_channel/control/55/string_parameters/media_loss_low",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/1_channel/control/56/string_parameters/media_loss_high",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/1_channel/control/60/object1/on_off",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 1,
+                "units": "na"
+            },
+            {
+                "name": "/1_channel/control/61/object1/excitation",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 7,
+                "units": "na"
+            },
+            {
+                "name": "/1_channel/control/62/object1/gate",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 2,
+                "units": "na"
+            },
+            {
+                "name": "/1_channel/control/63/object1/pickup_position",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/1_channel/control/64/object1/strength",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/1_channel/control/65/object1/timbre",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 126,
+                "units": "na"
+            },
+            {
+                "name": "/1_channel/control/66/object1/variation",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 126,
+                "units": "na"
+            },
+            {
+                "name": "/1_channel/control/67/object1/velocity_sensitivity",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/1_channel/control/70/object2/on_off",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 1,
+                "units": "na"
+            },
+            {
+                "name": "/1_channel/control/71/object2/excitation",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 14,
+                "units": "na"
+            },
+            {
+                "name": "/1_channel/control/72/object2/gate",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 2,
+                "units": "na"
+            },
+            {
+                "name": "/1_channel/control/73/object2/pickup_position",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/1_channel/control/74/object2/strength",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/1_channel/control/75/object2/timbre",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 126,
+                "units": "na"
+            },
+            {
+                "name": "/1_channel/control/76/object2/variation",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 126,
+                "units": "na"
+            },
+            {
+                "name": "/1_channel/control/77/object2/velocity_sensitivity",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/1_channel/control/80/object3/on_off",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 1,
+                "units": "na"
+            },
+            {
+                "name": "/1_channel/control/81/object3/excitation",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 5,
+                "units": "na"
+            },
+            {
+                "name": "/1_channel/control/82/object3/gate",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 2,
+                "units": "na"
+            },
+            {
+                "name": "/1_channel/control/83/object3/pickup_position",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/1_channel/control/84/object3/strength",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/1_channel/control/85/object3/timbre",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 126,
+                "units": "na"
+            },
+            {
+                "name": "/1_channel/control/86/object3/variation",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 126,
+                "units": "na"
+            },
+            {
+                "name": "/1_channel/control/90/stereo/via_pickup",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/1_channel/control/91/stereo/via_note",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/1_channel/control/95/waveshaper/on_off",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 1,
+                "units": "na"
+            },
+            {
+                "name": "/1_channel/control/96/waveshaper/type",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 3,
+                "units": "na"
+            },
+            {
+                "name": "/1_channel/control/97/waveshaper/timbre",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 126,
+                "units": "na"
+            },
+            {
+                "name": "/1_channel/control/98/waveshaper/variation",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 126,
+                "units": "na"
+            },
+            {
+                "name": "/1_channel/control/100/filter/on_off",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 1,
+                "units": "na"
+            },
+            {
+                "name": "/1_channel/control/101/filter/type",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 4,
+                "units": "na"
+            },
+            {
+                "name": "/1_channel/control/102/filter/cutoff_frequency",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/1_channel/control/103/filter/Q",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/1_channel/control/104/filter/cutoff_via_note",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/1_channel/control/105/filter/cutoff_via_velocity",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/1_channel/control/110/amplitude_env/attack_upper_limit",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 127,
+                "units": "na"
+            },
+            {
+                "name": "/1_channel/control/111/amplitude_env/attack_lower_limit",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 127,
+                "units": "na"
+            },
+            {
+                "name": "/1_channel/control/112/amplitude_env/decay",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 127,
+                "units": "na"
+            },
+            {
+                "name": "/1_channel/control/113/amplitude_env/sustain",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 127,
+                "units": "na"
+            },
+            {
+                "name": "/1_channel/control/114/amplitude_env/release",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 127,
+                "units": "na"
+            },
+            {
+                "name": "/1_channel/control/115/global/tune",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/1_channel/control/116/delay/wetlevel",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/1_channel/control/117/delay/temposync",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 1,
+                "units": "na"
+            },
+            {
+                "name": "/1_channel/control/118/delay/time",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 126,
+                "units": "na"
+            },
+            {
+                "name": "/1_channel/control/119/delay/balance",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 126,
+                "units": "na"
+            },
+            {
+                "name": "/1_channel/control/120/delay/spread",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 126,
+                "units": "na"
+            },
+            {
+                "name": "/1_channel/control/121/delay/groove",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 126,
+                "units": "na"
+            },
+            {
+                "name": "/1_channel/control/122/delay/feedback",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 126,
+                "units": "na"
+            },
+            {
+                "name": "/1_channel/control/123/delay/xfeedback",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 126,
+                "units": "na"
+            },
+            {
+                "name": "/1_channel/control/124/delay/hicut",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/1_channel/control/125/delay/lowcut",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/1_channel/control/126/delay/outputwidth",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/2_channel/control/14/global/bender_range",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 37,
+                "units": "na"
+            },
+            {
+                "name": "/2_channel/control/15/global/volume",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 84,
+                "units": "na"
+            },
+            {
+                "name": "/2_channel/control/16/global/limiter_mode",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 3,
+                "units": "na"
+            },
+            {
+                "name": "/2_channel/control/17/global/transpose",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 4,
+                "units": "na"
+            },
+            {
+                "name": "/2_channel/control/18/GM/effects",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 127,
+                "units": "na"
+            },
+            {
+                "name": "/2_channel/control/19/GM/effects",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 127,
+                "units": "na"
+            },
+            {
+                "name": "/2_channel/control/20/controller_assignment/set_vibrato",
+                "type": "i",
+                "minimum": 1,
+                "maximum": 77,
+                "units": "na"
+            },
+            {
+                "name": "/2_channel/control/21/controller_assignment/set_CtrlA",
+                "type": "i",
+                "minimum": 1,
+                "maximum": 77,
+                "units": "na"
+            },
+            {
+                "name": "/2_channel/control/22/controller_assignment/set_CtrlB",
+                "type": "i",
+                "minimum": 1,
+                "maximum": 77,
+                "units": "na"
+            },
+            {
+                "name": "/2_channel/control/23/controller_assignment/set_CtrlEnv1",
+                "type": "i",
+                "minimum": 1,
+                "maximum": 77,
+                "units": "na"
+            },
+            {
+                "name": "/2_channel/control/24/controller_assignment/set_CtrlEnv2",
+                "type": "i",
+                "minimum": 1,
+                "maximum": 77,
+                "units": "na"
+            },
+            {
+                "name": "/2_channel/control/25/controller_assignment/set_MorphX",
+                "type": "i",
+                "minimum": 1,
+                "maximum": 77,
+                "units": "na"
+            },
+            {
+                "name": "/2_channel/control/26/controller_assignment/set_MorphY",
+                "type": "i",
+                "minimum": 1,
+                "maximum": 77,
+                "units": "na"
+            },
+            {
+                "name": "/2_channel/control/27/vibrato/waveform",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 9,
+                "units": "na"
+            },
+            {
+                "name": "/2_channel/control/28/vibrato/frequency",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 102,
+                "units": "na"
+            },
+            {
+                "name": "/2_channel/control/29/vibrato/max_depth",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/2_channel/control/30/vibrato/min_depth",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/2_channel/control/31/vibrato/random_depth",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/2_channel/control/32/vibrato/synch_rate",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 1,
+                "units": "na"
+            },
+            {
+                "name": "/2_channel/control/33/vibrato/curviness",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 126,
+                "units": "na"
+            },
+            {
+                "name": "/2_channel/control/34/body/on_off",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 1,
+                "units": "na"
+            },
+            {
+                "name": "/2_channel/control/35/body/model",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 20,
+                "units": "na"
+            },
+            {
+                "name": "/2_channel/control/36/body/intensity",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 126,
+                "units": "na"
+            },
+            {
+                "name": "/2_channel/control/37/body/shift",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 126,
+                "units": "na"
+            },
+            {
+                "name": "/2_channel/control/38/body/stretch",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 126,
+                "units": "na"
+            },
+            {
+                "name": "/2_channel/control/39/body/structure",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/2_channel/control/40/string_parameters/resolution",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/2_channel/control/41/string_parameters/tension",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/2_channel/control/42/string_parameters/stiffness",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/2_channel/control/43/string_parameters/inner_loss",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/2_channel/control/44/string_parameters/media_loss",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/2_channel/control/45/string_parameters/inner_loss_on_release",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/2_channel/control/46/string_parameters/media_loss_on_release",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/2_channel/control/47/string_parameters/resolution_low",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/2_channel/control/48/string_parameters/resolution_high",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/2_channel/control/49/string_parameters/tension_low",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/2_channel/control/50/string_parameters/tension_high",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/2_channel/control/51/string_parameters/stiffness_low",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/2_channel/control/52/string_parameters/stiffness_high",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/2_channel/control/53/string_parameters/inner_loss_low",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/2_channel/control/54/string_parameters/inner_loss_high",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/2_channel/control/55/string_parameters/media_loss_low",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/2_channel/control/56/string_parameters/media_loss_high",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/2_channel/control/60/object1/on_off",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 1,
+                "units": "na"
+            },
+            {
+                "name": "/2_channel/control/61/object1/excitation",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 7,
+                "units": "na"
+            },
+            {
+                "name": "/2_channel/control/62/object1/gate",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 2,
+                "units": "na"
+            },
+            {
+                "name": "/2_channel/control/63/object1/pickup_position",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/2_channel/control/64/object1/strength",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/2_channel/control/65/object1/timbre",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 126,
+                "units": "na"
+            },
+            {
+                "name": "/2_channel/control/66/object1/variation",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 126,
+                "units": "na"
+            },
+            {
+                "name": "/2_channel/control/67/object1/velocity_sensitivity",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/2_channel/control/70/object2/on_off",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 1,
+                "units": "na"
+            },
+            {
+                "name": "/2_channel/control/71/object2/excitation",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 14,
+                "units": "na"
+            },
+            {
+                "name": "/2_channel/control/72/object2/gate",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 2,
+                "units": "na"
+            },
+            {
+                "name": "/2_channel/control/73/object2/pickup_position",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/2_channel/control/74/object2/strength",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/2_channel/control/75/object2/timbre",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 126,
+                "units": "na"
+            },
+            {
+                "name": "/2_channel/control/76/object2/variation",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 126,
+                "units": "na"
+            },
+            {
+                "name": "/2_channel/control/77/object2/velocity_sensitivity",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/2_channel/control/80/object3/on_off",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 1,
+                "units": "na"
+            },
+            {
+                "name": "/2_channel/control/81/object3/excitation",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 5,
+                "units": "na"
+            },
+            {
+                "name": "/2_channel/control/82/object3/gate",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 2,
+                "units": "na"
+            },
+            {
+                "name": "/2_channel/control/83/object3/pickup_position",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/2_channel/control/84/object3/strength",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/2_channel/control/85/object3/timbre",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 126,
+                "units": "na"
+            },
+            {
+                "name": "/2_channel/control/86/object3/variation",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 126,
+                "units": "na"
+            },
+            {
+                "name": "/2_channel/control/90/stereo/via_pickup",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/2_channel/control/91/stereo/via_note",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/2_channel/control/95/waveshaper/on_off",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 1,
+                "units": "na"
+            },
+            {
+                "name": "/2_channel/control/96/waveshaper/type",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 3,
+                "units": "na"
+            },
+            {
+                "name": "/2_channel/control/97/waveshaper/timbre",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 126,
+                "units": "na"
+            },
+            {
+                "name": "/2_channel/control/98/waveshaper/variation",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 126,
+                "units": "na"
+            },
+            {
+                "name": "/2_channel/control/100/filter/on_off",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 1,
+                "units": "na"
+            },
+            {
+                "name": "/2_channel/control/101/filter/type",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 4,
+                "units": "na"
+            },
+            {
+                "name": "/2_channel/control/102/filter/cutoff_frequency",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/2_channel/control/103/filter/Q",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/2_channel/control/104/filter/cutoff_via_note",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/2_channel/control/105/filter/cutoff_via_velocity",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/2_channel/control/110/amplitude_env/attack_upper_limit",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 127,
+                "units": "na"
+            },
+            {
+                "name": "/2_channel/control/111/amplitude_env/attack_lower_limit",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 127,
+                "units": "na"
+            },
+            {
+                "name": "/2_channel/control/112/amplitude_env/decay",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 127,
+                "units": "na"
+            },
+            {
+                "name": "/2_channel/control/113/amplitude_env/sustain",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 127,
+                "units": "na"
+            },
+            {
+                "name": "/2_channel/control/114/amplitude_env/release",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 127,
+                "units": "na"
+            },
+            {
+                "name": "/2_channel/control/115/global/tune",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/2_channel/control/116/delay/wetlevel",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/2_channel/control/117/delay/temposync",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 1,
+                "units": "na"
+            },
+            {
+                "name": "/2_channel/control/118/delay/time",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 126,
+                "units": "na"
+            },
+            {
+                "name": "/2_channel/control/119/delay/balance",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 126,
+                "units": "na"
+            },
+            {
+                "name": "/2_channel/control/120/delay/spread",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 126,
+                "units": "na"
+            },
+            {
+                "name": "/2_channel/control/121/delay/groove",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 126,
+                "units": "na"
+            },
+            {
+                "name": "/2_channel/control/122/delay/feedback",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 126,
+                "units": "na"
+            },
+            {
+                "name": "/2_channel/control/123/delay/xfeedback",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 126,
+                "units": "na"
+            },
+            {
+                "name": "/2_channel/control/124/delay/hicut",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/2_channel/control/125/delay/lowcut",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/2_channel/control/126/delay/outputwidth",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/3_channel/control/14/global/bender_range",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 37,
+                "units": "na"
+            },
+            {
+                "name": "/3_channel/control/15/global/volume",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 84,
+                "units": "na"
+            },
+            {
+                "name": "/3_channel/control/16/global/limiter_mode",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 3,
+                "units": "na"
+            },
+            {
+                "name": "/3_channel/control/17/global/transpose",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 4,
+                "units": "na"
+            },
+            {
+                "name": "/3_channel/control/18/GM/effects",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 127,
+                "units": "na"
+            },
+            {
+                "name": "/3_channel/control/19/GM/effects",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 127,
+                "units": "na"
+            },
+            {
+                "name": "/3_channel/control/20/controller_assignment/set_vibrato",
+                "type": "i",
+                "minimum": 1,
+                "maximum": 77,
+                "units": "na"
+            },
+            {
+                "name": "/3_channel/control/21/controller_assignment/set_CtrlA",
+                "type": "i",
+                "minimum": 1,
+                "maximum": 77,
+                "units": "na"
+            },
+            {
+                "name": "/3_channel/control/22/controller_assignment/set_CtrlB",
+                "type": "i",
+                "minimum": 1,
+                "maximum": 77,
+                "units": "na"
+            },
+            {
+                "name": "/3_channel/control/23/controller_assignment/set_CtrlEnv1",
+                "type": "i",
+                "minimum": 1,
+                "maximum": 77,
+                "units": "na"
+            },
+            {
+                "name": "/3_channel/control/24/controller_assignment/set_CtrlEnv2",
+                "type": "i",
+                "minimum": 1,
+                "maximum": 77,
+                "units": "na"
+            },
+            {
+                "name": "/3_channel/control/25/controller_assignment/set_MorphX",
+                "type": "i",
+                "minimum": 1,
+                "maximum": 77,
+                "units": "na"
+            },
+            {
+                "name": "/3_channel/control/26/controller_assignment/set_MorphY",
+                "type": "i",
+                "minimum": 1,
+                "maximum": 77,
+                "units": "na"
+            },
+            {
+                "name": "/3_channel/control/27/vibrato/waveform",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 9,
+                "units": "na"
+            },
+            {
+                "name": "/3_channel/control/28/vibrato/frequency",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 102,
+                "units": "na"
+            },
+            {
+                "name": "/3_channel/control/29/vibrato/max_depth",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/3_channel/control/30/vibrato/min_depth",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/3_channel/control/31/vibrato/random_depth",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/3_channel/control/32/vibrato/synch_rate",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 1,
+                "units": "na"
+            },
+            {
+                "name": "/3_channel/control/33/vibrato/curviness",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 126,
+                "units": "na"
+            },
+            {
+                "name": "/3_channel/control/34/body/on_off",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 1,
+                "units": "na"
+            },
+            {
+                "name": "/3_channel/control/35/body/model",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 20,
+                "units": "na"
+            },
+            {
+                "name": "/3_channel/control/36/body/intensity",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 126,
+                "units": "na"
+            },
+            {
+                "name": "/3_channel/control/37/body/shift",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 126,
+                "units": "na"
+            },
+            {
+                "name": "/3_channel/control/38/body/stretch",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 126,
+                "units": "na"
+            },
+            {
+                "name": "/3_channel/control/39/body/structure",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/3_channel/control/40/string_parameters/resolution",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/3_channel/control/41/string_parameters/tension",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/3_channel/control/42/string_parameters/stiffness",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/3_channel/control/43/string_parameters/inner_loss",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/3_channel/control/44/string_parameters/media_loss",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/3_channel/control/45/string_parameters/inner_loss_on_release",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/3_channel/control/46/string_parameters/media_loss_on_release",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/3_channel/control/47/string_parameters/resolution_low",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/3_channel/control/48/string_parameters/resolution_high",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/3_channel/control/49/string_parameters/tension_low",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/3_channel/control/50/string_parameters/tension_high",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/3_channel/control/51/string_parameters/stiffness_low",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/3_channel/control/52/string_parameters/stiffness_high",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/3_channel/control/53/string_parameters/inner_loss_low",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/3_channel/control/54/string_parameters/inner_loss_high",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/3_channel/control/55/string_parameters/media_loss_low",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/3_channel/control/56/string_parameters/media_loss_high",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/3_channel/control/60/object1/on_off",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 1,
+                "units": "na"
+            },
+            {
+                "name": "/3_channel/control/61/object1/excitation",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 7,
+                "units": "na"
+            },
+            {
+                "name": "/3_channel/control/62/object1/gate",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 2,
+                "units": "na"
+            },
+            {
+                "name": "/3_channel/control/63/object1/pickup_position",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/3_channel/control/64/object1/strength",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/3_channel/control/65/object1/timbre",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 126,
+                "units": "na"
+            },
+            {
+                "name": "/3_channel/control/66/object1/variation",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 126,
+                "units": "na"
+            },
+            {
+                "name": "/3_channel/control/67/object1/velocity_sensitivity",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/3_channel/control/70/object2/on_off",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 1,
+                "units": "na"
+            },
+            {
+                "name": "/3_channel/control/71/object2/excitation",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 14,
+                "units": "na"
+            },
+            {
+                "name": "/3_channel/control/72/object2/gate",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 2,
+                "units": "na"
+            },
+            {
+                "name": "/3_channel/control/73/object2/pickup_position",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/3_channel/control/74/object2/strength",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/3_channel/control/75/object2/timbre",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 126,
+                "units": "na"
+            },
+            {
+                "name": "/3_channel/control/76/object2/variation",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 126,
+                "units": "na"
+            },
+            {
+                "name": "/3_channel/control/77/object2/velocity_sensitivity",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/3_channel/control/80/object3/on_off",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 1,
+                "units": "na"
+            },
+            {
+                "name": "/3_channel/control/81/object3/excitation",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 5,
+                "units": "na"
+            },
+            {
+                "name": "/3_channel/control/82/object3/gate",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 2,
+                "units": "na"
+            },
+            {
+                "name": "/3_channel/control/83/object3/pickup_position",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/3_channel/control/84/object3/strength",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/3_channel/control/85/object3/timbre",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 126,
+                "units": "na"
+            },
+            {
+                "name": "/3_channel/control/86/object3/variation",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 126,
+                "units": "na"
+            },
+            {
+                "name": "/3_channel/control/90/stereo/via_pickup",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/3_channel/control/91/stereo/via_note",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/3_channel/control/95/waveshaper/on_off",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 1,
+                "units": "na"
+            },
+            {
+                "name": "/3_channel/control/96/waveshaper/type",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 3,
+                "units": "na"
+            },
+            {
+                "name": "/3_channel/control/97/waveshaper/timbre",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 126,
+                "units": "na"
+            },
+            {
+                "name": "/3_channel/control/98/waveshaper/variation",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 126,
+                "units": "na"
+            },
+            {
+                "name": "/3_channel/control/100/filter/on_off",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 1,
+                "units": "na"
+            },
+            {
+                "name": "/3_channel/control/101/filter/type",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 4,
+                "units": "na"
+            },
+            {
+                "name": "/3_channel/control/102/filter/cutoff_frequency",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/3_channel/control/103/filter/Q",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/3_channel/control/104/filter/cutoff_via_note",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/3_channel/control/105/filter/cutoff_via_velocity",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/3_channel/control/110/amplitude_env/attack_upper_limit",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 127,
+                "units": "na"
+            },
+            {
+                "name": "/3_channel/control/111/amplitude_env/attack_lower_limit",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 127,
+                "units": "na"
+            },
+            {
+                "name": "/3_channel/control/112/amplitude_env/decay",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 127,
+                "units": "na"
+            },
+            {
+                "name": "/3_channel/control/113/amplitude_env/sustain",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 127,
+                "units": "na"
+            },
+            {
+                "name": "/3_channel/control/114/amplitude_env/release",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 127,
+                "units": "na"
+            },
+            {
+                "name": "/3_channel/control/115/global/tune",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/3_channel/control/116/delay/wetlevel",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/3_channel/control/117/delay/temposync",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 1,
+                "units": "na"
+            },
+            {
+                "name": "/3_channel/control/118/delay/time",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 126,
+                "units": "na"
+            },
+            {
+                "name": "/3_channel/control/119/delay/balance",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 126,
+                "units": "na"
+            },
+            {
+                "name": "/3_channel/control/120/delay/spread",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 126,
+                "units": "na"
+            },
+            {
+                "name": "/3_channel/control/121/delay/groove",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 126,
+                "units": "na"
+            },
+            {
+                "name": "/3_channel/control/122/delay/feedback",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 126,
+                "units": "na"
+            },
+            {
+                "name": "/3_channel/control/123/delay/xfeedback",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 126,
+                "units": "na"
+            },
+            {
+                "name": "/3_channel/control/124/delay/hicut",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/3_channel/control/125/delay/lowcut",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/3_channel/control/126/delay/outputwidth",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/4_channel/control/14/global/bender_range",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 37,
+                "units": "na"
+            },
+            {
+                "name": "/4_channel/control/15/global/volume",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 84,
+                "units": "na"
+            },
+            {
+                "name": "/4_channel/control/16/global/limiter_mode",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 3,
+                "units": "na"
+            },
+            {
+                "name": "/4_channel/control/17/global/transpose",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 4,
+                "units": "na"
+            },
+            {
+                "name": "/4_channel/control/18/GM/effects",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 127,
+                "units": "na"
+            },
+            {
+                "name": "/4_channel/control/19/GM/effects",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 127,
+                "units": "na"
+            },
+            {
+                "name": "/4_channel/control/20/controller_assignment/set_vibrato",
+                "type": "i",
+                "minimum": 1,
+                "maximum": 77,
+                "units": "na"
+            },
+            {
+                "name": "/4_channel/control/21/controller_assignment/set_CtrlA",
+                "type": "i",
+                "minimum": 1,
+                "maximum": 77,
+                "units": "na"
+            },
+            {
+                "name": "/4_channel/control/22/controller_assignment/set_CtrlB",
+                "type": "i",
+                "minimum": 1,
+                "maximum": 77,
+                "units": "na"
+            },
+            {
+                "name": "/4_channel/control/23/controller_assignment/set_CtrlEnv1",
+                "type": "i",
+                "minimum": 1,
+                "maximum": 77,
+                "units": "na"
+            },
+            {
+                "name": "/4_channel/control/24/controller_assignment/set_CtrlEnv2",
+                "type": "i",
+                "minimum": 1,
+                "maximum": 77,
+                "units": "na"
+            },
+            {
+                "name": "/4_channel/control/25/controller_assignment/set_MorphX",
+                "type": "i",
+                "minimum": 1,
+                "maximum": 77,
+                "units": "na"
+            },
+            {
+                "name": "/4_channel/control/26/controller_assignment/set_MorphY",
+                "type": "i",
+                "minimum": 1,
+                "maximum": 77,
+                "units": "na"
+            },
+            {
+                "name": "/4_channel/control/27/vibrato/waveform",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 9,
+                "units": "na"
+            },
+            {
+                "name": "/4_channel/control/28/vibrato/frequency",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 102,
+                "units": "na"
+            },
+            {
+                "name": "/4_channel/control/29/vibrato/max_depth",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/4_channel/control/30/vibrato/min_depth",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/4_channel/control/31/vibrato/random_depth",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/4_channel/control/32/vibrato/synch_rate",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 1,
+                "units": "na"
+            },
+            {
+                "name": "/4_channel/control/33/vibrato/curviness",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 126,
+                "units": "na"
+            },
+            {
+                "name": "/4_channel/control/34/body/on_off",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 1,
+                "units": "na"
+            },
+            {
+                "name": "/4_channel/control/35/body/model",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 20,
+                "units": "na"
+            },
+            {
+                "name": "/4_channel/control/36/body/intensity",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 126,
+                "units": "na"
+            },
+            {
+                "name": "/4_channel/control/37/body/shift",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 126,
+                "units": "na"
+            },
+            {
+                "name": "/4_channel/control/38/body/stretch",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 126,
+                "units": "na"
+            },
+            {
+                "name": "/4_channel/control/39/body/structure",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/4_channel/control/40/string_parameters/resolution",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/4_channel/control/41/string_parameters/tension",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/4_channel/control/42/string_parameters/stiffness",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/4_channel/control/43/string_parameters/inner_loss",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/4_channel/control/44/string_parameters/media_loss",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/4_channel/control/45/string_parameters/inner_loss_on_release",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/4_channel/control/46/string_parameters/media_loss_on_release",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/4_channel/control/47/string_parameters/resolution_low",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/4_channel/control/48/string_parameters/resolution_high",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/4_channel/control/49/string_parameters/tension_low",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/4_channel/control/50/string_parameters/tension_high",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/4_channel/control/51/string_parameters/stiffness_low",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/4_channel/control/52/string_parameters/stiffness_high",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/4_channel/control/53/string_parameters/inner_loss_low",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/4_channel/control/54/string_parameters/inner_loss_high",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/4_channel/control/55/string_parameters/media_loss_low",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/4_channel/control/56/string_parameters/media_loss_high",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/4_channel/control/60/object1/on_off",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 1,
+                "units": "na"
+            },
+            {
+                "name": "/4_channel/control/61/object1/excitation",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 7,
+                "units": "na"
+            },
+            {
+                "name": "/4_channel/control/62/object1/gate",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 2,
+                "units": "na"
+            },
+            {
+                "name": "/4_channel/control/63/object1/pickup_position",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/4_channel/control/64/object1/strength",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/4_channel/control/65/object1/timbre",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 126,
+                "units": "na"
+            },
+            {
+                "name": "/4_channel/control/66/object1/variation",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 126,
+                "units": "na"
+            },
+            {
+                "name": "/4_channel/control/67/object1/velocity_sensitivity",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/4_channel/control/70/object2/on_off",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 1,
+                "units": "na"
+            },
+            {
+                "name": "/4_channel/control/71/object2/excitation",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 14,
+                "units": "na"
+            },
+            {
+                "name": "/4_channel/control/72/object2/gate",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 2,
+                "units": "na"
+            },
+            {
+                "name": "/4_channel/control/73/object2/pickup_position",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/4_channel/control/74/object2/strength",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/4_channel/control/75/object2/timbre",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 126,
+                "units": "na"
+            },
+            {
+                "name": "/4_channel/control/76/object2/variation",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 126,
+                "units": "na"
+            },
+            {
+                "name": "/4_channel/control/77/object2/velocity_sensitivity",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/4_channel/control/80/object3/on_off",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 1,
+                "units": "na"
+            },
+            {
+                "name": "/4_channel/control/81/object3/excitation",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 5,
+                "units": "na"
+            },
+            {
+                "name": "/4_channel/control/82/object3/gate",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 2,
+                "units": "na"
+            },
+            {
+                "name": "/4_channel/control/83/object3/pickup_position",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/4_channel/control/84/object3/strength",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/4_channel/control/85/object3/timbre",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 126,
+                "units": "na"
+            },
+            {
+                "name": "/4_channel/control/86/object3/variation",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 126,
+                "units": "na"
+            },
+            {
+                "name": "/4_channel/control/90/stereo/via_pickup",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/4_channel/control/91/stereo/via_note",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/4_channel/control/95/waveshaper/on_off",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 1,
+                "units": "na"
+            },
+            {
+                "name": "/4_channel/control/96/waveshaper/type",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 3,
+                "units": "na"
+            },
+            {
+                "name": "/4_channel/control/97/waveshaper/timbre",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 126,
+                "units": "na"
+            },
+            {
+                "name": "/4_channel/control/98/waveshaper/variation",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 126,
+                "units": "na"
+            },
+            {
+                "name": "/4_channel/control/100/filter/on_off",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 1,
+                "units": "na"
+            },
+            {
+                "name": "/4_channel/control/101/filter/type",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 4,
+                "units": "na"
+            },
+            {
+                "name": "/4_channel/control/102/filter/cutoff_frequency",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/4_channel/control/103/filter/Q",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/4_channel/control/104/filter/cutoff_via_note",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/4_channel/control/105/filter/cutoff_via_velocity",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/4_channel/control/110/amplitude_env/attack_upper_limit",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 127,
+                "units": "na"
+            },
+            {
+                "name": "/4_channel/control/111/amplitude_env/attack_lower_limit",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 127,
+                "units": "na"
+            },
+            {
+                "name": "/4_channel/control/112/amplitude_env/decay",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 127,
+                "units": "na"
+            },
+            {
+                "name": "/4_channel/control/113/amplitude_env/sustain",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 127,
+                "units": "na"
+            },
+            {
+                "name": "/4_channel/control/114/amplitude_env/release",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 127,
+                "units": "na"
+            },
+            {
+                "name": "/4_channel/control/115/global/tune",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/4_channel/control/116/delay/wetlevel",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/4_channel/control/117/delay/temposync",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 1,
+                "units": "na"
+            },
+            {
+                "name": "/4_channel/control/118/delay/time",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 126,
+                "units": "na"
+            },
+            {
+                "name": "/4_channel/control/119/delay/balance",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 126,
+                "units": "na"
+            },
+            {
+                "name": "/4_channel/control/120/delay/spread",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 126,
+                "units": "na"
+            },
+            {
+                "name": "/4_channel/control/121/delay/groove",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 126,
+                "units": "na"
+            },
+            {
+                "name": "/4_channel/control/122/delay/feedback",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 126,
+                "units": "na"
+            },
+            {
+                "name": "/4_channel/control/123/delay/xfeedback",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 126,
+                "units": "na"
+            },
+            {
+                "name": "/4_channel/control/124/delay/hicut",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/4_channel/control/125/delay/lowcut",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/4_channel/control/126/delay/outputwidth",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/5_channel/control/14/global/bender_range",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 37,
+                "units": "na"
+            },
+            {
+                "name": "/5_channel/control/15/global/volume",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 84,
+                "units": "na"
+            },
+            {
+                "name": "/5_channel/control/16/global/limiter_mode",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 3,
+                "units": "na"
+            },
+            {
+                "name": "/5_channel/control/17/global/transpose",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 4,
+                "units": "na"
+            },
+            {
+                "name": "/5_channel/control/18/GM/effects",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 127,
+                "units": "na"
+            },
+            {
+                "name": "/5_channel/control/19/GM/effects",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 127,
+                "units": "na"
+            },
+            {
+                "name": "/5_channel/control/20/controller_assignment/set_vibrato",
+                "type": "i",
+                "minimum": 1,
+                "maximum": 77,
+                "units": "na"
+            },
+            {
+                "name": "/5_channel/control/21/controller_assignment/set_CtrlA",
+                "type": "i",
+                "minimum": 1,
+                "maximum": 77,
+                "units": "na"
+            },
+            {
+                "name": "/5_channel/control/22/controller_assignment/set_CtrlB",
+                "type": "i",
+                "minimum": 1,
+                "maximum": 77,
+                "units": "na"
+            },
+            {
+                "name": "/5_channel/control/23/controller_assignment/set_CtrlEnv1",
+                "type": "i",
+                "minimum": 1,
+                "maximum": 77,
+                "units": "na"
+            },
+            {
+                "name": "/5_channel/control/24/controller_assignment/set_CtrlEnv2",
+                "type": "i",
+                "minimum": 1,
+                "maximum": 77,
+                "units": "na"
+            },
+            {
+                "name": "/5_channel/control/25/controller_assignment/set_MorphX",
+                "type": "i",
+                "minimum": 1,
+                "maximum": 77,
+                "units": "na"
+            },
+            {
+                "name": "/5_channel/control/26/controller_assignment/set_MorphY",
+                "type": "i",
+                "minimum": 1,
+                "maximum": 77,
+                "units": "na"
+            },
+            {
+                "name": "/5_channel/control/27/vibrato/waveform",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 9,
+                "units": "na"
+            },
+            {
+                "name": "/5_channel/control/28/vibrato/frequency",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 102,
+                "units": "na"
+            },
+            {
+                "name": "/5_channel/control/29/vibrato/max_depth",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/5_channel/control/30/vibrato/min_depth",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/5_channel/control/31/vibrato/random_depth",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/5_channel/control/32/vibrato/synch_rate",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 1,
+                "units": "na"
+            },
+            {
+                "name": "/5_channel/control/33/vibrato/curviness",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 126,
+                "units": "na"
+            },
+            {
+                "name": "/5_channel/control/34/body/on_off",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 1,
+                "units": "na"
+            },
+            {
+                "name": "/5_channel/control/35/body/model",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 20,
+                "units": "na"
+            },
+            {
+                "name": "/5_channel/control/36/body/intensity",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 126,
+                "units": "na"
+            },
+            {
+                "name": "/5_channel/control/37/body/shift",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 126,
+                "units": "na"
+            },
+            {
+                "name": "/5_channel/control/38/body/stretch",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 126,
+                "units": "na"
+            },
+            {
+                "name": "/5_channel/control/39/body/structure",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/5_channel/control/40/string_parameters/resolution",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/5_channel/control/41/string_parameters/tension",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/5_channel/control/42/string_parameters/stiffness",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/5_channel/control/43/string_parameters/inner_loss",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/5_channel/control/44/string_parameters/media_loss",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/5_channel/control/45/string_parameters/inner_loss_on_release",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/5_channel/control/46/string_parameters/media_loss_on_release",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/5_channel/control/47/string_parameters/resolution_low",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/5_channel/control/48/string_parameters/resolution_high",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/5_channel/control/49/string_parameters/tension_low",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/5_channel/control/50/string_parameters/tension_high",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/5_channel/control/51/string_parameters/stiffness_low",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/5_channel/control/52/string_parameters/stiffness_high",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/5_channel/control/53/string_parameters/inner_loss_low",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/5_channel/control/54/string_parameters/inner_loss_high",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/5_channel/control/55/string_parameters/media_loss_low",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/5_channel/control/56/string_parameters/media_loss_high",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/5_channel/control/60/object1/on_off",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 1,
+                "units": "na"
+            },
+            {
+                "name": "/5_channel/control/61/object1/excitation",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 7,
+                "units": "na"
+            },
+            {
+                "name": "/5_channel/control/62/object1/gate",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 2,
+                "units": "na"
+            },
+            {
+                "name": "/5_channel/control/63/object1/pickup_position",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/5_channel/control/64/object1/strength",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/5_channel/control/65/object1/timbre",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 126,
+                "units": "na"
+            },
+            {
+                "name": "/5_channel/control/66/object1/variation",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 126,
+                "units": "na"
+            },
+            {
+                "name": "/5_channel/control/67/object1/velocity_sensitivity",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/5_channel/control/70/object2/on_off",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 1,
+                "units": "na"
+            },
+            {
+                "name": "/5_channel/control/71/object2/excitation",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 14,
+                "units": "na"
+            },
+            {
+                "name": "/5_channel/control/72/object2/gate",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 2,
+                "units": "na"
+            },
+            {
+                "name": "/5_channel/control/73/object2/pickup_position",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/5_channel/control/74/object2/strength",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/5_channel/control/75/object2/timbre",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 126,
+                "units": "na"
+            },
+            {
+                "name": "/5_channel/control/76/object2/variation",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 126,
+                "units": "na"
+            },
+            {
+                "name": "/5_channel/control/77/object2/velocity_sensitivity",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/5_channel/control/80/object3/on_off",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 1,
+                "units": "na"
+            },
+            {
+                "name": "/5_channel/control/81/object3/excitation",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 5,
+                "units": "na"
+            },
+            {
+                "name": "/5_channel/control/82/object3/gate",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 2,
+                "units": "na"
+            },
+            {
+                "name": "/5_channel/control/83/object3/pickup_position",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/5_channel/control/84/object3/strength",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/5_channel/control/85/object3/timbre",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 126,
+                "units": "na"
+            },
+            {
+                "name": "/5_channel/control/86/object3/variation",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 126,
+                "units": "na"
+            },
+            {
+                "name": "/5_channel/control/90/stereo/via_pickup",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/5_channel/control/91/stereo/via_note",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/5_channel/control/95/waveshaper/on_off",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 1,
+                "units": "na"
+            },
+            {
+                "name": "/5_channel/control/96/waveshaper/type",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 3,
+                "units": "na"
+            },
+            {
+                "name": "/5_channel/control/97/waveshaper/timbre",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 126,
+                "units": "na"
+            },
+            {
+                "name": "/5_channel/control/98/waveshaper/variation",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 126,
+                "units": "na"
+            },
+            {
+                "name": "/5_channel/control/100/filter/on_off",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 1,
+                "units": "na"
+            },
+            {
+                "name": "/5_channel/control/101/filter/type",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 4,
+                "units": "na"
+            },
+            {
+                "name": "/5_channel/control/102/filter/cutoff_frequency",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/5_channel/control/103/filter/Q",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/5_channel/control/104/filter/cutoff_via_note",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/5_channel/control/105/filter/cutoff_via_velocity",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/5_channel/control/110/amplitude_env/attack_upper_limit",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 127,
+                "units": "na"
+            },
+            {
+                "name": "/5_channel/control/111/amplitude_env/attack_lower_limit",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 127,
+                "units": "na"
+            },
+            {
+                "name": "/5_channel/control/112/amplitude_env/decay",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 127,
+                "units": "na"
+            },
+            {
+                "name": "/5_channel/control/113/amplitude_env/sustain",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 127,
+                "units": "na"
+            },
+            {
+                "name": "/5_channel/control/114/amplitude_env/release",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 127,
+                "units": "na"
+            },
+            {
+                "name": "/5_channel/control/115/global/tune",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/5_channel/control/116/delay/wetlevel",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/5_channel/control/117/delay/temposync",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 1,
+                "units": "na"
+            },
+            {
+                "name": "/5_channel/control/118/delay/time",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 126,
+                "units": "na"
+            },
+            {
+                "name": "/5_channel/control/119/delay/balance",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 126,
+                "units": "na"
+            },
+            {
+                "name": "/5_channel/control/120/delay/spread",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 126,
+                "units": "na"
+            },
+            {
+                "name": "/5_channel/control/121/delay/groove",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 126,
+                "units": "na"
+            },
+            {
+                "name": "/5_channel/control/122/delay/feedback",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 126,
+                "units": "na"
+            },
+            {
+                "name": "/5_channel/control/123/delay/xfeedback",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 126,
+                "units": "na"
+            },
+            {
+                "name": "/5_channel/control/124/delay/hicut",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/5_channel/control/125/delay/lowcut",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/5_channel/control/126/delay/outputwidth",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/6_channel/control/14/global/bender_range",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 37,
+                "units": "na"
+            },
+            {
+                "name": "/6_channel/control/15/global/volume",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 84,
+                "units": "na"
+            },
+            {
+                "name": "/6_channel/control/16/global/limiter_mode",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 3,
+                "units": "na"
+            },
+            {
+                "name": "/6_channel/control/17/global/transpose",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 4,
+                "units": "na"
+            },
+            {
+                "name": "/6_channel/control/18/GM/effects",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 127,
+                "units": "na"
+            },
+            {
+                "name": "/6_channel/control/19/GM/effects",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 127,
+                "units": "na"
+            },
+            {
+                "name": "/6_channel/control/20/controller_assignment/set_vibrato",
+                "type": "i",
+                "minimum": 1,
+                "maximum": 77,
+                "units": "na"
+            },
+            {
+                "name": "/6_channel/control/21/controller_assignment/set_CtrlA",
+                "type": "i",
+                "minimum": 1,
+                "maximum": 77,
+                "units": "na"
+            },
+            {
+                "name": "/6_channel/control/22/controller_assignment/set_CtrlB",
+                "type": "i",
+                "minimum": 1,
+                "maximum": 77,
+                "units": "na"
+            },
+            {
+                "name": "/6_channel/control/23/controller_assignment/set_CtrlEnv1",
+                "type": "i",
+                "minimum": 1,
+                "maximum": 77,
+                "units": "na"
+            },
+            {
+                "name": "/6_channel/control/24/controller_assignment/set_CtrlEnv2",
+                "type": "i",
+                "minimum": 1,
+                "maximum": 77,
+                "units": "na"
+            },
+            {
+                "name": "/6_channel/control/25/controller_assignment/set_MorphX",
+                "type": "i",
+                "minimum": 1,
+                "maximum": 77,
+                "units": "na"
+            },
+            {
+                "name": "/6_channel/control/26/controller_assignment/set_MorphY",
+                "type": "i",
+                "minimum": 1,
+                "maximum": 77,
+                "units": "na"
+            },
+            {
+                "name": "/6_channel/control/27/vibrato/waveform",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 9,
+                "units": "na"
+            },
+            {
+                "name": "/6_channel/control/28/vibrato/frequency",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 102,
+                "units": "na"
+            },
+            {
+                "name": "/6_channel/control/29/vibrato/max_depth",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/6_channel/control/30/vibrato/min_depth",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/6_channel/control/31/vibrato/random_depth",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/6_channel/control/32/vibrato/synch_rate",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 1,
+                "units": "na"
+            },
+            {
+                "name": "/6_channel/control/33/vibrato/curviness",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 126,
+                "units": "na"
+            },
+            {
+                "name": "/6_channel/control/34/body/on_off",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 1,
+                "units": "na"
+            },
+            {
+                "name": "/6_channel/control/35/body/model",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 20,
+                "units": "na"
+            },
+            {
+                "name": "/6_channel/control/36/body/intensity",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 126,
+                "units": "na"
+            },
+            {
+                "name": "/6_channel/control/37/body/shift",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 126,
+                "units": "na"
+            },
+            {
+                "name": "/6_channel/control/38/body/stretch",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 126,
+                "units": "na"
+            },
+            {
+                "name": "/6_channel/control/39/body/structure",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/6_channel/control/40/string_parameters/resolution",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/6_channel/control/41/string_parameters/tension",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/6_channel/control/42/string_parameters/stiffness",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/6_channel/control/43/string_parameters/inner_loss",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/6_channel/control/44/string_parameters/media_loss",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/6_channel/control/45/string_parameters/inner_loss_on_release",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/6_channel/control/46/string_parameters/media_loss_on_release",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/6_channel/control/47/string_parameters/resolution_low",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/6_channel/control/48/string_parameters/resolution_high",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/6_channel/control/49/string_parameters/tension_low",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/6_channel/control/50/string_parameters/tension_high",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/6_channel/control/51/string_parameters/stiffness_low",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/6_channel/control/52/string_parameters/stiffness_high",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/6_channel/control/53/string_parameters/inner_loss_low",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/6_channel/control/54/string_parameters/inner_loss_high",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/6_channel/control/55/string_parameters/media_loss_low",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/6_channel/control/56/string_parameters/media_loss_high",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/6_channel/control/60/object1/on_off",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 1,
+                "units": "na"
+            },
+            {
+                "name": "/6_channel/control/61/object1/excitation",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 7,
+                "units": "na"
+            },
+            {
+                "name": "/6_channel/control/62/object1/gate",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 2,
+                "units": "na"
+            },
+            {
+                "name": "/6_channel/control/63/object1/pickup_position",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/6_channel/control/64/object1/strength",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/6_channel/control/65/object1/timbre",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 126,
+                "units": "na"
+            },
+            {
+                "name": "/6_channel/control/66/object1/variation",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 126,
+                "units": "na"
+            },
+            {
+                "name": "/6_channel/control/67/object1/velocity_sensitivity",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/6_channel/control/70/object2/on_off",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 1,
+                "units": "na"
+            },
+            {
+                "name": "/6_channel/control/71/object2/excitation",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 14,
+                "units": "na"
+            },
+            {
+                "name": "/6_channel/control/72/object2/gate",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 2,
+                "units": "na"
+            },
+            {
+                "name": "/6_channel/control/73/object2/pickup_position",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/6_channel/control/74/object2/strength",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/6_channel/control/75/object2/timbre",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 126,
+                "units": "na"
+            },
+            {
+                "name": "/6_channel/control/76/object2/variation",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 126,
+                "units": "na"
+            },
+            {
+                "name": "/6_channel/control/77/object2/velocity_sensitivity",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/6_channel/control/80/object3/on_off",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 1,
+                "units": "na"
+            },
+            {
+                "name": "/6_channel/control/81/object3/excitation",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 5,
+                "units": "na"
+            },
+            {
+                "name": "/6_channel/control/82/object3/gate",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 2,
+                "units": "na"
+            },
+            {
+                "name": "/6_channel/control/83/object3/pickup_position",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/6_channel/control/84/object3/strength",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/6_channel/control/85/object3/timbre",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 126,
+                "units": "na"
+            },
+            {
+                "name": "/6_channel/control/86/object3/variation",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 126,
+                "units": "na"
+            },
+            {
+                "name": "/6_channel/control/90/stereo/via_pickup",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/6_channel/control/91/stereo/via_note",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/6_channel/control/95/waveshaper/on_off",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 1,
+                "units": "na"
+            },
+            {
+                "name": "/6_channel/control/96/waveshaper/type",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 3,
+                "units": "na"
+            },
+            {
+                "name": "/6_channel/control/97/waveshaper/timbre",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 126,
+                "units": "na"
+            },
+            {
+                "name": "/6_channel/control/98/waveshaper/variation",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 126,
+                "units": "na"
+            },
+            {
+                "name": "/6_channel/control/100/filter/on_off",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 1,
+                "units": "na"
+            },
+            {
+                "name": "/6_channel/control/101/filter/type",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 4,
+                "units": "na"
+            },
+            {
+                "name": "/6_channel/control/102/filter/cutoff_frequency",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/6_channel/control/103/filter/Q",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/6_channel/control/104/filter/cutoff_via_note",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/6_channel/control/105/filter/cutoff_via_velocity",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/6_channel/control/110/amplitude_env/attack_upper_limit",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 127,
+                "units": "na"
+            },
+            {
+                "name": "/6_channel/control/111/amplitude_env/attack_lower_limit",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 127,
+                "units": "na"
+            },
+            {
+                "name": "/6_channel/control/112/amplitude_env/decay",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 127,
+                "units": "na"
+            },
+            {
+                "name": "/6_channel/control/113/amplitude_env/sustain",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 127,
+                "units": "na"
+            },
+            {
+                "name": "/6_channel/control/114/amplitude_env/release",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 127,
+                "units": "na"
+            },
+            {
+                "name": "/6_channel/control/115/global/tune",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/6_channel/control/116/delay/wetlevel",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/6_channel/control/117/delay/temposync",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 1,
+                "units": "na"
+            },
+            {
+                "name": "/6_channel/control/118/delay/time",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 126,
+                "units": "na"
+            },
+            {
+                "name": "/6_channel/control/119/delay/balance",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 126,
+                "units": "na"
+            },
+            {
+                "name": "/6_channel/control/120/delay/spread",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 126,
+                "units": "na"
+            },
+            {
+                "name": "/6_channel/control/121/delay/groove",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 126,
+                "units": "na"
+            },
+            {
+                "name": "/6_channel/control/122/delay/feedback",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 126,
+                "units": "na"
+            },
+            {
+                "name": "/6_channel/control/123/delay/xfeedback",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 126,
+                "units": "na"
+            },
+            {
+                "name": "/6_channel/control/124/delay/hicut",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/6_channel/control/125/delay/lowcut",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            },
+            {
+                "name": "/6_channel/control/126/delay/outputwidth",
+                "type": "i",
+                "minimum": 0,
+                "maximum": 100,
+                "units": "na"
+            }
+        ],
+        "outputs": []
+    }
+}

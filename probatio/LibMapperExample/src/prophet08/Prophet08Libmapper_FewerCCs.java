@@ -1,23 +1,23 @@
-package main;
+package prophet08;
 
+import java.lang.reflect.Field;
 import java.util.Arrays;
-
-import javax.sound.midi.MidiMessage;
+import java.util.HashMap;
 
 import Mapper.Device;
 import Mapper.InputListener;
 import Mapper.PropertyValue;
 import Mapper.TimeTag;
 import processing.core.PApplet;
-import themidibus.ControlChange;
 import themidibus.MidiBus;
 import themidibus.Note;
 
-public class Prophet08Libmapper extends PApplet{
+public class Prophet08Libmapper_FewerCCs extends PApplet{
 
 	final Device dev = new Device("Prophet08");
 	public MidiBus myBus;
-	
+	final HashMap<Integer, InputController> inputControllers = new HashMap<>();
+
 	boolean lockUp = false;
 	boolean lockDown = true;
 
@@ -30,9 +30,8 @@ public class Prophet08Libmapper extends PApplet{
 	public void setup() {
 		// This is how to ensure the device is freed when the program
 		// exits, even on SIGINT.  The Device must be declared "final".
-		myBus = new MidiBus(this, -1, "porta 1");
-		//myBus = new MidiBus(this, -1, "FastTrack Pro");
-
+		//myBus = new MidiBus(this, -1, "porta 1");
+		myBus = new MidiBus(this, -1, "FastTrack Pro");
 		Runtime.getRuntime().addShutdownHook(new Thread()
 		{
 			@Override
@@ -119,8 +118,16 @@ public class Prophet08Libmapper extends PApplet{
 					TimeTag tt) {
 				System.out.println(" >> in onInput() for "+sig.name()+": "+Arrays.toString(v));
 				//sendCC(v[0]);
-				ControlChange change = new ControlChange(0, ccNumber, (int)v[0]);
-				myBus.sendControllerChange(change);
+				InputController ic = null;
+				if(!inputControllers.containsKey(ccNumber)){
+					ic = new InputController(myBus, ccNumber, 1);
+					inputControllers.put(ccNumber, ic) ;
+				} else {
+					ic = inputControllers.get(ccNumber);
+				}
+				if(ic != null){
+					ic.sendValue((int)v[0]);
+				}
 			}});
 		System.out.println("Input signal name: "+inp1.name());
 	}
@@ -150,7 +157,7 @@ public class Prophet08Libmapper extends PApplet{
 			}});
 		System.out.println("Input signal name: "+inp1.name());
 	}
-	
+
 	private void createPitchBend() {
 		Mapper.Device.Signal inp1 = dev.addInput("Pitch_Bend", 1, 'f', "u",
 				new PropertyValue('f', -8192.0),
@@ -166,7 +173,7 @@ public class Prophet08Libmapper extends PApplet{
 			}});
 		System.out.println("Input signal name: "+inp1.name());
 	}
-	
+
 	private void sendPitchBend(int inPitchValue){
 		int MIDI_PITCHBEND_MIN = -8192;
 		int MIDI_PITCHBEND_MAX = 8191;
@@ -174,7 +181,7 @@ public class Prophet08Libmapper extends PApplet{
 		int bend = inPitchValue - MIDI_PITCHBEND_MIN;
 		byte[] data = {(byte)pitchBendCode, (byte)(bend & 0x7f), (byte)((bend >> 7) & 0x7f), 0};
 		myBus.sendMessage(data);
-	    //myBus.sendMessage(pitchBendCode, (bend & 0x7f), (bend >> 7) & 0x7f, 0);
+		//myBus.sendMessage(pitchBendCode, (bend & 0x7f), (bend >> 7) & 0x7f, 0);
 	}
 
 	@Override
@@ -205,28 +212,28 @@ public class Prophet08Libmapper extends PApplet{
 
 
 	public static  void main(String[] passedArgs) {
-		//		System.setProperty( "java.library.path", "/usr/local/lib" );
-		//
-		//		Field fieldSysPath;
-		//		try {
-		//			fieldSysPath = ClassLoader.class.getDeclaredField( "sys_paths" );
-		//			fieldSysPath.setAccessible( true );
-		//			fieldSysPath.set( null, null );
-		//		} catch (NoSuchFieldException e) {
-		//			// TODO Auto-generated catch block
-		//			e.printStackTrace();
-		//		} catch (SecurityException e) {
-		//			// TODO Auto-generated catch block
-		//			e.printStackTrace();
-		//		} catch (IllegalArgumentException e) {
-		//			// TODO Auto-generated catch block
-		//			e.printStackTrace();
-		//		} catch (IllegalAccessException e) {
-		//			// TODO Auto-generated catch block
-		//			e.printStackTrace();
-		//		}
+		System.setProperty( "java.library.path", "/usr/local/lib" );
+
+		Field fieldSysPath;
+		try {
+			fieldSysPath = ClassLoader.class.getDeclaredField( "sys_paths" );
+			fieldSysPath.setAccessible( true );
+			fieldSysPath.set( null, null );
+		} catch (NoSuchFieldException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SecurityException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalArgumentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		//		PApplet.main(main.Prophet08Libmapper.class.getName());
-		String[] appletArgs = new String[] {"main.Prophet08Libmapper"};
+		String[] appletArgs = new String[] {"prophet08.Prophet08Libmapper_FewerCCs"};
 		if (passedArgs != null) {
 			PApplet.main(concat(appletArgs, passedArgs));
 		} else {

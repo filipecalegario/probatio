@@ -1,6 +1,6 @@
 package cooked;
 
-import model.BlockType;
+import mvc.model.BlockType;
 
 public class KinematicFactory {
 
