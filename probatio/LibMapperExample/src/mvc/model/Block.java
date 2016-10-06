@@ -8,6 +8,13 @@ public class Block {
 	private String[] valuesLabels;
 	private long lastTimeUpdated;
 	private int dataSize;
+	private int screenIndex;
+	private int[] screenGraphColor;
+	
+	public Block(int type){
+		this.id = type;
+		this.name = BlockType.getBlockNameById(type);
+	}
 	
 	public Block(int type, int[] values, long timeAdded) {
 		super();
@@ -65,9 +72,42 @@ public class Block {
 		 this.values = values;
 	}
 	
-
 	public String[] getValuesLabels() {
 		return valuesLabels;
+	}
+	
+	public int getScreenIndex() {
+		return screenIndex;
+	}
+
+	public void setScreenIndex(int screenIndex) {
+		this.screenIndex = screenIndex;
+	}
+
+	public int[] getScreenGraphColor() {
+		return screenGraphColor;
+	}
+
+	public void setScreenGraphColor(int[] screenGraphColor) {
+		this.screenGraphColor = screenGraphColor;
+	}
+	
+	
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public void setValuesLabels(String[] valuesLabels) {
+		this.valuesLabels = valuesLabels;
+	}
+
+	public void setLastTimeUpdated(long lastTimeUpdated) {
+		this.lastTimeUpdated = lastTimeUpdated;
+	}
+
+	public void setDataSize(int dataSize) {
+		this.dataSize = dataSize;
 	}
 
 	@Override

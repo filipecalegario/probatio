@@ -1,11 +1,68 @@
 package mvc.model;
 
+import utils.Utils;
+
 public class BlockFactory {
 	
 	public static Block createBlock(int id, int[] values, long millis){
 		String[] labels = BlockFactory.populateValuesLabels(id);
-		Block block = new Block(id, values, millis, labels);
+		Block block = initBlock(id, values);
+		block.setValues(values);
+		block.setLastTimeUpdated(millis);
+		block.setValuesLabels(labels);
+		block.setDataSize(values.length);
+		//Block block = new Block(id, values, millis, labels);
 		return block;
+	}
+	
+	private static Block initBlock(int id, int[] values){
+		Block result = new Block(id);
+		Utils utils = new Utils();
+		int colorIndex = 0;
+		int screenIndex = 0;
+		switch (id) {
+		case BlockType.BELLOWS:	
+			colorIndex = 0;
+			screenIndex = 0;
+			break;
+		case BlockType.CRANK:	
+			colorIndex = 1;
+			screenIndex = 1;
+			break;
+		case BlockType.RESTOUCH:	
+			colorIndex = 2;
+			screenIndex = 2;
+			break;
+		case BlockType.BUTTON:	
+			colorIndex = 8;
+			screenIndex = 8;
+			break;
+		case BlockType.FOURBUTTONS:	
+			colorIndex = 3;
+			screenIndex = 3;
+			break;
+		case BlockType.TURNTABLE:	
+			colorIndex = 4;
+			screenIndex = 4;
+			break;
+		case BlockType.DEBUG:	
+			colorIndex = 5;
+			screenIndex = 5;
+			break;
+		case BlockType.BREATH:	
+			colorIndex = 6;
+			screenIndex = 6;
+			break;
+		default:
+			break;
+		}
+		int[] colors = new int[values.length];
+		for (int i = 0; i < colors.length; i++) {
+			colors[i] = utils.pickAColor(colorIndex+i);
+		}
+		result.setScreenGraphColor(colors);
+		result.setScreenIndex(screenIndex);
+		return result;
 	}
 	
 	private static String[] populateValuesLabels(int id){
@@ -45,6 +102,10 @@ public class BlockFactory {
 			result = new String[2];
 			result[0] = "Debug1";
 			result[1] = "Debug2";
+			break;
+		case BlockType.BREATH:	
+			result = new String[1];
+			result[0] = "Breathing";
 			break;
 		default:
 			break;

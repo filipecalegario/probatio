@@ -1,8 +1,10 @@
 package serial;
 import controlP5.Chart;
 import controlP5.ControlP5;
-import mvc.model.Block;
+import mapper.MapperManager;
+import mvc.controller.BlockController;
 import processing.core.PApplet;
+import processing.event.KeyEvent;
 import processing.serial.Serial; 
 
 public class SerialControlP5chart extends PApplet implements BlockParserObserver{
@@ -20,64 +22,73 @@ public class SerialControlP5chart extends PApplet implements BlockParserObserver
 
 	ControlP5 cp5;
 
-	Chart myChart;
-	BlockParser parser;
+	ParserWithBlockController parser;
 	
 	Serial myPort; 
 	boolean serialIsReady = false;
+	
+	int index = 0;
 
 	public void setup() {
 		long startTime = millis();
 		cp5 = new ControlP5(this);
-		myChart = cp5.addChart("dataflow")
-				.setPosition(50, 50)
-				.setSize(200, 150)
-				.setRange(0, 1023)
-				.setView(Chart.AREA) // use Chart.LINE, Chart.PIE, Chart.AREA, Chart.BAR_CENTERED
-				.setStrokeWeight(1.5f)
-				.setColorCaptionLabel(color(40))
-				.setCaptionLabel("Incoming")
-				.setLabelVisible(true);
-				;
 
-		myChart.addDataSet("incoming");
-		myChart.setData("incoming", new float[100]);
-
-		initializeSerial(startTime, "/dev/cu.usbmodem32");
+		initializeSerial(startTime, "/dev/cu.usbmodem36");
 		
-		parser = new BlockParser(this);
+		parser = new ParserWithBlockController(this);
 		parser.attach(this);
+		
+		MapperManager mapper = new MapperManager();
+		parser.attach(mapper);
+		
+		MapperManager.freeOnShutdown();
+		MapperManager.printDeviceInitialization();
 	}
 
 	public void draw() {
+		MapperManager.pollDevice();
 		background(200);
-		// unshift: add data from left to right (first in)
-		//myChart.unshift("incoming", (sin(frameCount*0.1)*20));
-
-		// push: add data from right to left (last in)
-		//myChart.push("incoming", (sin(frameCount*0.1f)*10));
-		//sp.update();
 	}
 
 	@Override
-	public void onAddBlockEvent(Block block) {
-		System.out.println("Block added: " + block.getName());
-	}
-
-
-	@Override
-	public void onUpdateBlockEvent(Block block) {
-		if(block.getId() == 51){
-			int value = block.getValues()[0];
-			//System.out.println(value);
-			myChart.push("incoming", value);
+	public void onAddBlockEvent(BlockController blockController) {
+		try {
+			System.out.println("Block added: " + blockController.getName());
+//			int modulo = 4;
+//			float xSize = 100;
+//			float ySize = 50;
+//			float x = ((index%modulo) * xSize)+((index%modulo)+1)*20;
+//			float linha = (index - (index%modulo))/modulo;
+//			float y = (ySize * linha) + ((linha + 1)*20);
+			Chart myChart = cp5.addChart(blockController.getName());
+			//blockController.setChart(myChart, x, y, color(40));
+			blockController.setChart(myChart);
+			index++;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 
 	@Override
-	public void onRemoveBlockEvent(Block block) {
-		// TODO Auto-generated method stub
-		System.out.println("Block removed: " + block.getName());
+	public void onUpdateBlockEvent(BlockController blockController) {
+		try {
+			blockController.updateView();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	@Override
+	public void onRemoveBlockEvent(BlockController blockController) {
+		try {
+			System.out.println("Block removed: " + blockController.getName());
+			cp5.remove(blockController.getName());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	public void serialEvent(Serial myPort){
@@ -105,7 +116,16 @@ public class SerialControlP5chart extends PApplet implements BlockParserObserver
 		serialIsReady = true;
 	}
 
-	public void settings() {  size(800, 400); }
+	public void settings() {  size(800, 400);  }
+	
+	@Override
+	public void keyPressed(KeyEvent event) {
+		if(event.getKey() == 'q' || event.getKey() == 'Q'){
+			MapperManager.freeDevice();
+			exit();
+		}
+	}
+	
 	static public void main(String[] passedArgs) {
 		String[] appletArgs = new String[] { "serial.SerialControlP5chart" };
 		if (passedArgs != null) {

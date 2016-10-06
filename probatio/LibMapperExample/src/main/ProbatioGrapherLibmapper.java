@@ -52,7 +52,7 @@ public class ProbatioGrapherLibmapper extends PApplet {
 
 		println(Serial.list());
 		//myPort = new Serial(this, Serial.list()[5], 115200);
-		myPort = new Serial(this, "/dev/cu.usbmodem29", 115200);
+		myPort = new Serial(this, "/dev/cu.usbmodem34", 115200);
 		myPort.bufferUntil('\n');
 		myPort.clear();
 		println("Initializing serial port...");
@@ -102,7 +102,7 @@ public class ProbatioGrapherLibmapper extends PApplet {
 		if(serialIsReady){
 			try {
 				byte[] meusBytes = myPort.readBytes();
-				boolean isGoodFormat = (meusBytes.length == 21) && 
+				boolean isGoodFormat = (meusBytes.length == 23) && 
 						(meusBytes[0] == 2) && 
 						(meusBytes[meusBytes.length-1] == 10);
 				if(isGoodFormat){
@@ -120,7 +120,7 @@ public class ProbatioGrapherLibmapper extends PApplet {
 	}
 
 	private void parseAndAddOrUpdate(int[] ints) {
-		boolean isGoodFormat = (ints.length == 21) && 
+		boolean isGoodFormat = (ints.length == 23) && 
 				(ints[0] == 2) && 
 				(ints[ints.length-1] == 10);
 		if (isGoodFormat) {

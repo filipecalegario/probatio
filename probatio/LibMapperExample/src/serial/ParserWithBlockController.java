@@ -5,22 +5,24 @@ import java.util.List;
 import java.util.Vector;
 
 import display.DisplayManager;
+import mvc.controller.BlockController;
 import mvc.model.Block;
 import mvc.model.BlockFactory;
+import mvc.view.BlockView;
 import processing.core.PApplet;
 
-public class BlockParser{
+public class ParserWithBlockController{
 
 	public int BUFFER_SIZE = 23;
 
 	private List<BlockParserObserver> observers = new ArrayList<BlockParserObserver>();
 	PApplet core;
-	Vector<Block> blocks;
+	Vector<BlockController> blockControllers;
 	DisplayManager display;
 
-	public BlockParser(PApplet papplet) {
+	public ParserWithBlockController(PApplet papplet) {
 		this.core = papplet;
-		blocks = new Vector<Block>();
+		blockControllers = new Vector<BlockController>();
 	}
 
 	public void update(byte[] meusBytes) {
@@ -43,8 +45,8 @@ public class BlockParser{
 
 	private void checkForRemoval() {
 		try {
-			for (int i = 0; i < blocks.size(); i++) {
-				Block currentBlock = blocks.elementAt(i);
+			for (int i = 0; i < blockControllers.size(); i++) {
+				BlockController currentBlock = blockControllers.elementAt(i);
 				if(core.millis() - currentBlock.getLastTimeUpdated() > 1000){
 					removeBlockEvent(currentBlock.getId());
 				}
@@ -112,9 +114,7 @@ public class BlockParser{
 		if (blockId != 0) {
 			if (repositoryContainsBlock(blockId)) {
 				//System.out.println("UPDATED Block " + BlockType.getBlockNameById(blockId));
-				synchronized(blocks){
-					updateBlockEvent(blockId, values);
-				}
+				updateBlockEvent(blockId, values);
 			} else {
 				Block newBlock = BlockFactory.createBlock(blockId, values, core.millis());
 				addBlockEvent(newBlock);
@@ -125,43 +125,43 @@ public class BlockParser{
 	private void addBlockEvent(Block block) {
 		if (block != null) {
 			if(!repositoryContainsBlock(block.getId())){
-				synchronized(blocks){
-					blocks.addElement(block);
-				}
-				notifyAllObservers(block, BlockEventType.ADD);
+				BlockView blockView = new BlockView();
+				BlockController blockController = new BlockController(block, blockView);
+				blockControllers.addElement(blockController);
+				notifyAllObservers(blockController, BlockEventType.ADD);
 				//System.out.println(block.getName() + " added");
 			}
 		}
 	}
 
 	private void updateBlockEvent(int idBlock, int[] values) {
-		Block block = getBlockById(idBlock);
-		if (block != null) {
-			block.updateValues(values, core.millis());
-			notifyAllObservers(block, BlockEventType.UPDATE);
+		BlockController blockController = getBlockById(idBlock);
+		if (blockController != null) {
+			blockController.updateValues(values, core.millis());
+			notifyAllObservers(blockController, BlockEventType.UPDATE);
 		}
 	}
 
 	private void removeBlockEvent(int idBlock) {
-		Block block = getBlockById(idBlock);
-		if (block != null) {
-			String name = block.getName();
-			notifyAllObservers(block, BlockEventType.REMOVE);
-			synchronized(blocks){
-				blocks.removeElement(block);
-			} 
+		BlockController blockController = getBlockById(idBlock);
+		if (blockController != null) {
+			String name = blockController.getName();
+			notifyAllObservers(blockController, BlockEventType.REMOVE);
+			blockControllers.removeElement(blockController);
 			//System.out.println(name + " removed");
 		}
 	}
 
 	private void notifyAllObservers(BlockController blockController, BlockEventType event){
-		for (BlockParserObserver so : observers) {
-			if(event.equals(BlockEventType.ADD)){
-				so.onAddBlockEvent(blockController);
-			} else if(event.equals(BlockEventType.UPDATE)){
-				so.onUpdateBlockEvent(blockController);
-			} else if(event.equals(BlockEventType.REMOVE)) {
-				so.onRemoveBlockEvent(blockController);
+		synchronized(blockControllers){
+			for (BlockParserObserver so : observers) {
+				if(event.equals(BlockEventType.ADD)){
+					so.onAddBlockEvent(blockController);
+				} else if(event.equals(BlockEventType.UPDATE)){
+					so.onUpdateBlockEvent(blockController);
+				} else if(event.equals(BlockEventType.REMOVE)) {
+					so.onRemoveBlockEvent(blockController);
+				}
 			}
 		}
 	}
@@ -169,9 +169,9 @@ public class BlockParser{
 	//TODO This is not cool!
 	private boolean repositoryContainsBlock(int id) {
 		boolean result = false;
-		for (Block block : blocks) {
-			if(block != null){
-				if(block.getId() == id){
+		for (BlockController blockController : blockControllers) {
+			if(blockController != null){
+				if(blockController.getId() == id){
 					result = true;
 				}
 			}
@@ -180,12 +180,12 @@ public class BlockParser{
 	}
 
 	//TODO Two walks in the array: This is not cool!
-	private Block getBlockById(int id) {
-		Block result = null;
+	private BlockController getBlockById(int id) {
+		BlockController result = null;
 		if(repositoryContainsBlock(id)){
-			for (Block block : blocks) {
-				if(block.getId() == id){
-					result = block;
+			for (BlockController blockController : blockControllers) {
+				if(blockController.getId() == id){
+					result = blockController;
 				}
 			}
 		}

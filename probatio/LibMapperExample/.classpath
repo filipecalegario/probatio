@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry excluding="old/DisplayManager_v0_0_1.java|old/DisplayManager_v0_0_2.java|old/GrapherMain.java|old/InputToDraw.java|old/libmapperJoe_Test.java|old/libmapperJoe_Test2.java|old/MapperDelegate.java|old/MapperManager.java|old/OnlyInput.java|old/Serial_Processing_libMapper_v0_0_10.java|old/Serial_Processing_libMapper_v0_0_11.java|old/Serial_Processing_libMapper_v0_0_12.java|old/Serial_Processing_libMapper_v0_0_2.java|old/Serial_Processing_libMapper_v0_0_3.java|old/Serial_Processing_libMapper_v0_0_4.java|old/Serial_Processing_libMapper_v0_0_5.java|old/Serial_Processing_libMapper_v0_0_6.java|old/Serial_Processing_libMapper_v0_0_7.java|old/Serial_Processing_libMapper_v0_0_8.java|old/Serial_Processing_libMapper_v0_0_9.java|old/Serial_Processing_libMapper.java|old/test.java|old/TestDisplayManagerMain.java|old/TestMain.java|old/Restouch.java|old/BlockRepository.java|old/Repository.java" kind="src" path="src"/>
+	<classpathentry excluding="old/DisplayManager_v0_0_1.java|old/DisplayManager_v0_0_2.java|old/GrapherMain.java|old/InputToDraw.java|old/libmapperJoe_Test.java|old/libmapperJoe_Test2.java|old/MapperDelegate.java|old/MapperManager.java|old/OnlyInput.java|old/Serial_Processing_libMapper_v0_0_10.java|old/Serial_Processing_libMapper_v0_0_11.java|old/Serial_Processing_libMapper_v0_0_12.java|old/Serial_Processing_libMapper_v0_0_2.java|old/Serial_Processing_libMapper_v0_0_3.java|old/Serial_Processing_libMapper_v0_0_4.java|old/Serial_Processing_libMapper_v0_0_5.java|old/Serial_Processing_libMapper_v0_0_6.java|old/Serial_Processing_libMapper_v0_0_7.java|old/Serial_Processing_libMapper_v0_0_8.java|old/Serial_Processing_libMapper_v0_0_9.java|old/Serial_Processing_libMapper.java|old/test.java|old/TestDisplayManagerMain.java|old/TestMain.java|old/Restouch.java|old/BlockRepository.java|old/Repository.java|serial/BlockParser.java" kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7">
 		<attributes>
 			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="/usr/local/lib"/>
@@ -10,7 +10,6 @@
 	<classpathentry kind="lib" path="jssc.jar"/>
 	<classpathentry kind="lib" path="serial.jar"/>
 	<classpathentry kind="lib" path="core.jar"/>
-	<classpathentry kind="lib" path="controlP5.jar"/>
 	<classpathentry kind="lib" path="themidibus.jar"/>
 	<classpathentry kind="lib" path="gson-2.7.jar"/>
 	<classpathentry kind="lib" path="sound.jar">
@@ -18,5 +17,7 @@
 			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="ProbatioGrapherLibmapper/lib"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry combineaccessrules="false" kind="src" path="/controlP5"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/JFugue"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

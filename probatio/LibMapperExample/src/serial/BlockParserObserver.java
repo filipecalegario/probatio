@@ -1,12 +1,12 @@
 package serial;
 
-import mvc.model.Block;
+import mvc.controller.BlockController;
 
 public interface BlockParserObserver {
 	
 	//protected SerialParser parser;
-	public abstract void onAddBlockEvent(Block block);
-	public abstract void onUpdateBlockEvent(Block block);
-	public abstract void onRemoveBlockEvent(Block block);
+	public abstract void onAddBlockEvent(BlockController blockController);
+	public abstract void onUpdateBlockEvent(BlockController blockController);
+	public abstract void onRemoveBlockEvent(BlockController blockController);
 
 }
