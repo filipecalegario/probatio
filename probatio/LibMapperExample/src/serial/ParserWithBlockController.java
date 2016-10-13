@@ -1,6 +1,7 @@
 package serial;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Vector;
 
@@ -8,12 +9,13 @@ import display.DisplayManager;
 import mvc.controller.BlockController;
 import mvc.model.Block;
 import mvc.model.BlockFactory;
+import mvc.model.BlockType;
 import mvc.view.BlockView;
 import processing.core.PApplet;
 
 public class ParserWithBlockController{
 
-	public int BUFFER_SIZE = 23;
+	public int BUFFER_SIZE = 44;
 
 	private List<BlockParserObserver> observers = new ArrayList<BlockParserObserver>();
 	PApplet core;
@@ -57,56 +59,24 @@ public class ParserWithBlockController{
 	}
 
 	private void parseAndAddOrUpdate(int[] ints) {
-		boolean isGoodFormat = (ints.length == 23) && 
+		boolean isGoodFormat = (ints.length == BUFFER_SIZE) && 
 				(ints[0] == 2) && 
 				(ints[ints.length-1] == 10);
 		if (isGoodFormat) {
-			//[2, RESTOUCH, N, N, CRANK, N, N, BELLOWS, N, TURNTABLE, N,  N, DEBUG,  N,  N, FOURBUTTONS,  N,  N,  N,  N, BREATH,  N, 10]
-			//[0,        1, 2, 3,     4, 5, 6,       7, 8,         9, 10, 11,   12, 13, 14,          15, 16, 17, 18, 19,     20, 21, 22]
-
-			int[] blockRestouchValue = new int[2];
-			int[] blockCrankValue = new int[2];
-			int[] blockBellowsValue = new int[1];
-			int[] blockTurntableValue = new int[2];
-			int[] blockDebugValue = new int[2];
-			int[] blockFourButtonsValue = new int[4];
-			int[] blockBreathValue = new int[1];
-
-			int blockRestouchId = ints[1];
-			blockRestouchValue[0] = ints[2];
-			blockRestouchValue[1] = ints[3];
-
-			int blockCrankId = ints[4];
-			blockCrankValue[0] = ints[5];
-			blockCrankValue[1] = ints[6];
-
-			int blockBellowsId = ints[7];
-			blockBellowsValue[0] = ints[8];
-
-			int blockTurntableId = ints[9];
-			blockTurntableValue[0] = ints[10];
-			blockTurntableValue[1] = ints[11];
-
-			int blockDebugId = ints[12];
-			blockDebugValue[0] = ints[13];
-			blockDebugValue[1] = ints[14];
-
-			int blockFourButtonsId = ints[15];
-			blockFourButtonsValue[0] = ints[16];
-			blockFourButtonsValue[1] = ints[17];
-			blockFourButtonsValue[2] = ints[18];
-			blockFourButtonsValue[3] = ints[19];
-
-			int blockBreathId = ints[20];
-			blockBreathValue[0] = ints[21];
-
-			parseBlock(blockRestouchId, blockRestouchValue);
-			parseBlock(blockCrankId, blockCrankValue);
-			parseBlock(blockBellowsId, blockBellowsValue);
-			parseBlock(blockTurntableId, blockTurntableValue);
-			parseBlock(blockDebugId, blockDebugValue);
-			parseBlock(blockFourButtonsId, blockFourButtonsValue);
-			parseBlock(blockBreathId, blockBreathValue);
+			int index = 1;
+			int indexArray = 0;
+			while(index < (ints.length - 1)){
+				int id = ints[index++];
+				int sizeByID = BlockType.sizeBlocks[indexArray++];
+				int[] values = new int[sizeByID];
+				for (int i = 0; i < values.length; i++) {
+					values[i] = ints[index++];
+				}
+				if(id != 0){
+					parseBlock(id, values);
+					//System.out.println(BlockType.getBlockNameById(id) + " " + Arrays.toString(values));
+				}
+			}
 		}
 	}
 

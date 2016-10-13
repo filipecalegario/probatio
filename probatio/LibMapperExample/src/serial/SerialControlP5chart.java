@@ -33,7 +33,7 @@ public class SerialControlP5chart extends PApplet implements BlockParserObserver
 		long startTime = millis();
 		cp5 = new ControlP5(this);
 
-		initializeSerial(startTime, "/dev/cu.usbmodem36");
+		initializeSerial(startTime, "/dev/cu.usbmodem1411");
 		
 		parser = new ParserWithBlockController(this);
 		parser.attach(this);

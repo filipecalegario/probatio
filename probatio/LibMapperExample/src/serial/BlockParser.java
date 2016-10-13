@@ -11,7 +11,7 @@ import processing.core.PApplet;
 
 public class BlockParser{
 
-	public int BUFFER_SIZE = 23;
+	public int BUFFER_SIZE = 44;
 
 	private List<BlockParserObserver> observers = new ArrayList<BlockParserObserver>();
 	PApplet core;

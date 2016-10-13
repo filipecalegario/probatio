@@ -28,7 +28,7 @@ public class SerialDump extends PApplet{
 		serialIsReady = false;
 		println(Serial.list());
 		//myPort = new Serial(this, Serial.list()[5], 115200);
-		myPort = new Serial(this, "/dev/cu.usbmodem34", 115200);
+		myPort = new Serial(this, "/dev/tty.usbmodem1411", 115200);
 		//myPort = new Serial(this, "/dev/cu.usbmodem14111", 115200);
 		myPort.bufferUntil('\n');
 		myPort.clear();
@@ -68,31 +68,31 @@ public class SerialDump extends PApplet{
 		}
 	}
 
-	private String parse(int[] meusInts) {
-		String blocks = "";
-		int[] blockIds = new int[5];
-		if(meusInts.length == 14){
-			blockIds[0] = meusInts[0];
-			blockIds[1] = meusInts[3];
-			blockIds[2] = meusInts[5];
-			blockIds[3] = meusInts[7];
-			blockIds[4] = meusInts[10];
-			for (int i = 0; i < blockIds.length; i++) {
-				blocks = blocks + "[" + stringBlock(blockIds[i]) + "] ";
-			}
-
-			blocks = blocks.trim();
-		}
-		return blocks;
-	}
-
-	private String stringBlock(int blockId){
-		return BlockType.getBlockStringCodeById(blockId);
-	}
-
-	private String stringBlockNoSpaces(int blockId){
-		return BlockType.getBlockStringCodeById(blockId).replace(" ", "");
-	}
+//	private String parse(int[] meusInts) {
+//		String blocks = "";
+//		int[] blockIds = new int[5];
+//		if(meusInts.length == 14){
+//			blockIds[0] = meusInts[0];
+//			blockIds[1] = meusInts[3];
+//			blockIds[2] = meusInts[5];
+//			blockIds[3] = meusInts[7];
+//			blockIds[4] = meusInts[10];
+//			for (int i = 0; i < blockIds.length; i++) {
+//				blocks = blocks + "[" + stringBlock(blockIds[i]) + "] ";
+//			}
+//
+//			blocks = blocks.trim();
+//		}
+//		return blocks;
+//	}
+//
+//	private String stringBlock(int blockId){
+//		return BlockType.getBlockStringCodeById(blockId);
+//	}
+//
+//	private String stringBlockNoSpaces(int blockId){
+//		return BlockType.getBlockStringCodeById(blockId).replace(" ", "");
+//	}
 
 	@Override
 	public void draw() {

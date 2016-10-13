@@ -33,20 +33,7 @@
                 "maximum": 4,
                 "units": "na"
             },
-            {
-                "name": "/1_channel/control/18/GM/effects",
-                "type": "i",
-                "minimum": 0,
-                "maximum": 127,
-                "units": "na"
-            },
-            {
-                "name": "/1_channel/control/19/GM/effects",
-                "type": "i",
-                "minimum": 0,
-                "maximum": 127,
-                "units": "na"
-            },
+            
             {
                 "name": "/1_channel/control/20/controller_assignment/set_vibrato",
                 "type": "i",

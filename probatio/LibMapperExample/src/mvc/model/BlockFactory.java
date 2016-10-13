@@ -21,38 +21,62 @@ public class BlockFactory {
 		int colorIndex = 0;
 		int screenIndex = 0;
 		switch (id) {
-		case BlockType.BELLOWS:	
+		case BlockType.BLOCK_BELLOWS:
 			colorIndex = 0;
 			screenIndex = 0;
-			break;
-		case BlockType.CRANK:	
+		break;
+		case BlockType.BLOCK_BREATH:
 			colorIndex = 1;
 			screenIndex = 1;
-			break;
-		case BlockType.RESTOUCH:	
+		break;
+		case BlockType.BLOCK_CRANK:
 			colorIndex = 2;
 			screenIndex = 2;
-			break;
-		case BlockType.BUTTON:	
-			colorIndex = 8;
-			screenIndex = 8;
-			break;
-		case BlockType.FOURBUTTONS:	
+		break;
+		case BlockType.BLOCK_DEBUG:
 			colorIndex = 3;
 			screenIndex = 3;
-			break;
-		case BlockType.TURNTABLE:	
+		break;
+		case BlockType.BLOCK_JOYSTICK:
 			colorIndex = 4;
 			screenIndex = 4;
-			break;
-		case BlockType.DEBUG:	
+		break;
+		case BlockType.BLOCK_ONETAP:
 			colorIndex = 5;
 			screenIndex = 5;
-			break;
-		case BlockType.BREATH:	
+		break;
+		case BlockType.BLOCK_TWOPOTS:
 			colorIndex = 6;
 			screenIndex = 6;
-			break;
+		break;
+		case BlockType.BLOCK_RESTOUCH:
+			colorIndex = 7;
+			screenIndex = 7;
+		break;
+		case BlockType.BLOCK_THREETAPS:
+			colorIndex = 8;
+			screenIndex = 8;
+		break;
+		case BlockType.BLOCK_TURNTABLE:
+			colorIndex = 9;
+			screenIndex = 9;
+		break;
+		case BlockType.BLOCK_TWOBUTTONS1:
+			colorIndex = 10;
+			screenIndex = 10;
+		break;
+		case BlockType.BLOCK_TWOBUTTONS2:
+			colorIndex = 11;
+			screenIndex = 11;
+		break;
+		case BlockType.BLOCK_TWOBUTTONS3:
+			colorIndex = 12;
+			screenIndex = 12;
+		break;
+		case BlockType.BLOCK_TWOBUTTONS4:
+			colorIndex = 13;
+			screenIndex = 13;
+		break;
 		default:
 			break;
 		}
@@ -68,45 +92,76 @@ public class BlockFactory {
 	private static String[] populateValuesLabels(int id){
 		String[] result = null;
 		switch (id) {
-		case BlockType.BELLOWS:	
+		case BlockType.BLOCK_BELLOWS:
 			result = new String[1];
-			result[0] = "Pushing";
-			break;
-		case BlockType.CRANK:	
-			result = new String[2];
-			result[0] = "Turning";
-			result[1] = "Pressing Button";
-			break;
-		case BlockType.RESTOUCH:	
-			result = new String[2];
-			result[0] = "Pressing";
-			result[1] = "Selecting";
-			break;
-		case BlockType.BUTTON:	
+			result[0] = "Aperto";
+		break;
+		case BlockType.BLOCK_BREATH:
 			result = new String[1];
-			result[0] = "Pressing Button";
-			break;
-		case BlockType.FOURBUTTONS:	
+			result[0] = "Sopro";
+		break;
+		case BlockType.BLOCK_CRANK:
+			result = new String[2];
+			result[0] = "Giro";
+			result[1] = "Botao";
+		break;
+		case BlockType.BLOCK_DEBUG:
 			result = new String[4];
-			result[0] = "Pressing Button 1";
-			result[1] = "Pressing Button 2";
-			result[2] = "Pressing Button 3";
-			result[3] = "Pressing Button 4";
-			break;
-		case BlockType.TURNTABLE:	
-			result = new String[2];
-			result[0] = "Turning";
-			result[1] = "Pressing button";
-			break;
-		case BlockType.DEBUG:	
-			result = new String[2];
 			result[0] = "Debug1";
-			result[1] = "Debug2";
-			break;
-		case BlockType.BREATH:	
+			result[1] = "Debug1";
+			result[2] = "Debug1";
+			result[3] = "Debug1";
+		break;
+		case BlockType.BLOCK_JOYSTICK:
+			result = new String[2];
+			result[0] = "X";
+			result[1] = "Y";
+		break;
+		case BlockType.BLOCK_ONETAP:
 			result = new String[1];
-			result[0] = "Breathing";
-			break;
+			result[0] = "Batida";
+		break;
+		case BlockType.BLOCK_TWOPOTS:
+			result = new String[2];
+			result[0] = "Knob A";
+			result[1] = "Knob B";
+		break;
+		case BlockType.BLOCK_RESTOUCH:
+			result = new String[2];
+			result[0] = "Posicao";
+			result[1] = "Pressao";
+		break;
+		case BlockType.BLOCK_THREETAPS:
+			result = new String[3];
+			result[0] = "Batida A";
+			result[1] = "Batida B";
+			result[2] = "Batida C";
+		break;
+		case BlockType.BLOCK_TURNTABLE:
+			result = new String[2];
+			result[0] = "Giro";
+			result[1] = "Botao";
+		break;
+		case BlockType.BLOCK_TWOBUTTONS1:
+			result = new String[2];
+			result[0] = "Botao A";
+			result[1] = "Botao B";
+		break;
+		case BlockType.BLOCK_TWOBUTTONS2:
+			result = new String[2];
+			result[0] = "Botao C";
+			result[1] = "Botao D";
+		break;
+		case BlockType.BLOCK_TWOBUTTONS3:
+			result = new String[2];
+			result[0] = "Botao E";
+			result[1] = "Botao F";
+		break;
+		case BlockType.BLOCK_TWOBUTTONS4:
+			result = new String[2];
+			result[0] = "Botao G";
+			result[1] = "Botao H";
+		break;
 		default:
 			break;
 		}
