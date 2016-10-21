@@ -1,4 +1,4 @@
-package test.serial.performance;
+package paraExperimentoSensores;
 
 import java.sql.Timestamp;
 import java.text.DecimalFormat;
