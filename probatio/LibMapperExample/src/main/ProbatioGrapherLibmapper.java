@@ -48,7 +48,7 @@ public class ProbatioGrapherLibmapper extends PApplet {
 		int numberOfSlots = 20;
 		display = new DisplayManager(this,numberOfSlots);
 		MapperManager.freeOnShutdown();
-		MapperManager.printDeviceInitialization();
+		MapperManager.initializeDevice();
 
 		println(Serial.list());
 		//myPort = new Serial(this, Serial.list()[5], 115200);

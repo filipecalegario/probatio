@@ -1,4 +1,4 @@
-package mapper;
+package paraExperimentoSensores;
 
 import Mapper.Device;
 import Mapper.Device.Signal;
@@ -7,10 +7,10 @@ import mvc.controller.BlockController;
 import mvc.model.BlockType;
 import serial.BlockParserObserver;
 
-public class MapperManager implements BlockParserObserver{
+public class ExperimentoMapper{
 
 	//private Vector<SignalSlot> signalSlots;
-	public final static Device dev = new Device("probatio", 9000);
+	public final static Device dev = new Device("ArduinoESensores", 9000);
 
 	boolean DEBUG_enableLibmapper = false;
 
@@ -75,7 +75,7 @@ public class MapperManager implements BlockParserObserver{
 		dev.poll(0);
 	}
 
-	public static void initializeDevice() {
+	public static void initDevice() {
 		freeOnShutdown();
 		System.out.println("Initializing libMapper device...");
 		while (!dev.ready()) {
@@ -111,28 +111,25 @@ public class MapperManager implements BlockParserObserver{
 		});
 	}
 
-	@Override
 	public void onAddBlockEvent(BlockController blockController) {
 		for (int i = 0; i < blockController.getDataSize(); i++) {
 			String blockNameById = blockController.getName();
 			String blockValueLabel = blockController.getValuesLabels()[i];
-			blockController.getSignals()[i] = MapperManager.addOutput(blockNameById + "-" + blockValueLabel, 1, 'i', "unit", 0, 255);
+			blockController.getSignals()[i] = ExperimentoMapper.addOutput(blockNameById + "-" + blockValueLabel, 1, 'i', "unit", 0, 255);
 		}
 	}
 
-	@Override
 	public void onUpdateBlockEvent(BlockController blockController) {
 		for (int i = 0; i < blockController.getDataSize(); i++) {
 			blockController.getSignals()[i].update(blockController.getValues()[i]);
 		}
 	}
 
-	@Override
 	public void onRemoveBlockEvent(BlockController blockController) {
 		for (int i = 0; i < blockController.getDataSize(); i++) {
 			if (blockController.getSignals()[i] != null) {
 				try {
-					MapperManager.removeOutput(blockController.getSignals()[i]);
+					ExperimentoMapper.removeOutput(blockController.getSignals()[i]);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

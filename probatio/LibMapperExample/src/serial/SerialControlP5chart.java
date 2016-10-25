@@ -41,8 +41,8 @@ public class SerialControlP5chart extends PApplet implements BlockParserObserver
 		MapperManager mapper = new MapperManager();
 		parser.attach(mapper);
 		
-		MapperManager.freeOnShutdown();
-		MapperManager.printDeviceInitialization();
+		//MapperManager.freeOnShutdown();
+		MapperManager.initializeDevice();
 	}
 
 	public void draw() {

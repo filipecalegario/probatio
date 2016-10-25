@@ -28,7 +28,7 @@ public class SerialDump extends PApplet{
 		serialIsReady = false;
 		println(Serial.list());
 		//myPort = new Serial(this, Serial.list()[5], 115200);
-		myPort = new Serial(this, "/dev/tty.usbmodem621", 115200);
+		myPort = new Serial(this, "/dev/tty.usbmodem1421", 115200);
 		//myPort = new Serial(this, "/dev/cu.usbmodem14111", 115200);
 		myPort.bufferUntil('\n');
 		myPort.clear();
