@@ -3,7 +3,7 @@ package display;
 import Mapper.Device.Signal;
 import cooked.KinematicFactory;
 import cooked.Kinematics;
-import mapper.MapperManager;
+import mapper.MapperManagerProbatio;
 import mvc.model.BlockType;
 import processing.core.PApplet;
 import processing.core.PImage;
@@ -68,7 +68,7 @@ public class DisplaySlot {
 		this.kinematic = KinematicFactory.createKinematic(idBlock);
 		//processing.image(this.icon, this.x, this.y);
 		try {
-			this.signal = MapperManager.addOutput(BlockType.getBlockNameById(idBlock) + "-" + label, 1, 'i', "unit", 0, 255);
+			this.signal = MapperManagerProbatio.addOutput(BlockType.getBlockNameById(idBlock) + "-" + label, 1, 'i', "unit", 0, 255);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -129,7 +129,7 @@ public class DisplaySlot {
 		this.clearRect();
 		if (this.signal != null) {
 			try {
-				MapperManager.removeOutput(this.signal);
+				MapperManagerProbatio.removeOutput(this.signal);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

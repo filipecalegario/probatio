@@ -18,7 +18,7 @@ import controlP5.ControlP5;
 import controlP5.Numberbox;
 import controlP5.ScrollableList;
 import controlP5.Textlabel;
-import mapper.MapperManager;
+import mapper.MapperManagerProbatio;
 import processing.core.PApplet;
 import processing.core.PVector; 
 

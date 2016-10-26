@@ -3,7 +3,7 @@ import java.lang.reflect.Field;
 import java.util.Vector;
 
 import display.DisplayManager;
-import mapper.MapperManager;
+import mapper.MapperManagerProbatio;
 import mvc.model.Block;
 import mvc.model.BlockFactory;
 import processing.core.PApplet;
@@ -47,8 +47,8 @@ public class ProbatioGrapherLibmapper extends PApplet {
 		registeredRemovals = new Vector<Integer>();
 		int numberOfSlots = 20;
 		display = new DisplayManager(this,numberOfSlots);
-		MapperManager.freeOnShutdown();
-		MapperManager.initializeDevice();
+		MapperManagerProbatio.freeOnShutdown();
+		MapperManagerProbatio.initializeDevice();
 
 		println(Serial.list());
 		//myPort = new Serial(this, Serial.list()[5], 115200);
@@ -74,7 +74,7 @@ public class ProbatioGrapherLibmapper extends PApplet {
 	}
 
 	public void draw () {
-		MapperManager.pollDevice();
+		MapperManagerProbatio.pollDevice();
 		display.updateDrawDisplaySlot();
 		if(blocks.isEmpty()){
 			display.cleanScreen();
@@ -250,7 +250,7 @@ public class ProbatioGrapherLibmapper extends PApplet {
 	@Override
 	public void keyPressed(KeyEvent event) {
 		if(event.getKey() == 'q' || event.getKey() == 'Q'){
-			MapperManager.freeDevice();
+			MapperManagerProbatio.freeDevice();
 			exit();
 		}
 	}

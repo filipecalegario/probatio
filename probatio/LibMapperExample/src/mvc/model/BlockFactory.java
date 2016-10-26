@@ -1,5 +1,6 @@
 package mvc.model;
 
+import paraExperimentoSensores.SensorNames;
 import utils.Utils;
 
 public class BlockFactory {
@@ -15,6 +16,31 @@ public class BlockFactory {
 		return block;
 	}
 	
+	public static Block createSensor(int id, int[] values, long millis){
+		Block result = new Block(id);
+		Utils utils = new Utils();
+		int colorIndex = id;
+		int screenIndex = id;
+		int[] colors = new int[values.length];
+		for (int i = 0; i < colors.length; i++) {
+			colors[i] = utils.pickAColor(colorIndex+i);
+		}
+		String[] labels = BlockFactory.populateSensorValuesLabels(id);
+		result.setScreenGraphColor(colors);
+		result.setScreenIndex(screenIndex);
+		result.setValues(values);
+		result.setLastTimeUpdated(millis);
+		result.setValuesLabels(labels);
+		result.setDataSize(values.length);
+		result.setName(SensorNames.getNameFromIndex(id));
+		return result;
+	}
+	
+	private static String[] populateSensorValuesLabels(int id) {
+		String[] result = {""};
+		return result;
+	}
+
 	private static Block initBlock(int id, int[] values){
 		Block result = new Block(id);
 		Utils utils = new Utils();

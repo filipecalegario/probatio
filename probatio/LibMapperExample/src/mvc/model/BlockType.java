@@ -44,6 +44,29 @@ public class BlockType {
 	static{
 		blockNamesbyId = new HashMap<Integer, String>();
 		blockSizeByID = new HashMap<Integer, Integer>();
+		blockNamesbyId.put(BLOCK_BELLOWS, "FOLE");
+		blockNamesbyId.put(BLOCK_BREATH, "SOPRO");
+		blockNamesbyId.put(BLOCK_CRANK, "MANIVELA");
+		blockNamesbyId.put(BLOCK_DEBUG, "DEBUG");
+		blockNamesbyId.put(BLOCK_JOYSTICK, "JOYSTICK");
+		blockNamesbyId.put(BLOCK_ONETAP, "UMA_BATIDA");
+		blockNamesbyId.put(BLOCK_TWOPOTS, "POTS");
+		blockNamesbyId.put(BLOCK_RESTOUCH, "DESLIZAR");
+		blockNamesbyId.put(BLOCK_THREETAPS, "TRES_BATIDAS");
+		blockNamesbyId.put(BLOCK_TURNTABLE, "TURNTABLE");
+		blockNamesbyId.put(BLOCK_TWOBUTTONS1, "BOTOES1");
+		blockNamesbyId.put(BLOCK_TWOBUTTONS2, "BOTOES2");
+		blockNamesbyId.put(BLOCK_TWOBUTTONS3, "BOTOES3");
+		blockNamesbyId.put(BLOCK_TWOBUTTONS4, "BOTOES4");
+		for (int i = 0; i < blocks.length; i++) {
+			blockSizeByID.put(blocks[i], sizeBlocks[i]);
+		}
+	}
+	
+	/* 
+	 static{
+		blockNamesbyId = new HashMap<Integer, String>();
+		blockSizeByID = new HashMap<Integer, Integer>();
 		blockNamesbyId.put(BLOCK_BELLOWS, "BELLOWS");
 		blockNamesbyId.put(BLOCK_BREATH, "BREATH");
 		blockNamesbyId.put(BLOCK_CRANK, "CRANK");
@@ -61,7 +84,7 @@ public class BlockType {
 		for (int i = 0; i < blocks.length; i++) {
 			blockSizeByID.put(blocks[i], sizeBlocks[i]);
 		}
-	}
+	}*/
 	
 	public static int getSizeByID(int id){
 		int result = -1;

@@ -7,10 +7,10 @@ import mvc.controller.BlockController;
 import mvc.model.BlockType;
 import serial.BlockParserObserver;
 
-public class MapperManager implements BlockParserObserver{
+public class MapperManagerSensores implements BlockParserObserver{
 
 	//private Vector<SignalSlot> signalSlots;
-	public final static Device dev = new Device("probatio", 9000);
+	public final static Device dev = new Device("Sensores", 9000);
 
 	boolean DEBUG_enableLibmapper = false;
 
@@ -116,7 +116,7 @@ public class MapperManager implements BlockParserObserver{
 		for (int i = 0; i < blockController.getDataSize(); i++) {
 			String blockNameById = blockController.getName();
 			String blockValueLabel = blockController.getValuesLabels()[i];
-			blockController.getSignals()[i] = MapperManager.addOutput(blockNameById + "-" + blockValueLabel, 1, 'i', "unit", 0, 255);
+			blockController.getSignals()[i] = MapperManagerSensores.addOutput(blockNameById + "-" + blockValueLabel, 1, 'i', "unit", 0, 255);
 		}
 	}
 
@@ -132,7 +132,7 @@ public class MapperManager implements BlockParserObserver{
 		for (int i = 0; i < blockController.getDataSize(); i++) {
 			if (blockController.getSignals()[i] != null) {
 				try {
-					MapperManager.removeOutput(blockController.getSignals()[i]);
+					MapperManagerSensores.removeOutput(blockController.getSignals()[i]);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

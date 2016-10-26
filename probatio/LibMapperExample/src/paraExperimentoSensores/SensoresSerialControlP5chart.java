@@ -1,13 +1,14 @@
-package serial;
+package paraExperimentoSensores;
 import controlP5.Chart;
 import controlP5.ControlP5;
-import mapper.MapperManager;
+import mapper.MapperManagerSensores;
 import mvc.controller.BlockController;
 import processing.core.PApplet;
 import processing.event.KeyEvent;
-import processing.serial.Serial; 
+import processing.serial.Serial;
+import serial.BlockParserObserver; 
 
-public class SerialControlP5chart extends PApplet implements BlockParserObserver{
+public class SensoresSerialControlP5chart extends PApplet implements BlockParserObserver{
 
 	/**
 	 * ControlP5 Chart
@@ -22,7 +23,7 @@ public class SerialControlP5chart extends PApplet implements BlockParserObserver
 
 	ControlP5 cp5;
 
-	ParserWithBlockController parser;
+	SensoresParserWithBlockController parser;
 	
 	Serial myPort; 
 	boolean serialIsReady = false;
@@ -33,20 +34,20 @@ public class SerialControlP5chart extends PApplet implements BlockParserObserver
 		long startTime = millis();
 		cp5 = new ControlP5(this);
 
-		initializeSerial(startTime, "/dev/cu.usbmodem621");
+		initializeSerial(startTime, "/dev/cu.usbmodem1421");
 		
-		parser = new ParserWithBlockController(this);
+		parser = new SensoresParserWithBlockController(this);
 		parser.attach(this);
 		
-		MapperManager mapper = new MapperManager();
+		MapperManagerSensores mapper = new MapperManagerSensores();
 		parser.attach(mapper);
 		
 		//MapperManager.freeOnShutdown();
-		MapperManager.initializeDevice();
+		MapperManagerSensores.initializeDevice();
 	}
 
 	public void draw() {
-		MapperManager.pollDevice();
+		MapperManagerSensores.pollDevice();
 		background(200);
 	}
 
@@ -121,13 +122,13 @@ public class SerialControlP5chart extends PApplet implements BlockParserObserver
 	@Override
 	public void keyPressed(KeyEvent event) {
 		if(event.getKey() == 'q' || event.getKey() == 'Q'){
-			MapperManager.freeDevice();
+			MapperManagerSensores.freeDevice();
 			exit();
 		}
 	}
 	
 	static public void main(String[] passedArgs) {
-		String[] appletArgs = new String[] { "serial.SerialControlP5chart" };
+		String[] appletArgs = new String[] { "paraExperimentoSensores.SensoresSerialControlP5chart" };
 		if (passedArgs != null) {
 			PApplet.main(concat(appletArgs, passedArgs));
 		} else {

@@ -1,28 +1,26 @@
-package serial;
+package paraExperimentoSensores;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Vector;
 
-import display.DisplayManager;
 import mvc.controller.BlockController;
 import mvc.model.Block;
 import mvc.model.BlockFactory;
-import mvc.model.BlockType;
 import mvc.view.BlockView;
 import processing.core.PApplet;
+import serial.BlockEventType;
+import serial.BlockParserObserver;
 
-public class ParserWithBlockController{
-
-	public int BUFFER_SIZE = 44;
+public class SensoresParserWithBlockController {
+	
+	public int BUFFER_SIZE = 50;
 
 	private List<BlockParserObserver> observers = new ArrayList<BlockParserObserver>();
 	PApplet core;
 	Vector<BlockController> blockControllers;
-	DisplayManager display;
 
-	public ParserWithBlockController(PApplet papplet) {
+	public SensoresParserWithBlockController(PApplet papplet) {
 		this.core = papplet;
 		blockControllers = new Vector<BlockController>();
 	}
@@ -44,6 +42,42 @@ public class ParserWithBlockController{
 			e.printStackTrace();
 		}
 	}
+	
+	private void parseAndAddOrUpdate(int[] ints) {
+		boolean isGoodFormat = (ints.length == BUFFER_SIZE) && 
+				(ints[0] == 2) && 
+				(ints[ints.length-1] == 10);
+		if (isGoodFormat) {
+			int[] trimmed = new int[48];
+			for (int i = 1; i <= 48; i++) {
+				trimmed[i-1] = ints[i];
+			}
+			for (int i = 0; i < trimmed.length/2; i++) {
+				int status = trimmed[i*2];
+				int value = trimmed[i*2+1];
+				int[] values = {value};
+				int id = i;
+				parseBlock(status, id, values);
+//				if(status == 1){
+//					if(sensors.containsKey(id)){
+//						Sensor s = sensors.get(id);
+//						s.updateValueSignal(value);
+//					} else {
+//						String nameFromIndex = SensorNames.getNameFromIndex(id);
+//						Signal signal = ExperimentoMapper.addOutput(nameFromIndex, 1, 'i', "unit", 0, 255);
+//						Sensor s = new Sensor(signal, nameFromIndex, value);
+//						sensors.put(id, s);
+//					}
+//				} else {
+//					if(sensors.containsKey(id)){
+//						Sensor s = sensors.get(id);
+//						ExperimentoMapper.removeOutput(s.getSignal());
+//						sensors.remove(id);
+//					}
+//				}
+			}
+		}
+	}
 
 	private void checkForRemoval() {
 		try {
@@ -57,36 +91,14 @@ public class ParserWithBlockController{
 			e.printStackTrace();
 		}
 	}
-
-	private void parseAndAddOrUpdate(int[] ints) {
-		boolean isGoodFormat = (ints.length == BUFFER_SIZE) && 
-				(ints[0] == 2) && 
-				(ints[ints.length-1] == 10);
-		if (isGoodFormat) {
-			int index = 1;
-			int indexArray = 0;
-			while(index < (ints.length - 1)){
-				int id = ints[index++];
-				int sizeByID = BlockType.sizeBlocks[indexArray++];
-				int[] values = new int[sizeByID];
-				for (int i = 0; i < values.length; i++) {
-					values[i] = ints[index++];
-				}
-				if(id != 0){
-					parseBlock(id, values);
-					//System.out.println(BlockType.getBlockNameById(id) + " " + Arrays.toString(values));
-				}
-			}
-		}
-	}
-
-	private void parseBlock(int blockId, int[] values){
-		if (blockId != 0) {
+	
+	private void parseBlock(int status, int blockId, int[] values){
+		if (status != 0) {
 			if (repositoryContainsBlock(blockId)) {
 				//System.out.println("UPDATED Block " + BlockType.getBlockNameById(blockId));
 				updateBlockEvent(blockId, values);
 			} else {
-				Block newBlock = BlockFactory.createBlock(blockId, values, core.millis());
+				Block newBlock = BlockFactory.createSensor(blockId, values, core.millis());
 				addBlockEvent(newBlock);
 			} 
 		}						
@@ -165,5 +177,7 @@ public class ParserWithBlockController{
 	public void attach(BlockParserObserver observer){
 		observers.add(observer);
 	}
-
+	
+	
+	
 }
