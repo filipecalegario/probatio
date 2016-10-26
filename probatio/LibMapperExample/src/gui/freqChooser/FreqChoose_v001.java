@@ -244,10 +244,11 @@ public class FreqChoose_v001 extends PApplet implements CallbackListener{
 	}
 
 	public void addOitava() {
-		List<String> l1 = Arrays.asList("0","1","2","3","4","5","6","7");
+		List<String> l1 = Arrays.asList("3","4","5","6");
 		cp5.addScrollableList("oitava")
 		.setLabel("Oitava")
 		.setPosition(396, 237)
+		.setDefaultValue(3)
 		.setSize(100, 100)
 		.setBarHeight(20)
 		.setItemHeight(20)
