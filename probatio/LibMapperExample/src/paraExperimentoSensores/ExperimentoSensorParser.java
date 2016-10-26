@@ -1,5 +1,6 @@
 package paraExperimentoSensores;
 
+import java.lang.reflect.Field;
 import java.util.HashMap;
 
 import Mapper.Device.Signal;
@@ -52,7 +53,7 @@ public class ExperimentoSensorParser extends PApplet{
 		serialIsReady = false;
 		println(Serial.list());
 		//myPort = new Serial(this, Serial.list()[5], 115200);
-		myPort = new Serial(this, "/dev/tty.usbmodem1421", 115200);
+		myPort = new Serial(this, "/dev/tty.usbmodem621", 115200);
 		//myPort = new Serial(this, "/dev/cu.usbmodem14111", 115200);
 		myPort.bufferUntil('\n');
 		myPort.clear();
@@ -106,6 +107,27 @@ public class ExperimentoSensorParser extends PApplet{
 	}
 
 	static public void main(String[] passedArgs) {
+//		System.setProperty( "java.library.path", "/usr/local/lib" );
+//
+//		Field fieldSysPath;
+//		try {
+//			fieldSysPath = ClassLoader.class.getDeclaredField( "sys_paths" );
+//			fieldSysPath.setAccessible( true );
+//			fieldSysPath.set( null, null );
+//		} catch (NoSuchFieldException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		} catch (SecurityException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		} catch (IllegalArgumentException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		} catch (IllegalAccessException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+
 		String[] appletArgs = new String[] {ExperimentoSensorParser.class.getName()};
 		if (passedArgs != null) {
 			PApplet.main(concat(appletArgs, passedArgs));

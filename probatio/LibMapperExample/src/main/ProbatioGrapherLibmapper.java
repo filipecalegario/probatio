@@ -35,7 +35,7 @@ public class ProbatioGrapherLibmapper extends PApplet {
 
 	public void settings() {
 		size(800, 600);
-		pixelDensity(2);
+		//pixelDensity(2);
 		smooth();
 	}
 
@@ -52,7 +52,7 @@ public class ProbatioGrapherLibmapper extends PApplet {
 
 		println(Serial.list());
 		//myPort = new Serial(this, Serial.list()[5], 115200);
-		myPort = new Serial(this, "/dev/cu.usbmodem34", 115200);
+		myPort = new Serial(this, "/dev/cu.usbmodem621", 115200);
 		myPort.bufferUntil('\n');
 		myPort.clear();
 		println("Initializing serial port...");
