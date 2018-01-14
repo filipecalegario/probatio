@@ -16,6 +16,7 @@ import processing.core.PApplet;
 public class ProbatioParserWithBlockController{
 
 	public int BUFFER_SIZE = 44;
+	private int blockRemoveTimeout = 2000;
 
 	private List<BlockParserObserver> observers = new ArrayList<BlockParserObserver>();
 	PApplet core;
@@ -49,7 +50,8 @@ public class ProbatioParserWithBlockController{
 		try {
 			for (int i = 0; i < blockControllers.size(); i++) {
 				BlockController currentBlock = blockControllers.elementAt(i);
-				if(core.millis() - currentBlock.getLastTimeUpdated() > 1000){
+				
+				if(core.millis() - currentBlock.getLastTimeUpdated() > blockRemoveTimeout){
 					removeBlockEvent(currentBlock.getId());
 				}
 			}

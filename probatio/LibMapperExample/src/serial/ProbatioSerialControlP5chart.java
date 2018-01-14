@@ -47,7 +47,7 @@ public class ProbatioSerialControlP5chart extends PApplet implements BlockParser
 
 	public void draw() {
 		MapperManagerProbatio.pollDevice();
-		background(200);
+		background(255);
 	}
 
 	@Override

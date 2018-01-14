@@ -117,7 +117,7 @@ public class SensoresSerialControlP5chart extends PApplet implements BlockParser
 		serialIsReady = true;
 	}
 
-	public void settings() {  size(800, 400);  }
+	public void settings() {  size(800, 700);  }
 	
 	@Override
 	public void keyPressed(KeyEvent event) {

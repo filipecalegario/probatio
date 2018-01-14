@@ -134,9 +134,9 @@ public class BlockFactory {
 		case BlockType.BLOCK_DEBUG:
 			result = new String[4];
 			result[0] = "Debug1";
-			result[1] = "Debug1";
-			result[2] = "Debug1";
-			result[3] = "Debug1";
+			result[1] = "Debug2";
+			result[2] = "Debug3";
+			result[3] = "Debug4";
 		break;
 		case BlockType.BLOCK_JOYSTICK:
 			result = new String[2];

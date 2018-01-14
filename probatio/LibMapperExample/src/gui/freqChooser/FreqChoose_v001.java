@@ -190,6 +190,7 @@ public class FreqChoose_v001 extends PApplet implements CallbackListener{
 		if(b == false){
 			index = Math.round(map(slotGeral, 0, 255, 0, 7));
 		}
+		System.out.println(b);
 		//===
 		//println(" =========== I:" + index);
 		drawSelectionRect(rectPos, index);

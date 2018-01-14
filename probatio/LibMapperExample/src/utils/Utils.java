@@ -39,7 +39,7 @@ public class Utils {
 		int alpha = 255;
 		colors[0] = processing.color(255, 0, 0, alpha);
 		colors[1] = processing.color(0, 255, 0, alpha);
-		colors[2] = processing.color(0, 0, 255, alpha);
+		colors[2] = processing.color(255, 255, 255, alpha);
 		colors[3] = processing.color(255, 255, 0, alpha);
 		colors[4] = processing.color(255, 0, 255, alpha);
 		colors[5] = processing.color(0, 255, 255, alpha);
