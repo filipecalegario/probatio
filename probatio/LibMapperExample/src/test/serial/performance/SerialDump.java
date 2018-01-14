@@ -127,6 +127,10 @@ public class SerialDump extends PApplet{
 		String output = myFormatter.format(value);
 		return output;
 	}
+	
+	public void nothing(){
+		
+	}
 
 
 }
